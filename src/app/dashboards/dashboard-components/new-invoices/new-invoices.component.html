@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-body">
+        <!-- Row -->
+        <div class="row align-items-center">
+            <div class="col-6">
+                <h2 class="fw-light fs-9">159</h2>
+                <h6 class="text-muted mb-0">Invoices</h6>
+            </div>
+            <div class="col-6 text-end align-self-center">
+                <apx-chart [series]="newinvoicesChartOptions.series" [chart]="newinvoicesChartOptions.chart"
+                    [plotOptions]="newinvoicesChartOptions.plotOptions" [labels]="newinvoicesChartOptions.labels"
+                    [fill]="newinvoicesChartOptions.fill" [stroke]="newinvoicesChartOptions.stroke"
+                    [dataLabels]="newinvoicesChartOptions.dataLabels" [colors]="newinvoicesChartOptions.colors"
+                    [tooltip]="newinvoicesChartOptions.tooltip" [legend]="newinvoicesChartOptions.legend" [grid]="newinvoicesChartOptions.grid">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+</div>

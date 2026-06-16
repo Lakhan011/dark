@@ -1,0 +1,16 @@
+<!-- Message -->
+@for(notification of notifications; track notification) {
+<a href="javascript:void(0)" class="d-flex align-items-center border-bottom gap-3 p-3">
+    <span  class="{{notification.icons}} rounded-circle round-45 position-relative d-flex align-items-center justify-content-center flex-shrink-0">
+        <i class="{{notification.useravatar}}"></i>
+        <span class="profile-status rounded-circle d-inline-block {{notification.status}} float-end"></span>
+    </span>
+    <span class="mail-contnet d-inline-block v-middle w-100">
+        <div class="d-flex align-items-center justify-content-between">
+            <h6 class="message-title mb-1 lh-base">{{notification.from}}</h6>
+            <span class="time fs-2 text-nowrap d-block text-body-color">{{notification.time}}</span>
+        </div>
+        <span class="mail-desc fs-2 d-block text-truncate text-body-color">{{notification.subject}}</span>
+    </span>
+</a>
+}

@@ -1,0 +1,14 @@
+.tasklist {
+  .task-item {
+    padding: 16.5px;
+    cursor: pointer;
+
+    &.active {
+      background-color: #e9ecef;
+    }
+  }
+}
+
+button:focus {
+  outline: none;
+}

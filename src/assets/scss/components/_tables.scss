@@ -1,0 +1,42 @@
+// 
+// Table Common
+// 
+
+.table thead th,
+.table th {
+  font-weight: 500;
+}
+
+.no-wrap {
+
+  td,
+  th {
+    white-space: nowrap;
+  }
+}
+
+// 
+// Data-tables
+// 
+table.dataTable {
+  thead {
+
+    th,
+    td {
+      border-bottom-color: var(--bs-border-color);
+      text-align: center;
+    }
+  }
+
+  tbody {
+    td {
+      text-align: center;
+    }
+  }
+}
+
+
+.ngx-datatable.material {
+  border: 1px solid var(--bs-border-color);
+  box-shadow: none !important;
+}

@@ -1,0 +1,390 @@
+<ng-scrollbar class="customizer-body custom-pills">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills nav-justified custom-tab border-bottom">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink class="d-flex flex-column gap-2 justify-content-center text-center">
+        <i-feather class="feather-sm m-auto" name="airplay"></i-feather>
+        <span class="fs-3">Settings</span>
+      </a>
+      <ng-template ngbNavContent>
+        <div class="p-3 border-bottom">
+          <h4 class="fw-semibold fs-4 mb-2">Theme</h4>
+          <div class="d-flex flex-row gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check light-layout" id="theme_light" name="set_theme" autocomplete="off"
+              [attr.checked]="themeOptions.theme == 'light' ? 'checked' : null" (change)="
+                themeOptions.theme =
+                  themeOptions.theme == 'dark' ? 'light' : 'dark'
+              " (click)="setBodyAttribute('data-bs-theme', 'light')" />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="theme_light"><i-tabler name="sun" class="icon fs-6 d-flex"></i-tabler>Light</label>
+
+            <input type="radio" class="btn-check dark-layout" id="theme_dark" name="set_theme"
+              [attr.checked]="themeOptions.theme == 'dark' ? 'checked' : null" (change)="
+                themeOptions.theme =
+                  themeOptions.theme == 'light' ? 'dark' : 'light'
+              " (click)="setBodyAttribute('data-bs-theme', 'dark')" autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="theme_dark"><i-tabler name="moon" class="icon fs-6 d-flex"></i-tabler>Dark</label>
+          </div>
+
+          <h4 class="fw-semibold fs-4 mb-2 mt-5">Theme Direction</h4>
+          <div class="d-flex flex-row gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check light-layout" id="dir_ltr" name="set_dir" autocomplete="off"
+              [attr.checked]="themeOptions.dir == 'ltr' ? 'checked' : null" (change)="
+                themeOptions.dir = themeOptions.dir == 'ltr' ? 'rtl' : 'ltr'
+              " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="dir_ltr"><i-tabler name="pilcrow-left" class="icon fs-6 d-flex"></i-tabler>LTR</label>
+
+            <input type="radio" class="btn-check" id="dir_rtl" name="set_dir"
+              [attr.checked]="themeOptions.dir == 'rtl' ? 'checked' : null" (change)="
+                themeOptions.dir = themeOptions.dir == 'rtl' ? 'ltr' : 'rtl'
+              " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="dir_rtl"><i-tabler name="pilcrow-right" class="icon fs-6 d-flex"></i-tabler>RTL</label>
+          </div>
+
+          <h4 class="fw-semibold fs-4 mb-2 mt-5">Theme Colors</h4>
+          <div class="d-flex flex-row flex-wrap gap-3 customizer-box color-pallete" role="group">
+            <input type="radio" class="btn-check" name="color-theme-layout" id="Blue_Theme" [attr.checked]="
+                themeOptions.colorTheme == 'Blue_Theme' ? 'checked' : null
+              " autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center"
+              data-colorTheme="Blue_Theme" (click)="themeOptions.colorTheme = 'Blue_Theme'" for="Blue_Theme"
+              placement="top" ngbTooltip="BLUE_THEME">
+              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-1">
+                <i-tabler name="check" class="text-white d-flex icon icon-18"></i-tabler>
+              </div>
+            </label>
+
+            <input type="radio" class="btn-check" name="color-theme-layout" id="Aqua_Theme" [attr.checked]="
+                themeOptions.colorTheme == 'Aqua_Theme' ? 'checked' : null
+              " autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center"
+              data-colorTheme="Aqua_Theme" (click)="themeOptions.colorTheme = 'Aqua_Theme'" for="Aqua_Theme"
+              placement="top" ngbTooltip="AQUA_THEME">
+              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-2">
+                <i-tabler name="check" class="text-white d-flex icon icon-18"></i-tabler>
+              </div>
+            </label>
+
+            <input type="radio" class="btn-check" name="color-theme-layout" id="Purple_Theme" autocomplete="off"
+              [attr.checked]="
+                themeOptions.colorTheme == 'Purple_Theme' ? 'checked' : null
+              " />
+            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center"
+              data-colorTheme="Purple_Theme" (click)="themeOptions.colorTheme = 'Purple_Theme'" for="Purple_Theme"
+              placement="top" ngbTooltip="PURPLE_THEME">
+              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-3">
+                <i-tabler name="check" class="text-white d-flex icon icon-18"></i-tabler>
+              </div>
+            </label>
+
+            <input type="radio" class="btn-check" name="color-theme-layout" id="green-theme-layout" autocomplete="off"
+              [attr.checked]="
+                themeOptions.colorTheme == 'Green_Theme' ? 'checked' : null
+              " />
+            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center"
+              data-colorTheme="Green_Theme" (click)="themeOptions.colorTheme = 'Green_Theme'" for="green-theme-layout"
+              placement="top" ngbTooltip="GREEN_THEME">
+              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-4">
+                <i-tabler name="check" class="text-white d-flex icon icon-18"></i-tabler>
+              </div>
+            </label>
+
+            <input type="radio" class="btn-check" name="color-theme-layout" id="cyan-theme-layout" autocomplete="off"
+              [attr.checked]="
+                themeOptions.colorTheme == 'Cyan_Theme' ? 'checked' : null
+              " />
+            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center"
+              data-colorTheme="Cyan_Theme" (click)="themeOptions.colorTheme = 'Cyan_Theme'" for="cyan-theme-layout"
+              placement="top" ngbTooltip="CYAN_THEME">
+              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-5">
+                <i-tabler name="check" class="text-white d-flex icon icon-18"></i-tabler>
+              </div>
+            </label>
+
+            <input type="radio" class="btn-check" name="color-theme-layout" id="orange-theme-layout" autocomplete="off"
+              [attr.checked]="
+                themeOptions.colorTheme == 'Orange_Theme' ? 'checked' : null
+              " />
+            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center"
+              data-colorTheme="Orange_Theme" (click)="themeOptions.colorTheme = 'Orange_Theme'"
+              for="orange-theme-layout" placement="top" ngbTooltip="ORANGE_THEME">
+              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-6">
+                <i-tabler name="check" class="text-white d-flex icon icon-18"></i-tabler>
+              </div>
+            </label>
+          </div>
+
+          <h4 class="fw-semibold fs-4 mb-2 mt-5">Layout Type</h4>
+          <div class="d-flex flex-row gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check light-layout" id="layout_vertical" name="set_layout_type"
+              autocomplete="off" [attr.checked]="
+                themeOptions.layout == 'vertical' ? 'checked' : null
+              " (change)="
+                themeOptions.layout =
+                  themeOptions.layout == 'horizontal'
+                    ? 'vertical'
+                    : 'horizontal'
+              " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="layout_vertical"><i-tabler name="layout-distribute-vertical"
+                class="icon fs-6 d-flex"></i-tabler>Vertical</label>
+
+            <input type="radio" class="btn-check" id="layout_horizontal" name="set_layout_type" [attr.checked]="
+                themeOptions.layout == 'horizontal' ? 'checked' : null
+              " (change)="
+                themeOptions.layout =
+                  themeOptions.layout == 'vertical' ? 'horizontal' : 'vertical'
+              " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="layout_horizontal"><i-tabler name="layout-distribute-horizontal"
+                class="icon fs-6 d-flex"></i-tabler>Horizontal</label>
+          </div>
+
+          <h4 class="fw-semibold fs-4 mb-2 mt-5">Container Option</h4>
+          <div class="d-flex flex-row gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check" id="layout_full" name="set_container_option" autocomplete="off"
+              [attr.checked]="themeOptions.boxed == 'full' ? 'checked' : null" (change)="
+                themeOptions.boxed =
+                  themeOptions.boxed == 'boxed' ? 'full' : 'boxed'
+              " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="layout_full"><i-tabler name="box-padding" class="icon fs-6 d-flex"></i-tabler>Full</label>
+
+            <input type="radio" class="btn-check" id="layout_boxed" name="set_container_option"
+              [attr.checked]="themeOptions.boxed == 'boxed' ? 'checked' : null" (change)="
+                themeOptions.boxed =
+                  themeOptions.boxed == 'full' ? 'boxed' : 'full'
+              " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="layout_boxed"><i-tabler name="box-margin" class="icon fs-6 d-flex"></i-tabler>Boxed</label>
+          </div>
+
+          @if(themeOptions.layout === 'vertical') {
+          <h4 class="fw-semibold fs-4 mb-2 mt-5">Sidebar Type</h4>
+
+          <div class="d-flex flex-row gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check" id="sidebar_full" name="set_sidebar_type" autocomplete="off"
+              [attr.checked]="
+                  themeOptions.sidebartype == 'full' ? 'checked' : null
+                " (change)="
+                  themeOptions.sidebartype =
+                    themeOptions.sidebartype == 'full' ? 'mini-sidebar' : 'full'
+                " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="sidebar_full"><i-tabler name="layout-sidebar-right" class="icon fs-6 d-flex"></i-tabler>Full</label>
+
+            <input type="radio" class="btn-check" id="sidebar_collapse" name="set_sidebar_type"
+              [(ngModel)]="themeOptions.sidebartype" [attr.checked]="
+                  themeOptions.sidebartype == 'mini-sidebar' ? 'checked' : null
+                " (change)="
+                  themeOptions.sidebartype =
+                    themeOptions.sidebartype == 'mini-sidebar'
+                      ? 'full'
+                      : 'mini-sidebar'
+                " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="sidebar_collapse"><i-tabler name="layout-sidebar"
+                class="icon fs-6 d-flex"></i-tabler>Collapse</label>
+          </div>
+          }
+
+          <h4 class="fw-semibold fs-4 mb-2 mt-5">Card With</h4>
+          <div class="d-flex flex-row gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check" id="card_border" name="set_card_setting" autocomplete="off"
+              [attr.checked]="
+                themeOptions.cardType == 'border' ? 'checked' : null
+              " (change)="
+                themeOptions.cardType =
+                  themeOptions.cardType == 'border' ? 'shadow' : 'border'
+              " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="card_border"><i-tabler name="border-all" class="icon fs-6 d-flex"></i-tabler>Border</label>
+
+            <input type="radio" class="btn-check" id="card_shadow" name="set_card_setting" [attr.checked]="
+                themeOptions.cardType == 'shadow' ? 'checked' : null
+              " (change)="
+                themeOptions.cardType =
+                  themeOptions.cardType == 'shadow' ? 'border' : 'shadow'
+              " />
+            <label class="btn p-9 btn-outline-primary rounded-2 d-flex align-items-center gap-2 fs-3 fw-medium"
+              for="card_shadow"><i-tabler name="border-none" class="icon fs-6 d-flex"></i-tabler>Shadow</label>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="2">
+      <a ngbNavLink class="d-flex flex-column gap-2 justify-content-center text-center"><i-feather
+          class="feather-sm m-auto" name="message-square"></i-feather>
+        <span class="fs-3">Messages</span></a>
+      <ng-template ngbNavContent>
+        <ul class="mailbox list-style-none mt-3">
+          <li>
+            <ng-scrollbar class="message-center chat-scroll">
+              @for(message of messages; track message) {
+              <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                <span class="user-img position-relative d-inline-block">
+                  <img src="{{ message.image }}" alt="user" width="40" class="rounded-circle round-40" />
+                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-{{
+                      message.color
+                    }} border border-light rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                  </span>
+                </span>
+                <div class="w-75 d-inline-block">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="mb-1 lh-base">{{ message.title }}</h6>
+                    <span class="fs-2 text-nowrap d-block text-body-color">{{
+                      message.time
+                      }}</span>
+                  </div>
+                  <span class="fs-2 d-block text-truncate text-truncate text-body-color">{{ message.subtext }}</span>
+                </div>
+              </a>
+              }
+            </ng-scrollbar>
+          </li>
+        </ul>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+      <a ngbNavLink class="d-flex flex-column gap-2 justify-content-center text-center"><i-feather
+          class="feather-sm m-auto" name="activity"></i-feather>
+        <span class="fs-3">Timeline</span></a>
+      <ng-template ngbNavContent>
+        <div class="p-3">
+          <div class="steamline position-relative border-start ms-4">
+            <div class="sl-item my-3 py-1 border-bottom">
+              <div class="sl-left float-start text-center rounded-circle text-white me-3">
+                <img src="assets/images/users/user1.jpg" alt="user 1" class="rounded-circle" />
+              </div>
+              <div class="sl-right ps-4">
+                <h6 class="mb-1 lh-base">
+                  Meeting today
+                  <span class="sl-date fs-1 text-dark bg-light rounded ms-2 badge py-1"><i-feather name="clock"
+                      class="feather-xs me-1"></i-feather>
+                    5 pm</span>
+                </h6>
+                <div class="fs-2 d-block text-truncate text-truncate text-body-color desc">
+                  Just see the my new admin!
+                </div>
+              </div>
+            </div>
+            <div class="sl-item my-3 py-1 border-bottom">
+              <div class="sl-left float-start text-center rounded-circle text-white me-3">
+                <img src="assets/images/users/user2.jpg" alt="user 1" class="rounded-circle" />
+              </div>
+              <div class="sl-right ps-4">
+                <h6 class="mb-1 lh-base">
+                  Send docs to John
+                  <span class="sl-date fs-1 text-dark bg-light rounded ms-2 badge py-1"><i-feather name="clock"
+                      class="feather-xs me-1"></i-feather>
+                    8 am</span>
+                </h6>
+                <div class="fs-2 d-block text-truncate text-truncate text-body-color desc">
+                  Lorem Ipsum is simply
+                </div>
+              </div>
+            </div>
+            <div class="sl-item my-3 py-1 border-bottom">
+              <div class="sl-left float-start text-center rounded-circle text-white me-3">
+                <img class="rounded-circle" alt="user" src="assets/images/users/user3.jpg" />
+              </div>
+              <div class="sl-right ps-4">
+                <h6 class="mb-1 lh-base d-flex align-items-center">
+                  Go to the Doctor
+                  <span class="sl-date fs-1 text-dark bg-light rounded ms-2 badge py-1"><i-feather name="clock"
+                      class="feather-xs me-1"></i-feather>
+                    8 am</span>
+                </h6>
+                <div class="desc fs-3">Contrary to popular belief</div>
+              </div>
+            </div>
+            <div class="sl-item my-3 py-1 border-bottom">
+              <div class="sl-left float-start text-center rounded-circle text-white me-3">
+                <img class="rounded-circle" alt="user" src="assets/images/users/user4.jpg" />
+              </div>
+              <div class="sl-right ps-4">
+                <div>
+                  <div class="d-flex align-items-center">
+                    <a href="javascript:void(0)" class="mb-1 lh-base d-flex align-items-center">Stephen</a>
+                    <span class="sl-date fs-1 text-dark bg-light rounded ms-2 badge py-1"><i-feather name="clock"
+                        class="feather-xs me-1"></i-feather>
+                      9 mins</span>
+                  </div>
+                </div>
+                <div class="desc fs-3">Approve meeting with tiger</div>
+              </div>
+            </div>
+            <div class="sl-item my-3 py-1 border-bottom">
+              <div class="sl-left float-start text-center rounded-circle text-white me-3">
+                <img src="assets/images/users/user1.jpg" alt="user 1" class="rounded-circle" />
+              </div>
+              <div class="sl-right ps-4">
+                <h6 class="mb-1 lh-base">
+                  Meeting today
+                  <span class="sl-date fs-1 text-dark bg-light rounded ms-2 badge py-1"><i-feather name="clock"
+                      class="feather-xs me-1"></i-feather>
+                    5 pm</span>
+                </h6>
+                <div class="fs-2 d-block text-truncate text-truncate text-body-color desc">
+                  Just see the my new admin!
+                </div>
+              </div>
+            </div>
+            <div class="sl-item my-3 py-1 border-bottom">
+              <div class="sl-left float-start text-center rounded-circle text-white me-3">
+                <img src="assets/images/users/user2.jpg" alt="user 1" class="rounded-circle" />
+              </div>
+              <div class="sl-right ps-4">
+                <h6 class="mb-1 lh-base">
+                  Send docs to John
+                  <span class="sl-date fs-1 text-dark bg-light rounded ms-2 badge py-1"><i-feather name="clock"
+                      class="feather-xs me-1"></i-feather>
+                    8 am</span>
+                </h6>
+                <div class="fs-2 d-block text-truncate text-truncate text-body-color desc">
+                  Lorem Ipsum is simply
+                </div>
+              </div>
+            </div>
+            <div class="sl-item my-3 py-1 border-bottom">
+              <div class="sl-left float-start text-center rounded-circle text-white me-3">
+                <img class="rounded-circle" alt="user" src="assets/images/users/user3.jpg" />
+              </div>
+              <div class="sl-right ps-4">
+                <h6 class="mb-1 lh-base d-flex align-items-center">
+                  Go to the Doctor
+                  <span class="sl-date fs-1 text-dark bg-light rounded ms-2 badge py-1"><i-feather name="clock"
+                      class="feather-xs me-1"></i-feather>
+                    8 am</span>
+                </h6>
+                <div class="desc fs-3">Contrary to popular belief</div>
+              </div>
+            </div>
+            <div class="sl-item my-3 py-1 border-bottom">
+              <div class="sl-left float-start text-center rounded-circle text-white me-3">
+                <img class="rounded-circle" alt="user" src="assets/images/users/user4.jpg" />
+              </div>
+              <div class="sl-right ps-4">
+                <div>
+                  <div class="d-flex align-items-center">
+                    <a href="javascript:void(0)" class="mb-1 lh-base d-flex align-items-center">Stephen</a>
+                    <span class="sl-date fs-1 text-dark bg-light rounded ms-2 badge py-1"><i-feather name="clock"
+                        class="feather-xs me-1"></i-feather>
+                      9 mins</span>
+                  </div>
+                </div>
+                <div class="desc fs-3">Approve meeting with tiger</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav"></div>
+</ng-scrollbar>

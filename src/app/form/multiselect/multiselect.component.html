@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Single Select</h4>
+        <ng-select [(ngModel)]="selectedCar">
+          @for(car of cars; track car) {
+          <ng-option [value]="car.id">{{
+            car.name
+            }}</ng-option>
+          }
+
+        </ng-select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Multiple Select</h4>
+
+        <ng-select [multiple]="true" [(ngModel)]="selectedCar2">
+          @for(car2 of cars; track car2){
+          <ng-option [value]="car2.id">{{
+            car2.name
+            }}</ng-option>
+          }
+
+          <ng-option [value]="'custom'">Custom</ng-option>
+        </ng-select>
+      </div>
+    </div>
+  </div>
+</div>

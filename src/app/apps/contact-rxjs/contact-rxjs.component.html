@@ -1,0 +1,142 @@
+<!-- Mobile toggle button -->
+<a [ngClass]="(showSidebar)?'ti-close':'ti-menu'" class="btn btn-primary show-left-part d-block d-md-none mb-3"
+	href="javascript:void(0)" (click)="mobileSidebar()"></a>
+<div class="main-part">
+	<!-- Left Part -->
+	<div class="left-part bg-white fixed-left-part" [ngClass]="{'show-panel': showSidebar}">
+		<div class="position-relative">
+			<div class="p-3 d-flex align-items-center border-bottom">
+				<input type="text" class="form-control" placeholder="Search Contact" [(ngModel)]='searchTerm'>
+			</div>
+			<ul class="contact-list list-style-none">
+				@for(c of filterArray; track c.firstName) {
+				<li class="contact-item border-bottom p-3" [class.active]="c === selectedContact"
+					(click)="onSelect(c);">
+					<img class="rounded-circle" [src]='c.imagePath' height="40" width="40" />
+					<span class="ms-3 font-medium">{{c.firstName}}&nbsp;{{c.lastName}}</span>
+				</li>
+				}
+
+			</ul>
+		</div>
+	</div>
+	<!-- End Left Part -->
+	<!-- Right Part -->
+	<div class="right-part bg-white">
+		<div class="card">
+			<div class="">
+				<div class="text-end">
+					<button type="button" id="btnAddContact" class="btn btn-primary" (click)='addContact()'>Add New
+						Contact</button>
+				</div>
+
+				<!-- Contact detail -->
+				@if(selectedContact) {
+				<div>
+					<div class="px-3 py-3 d-flex align-items-center border-bottom">
+						<a href="javascript: void(0);" (click)='editContact()' class="btn btn-success me-2">
+							{{editSave}}
+						</a>
+						<a href="javascript: void(0);" class="btn btn-danger" (click)='deleteContact(selectedContact)'>
+							Delete
+						</a>
+
+					</div>
+					<div class="px-3">
+						@if(show) {
+						<div class="row" (click)="editContact()">
+							<div class="col-md-2 text-center col-xl-1"><img class="rounded-circle mt-4"
+									[src]='selectedContact.imagePath' height="100" width="100"></div>
+							<div class="col-md-8">
+								<table class="table ms-4 mt-3 table-lg table-borderless align-middle">
+									<tbody>
+										<tr>
+											<td class="fw-bold detail-title">Name</td>
+											<td class="pl-2">
+												{{selectedContact.firstName}}&nbsp;{{selectedContact.lastName}}</td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Company</td>
+											<td class="pl-2">{{selectedContact.company}}</td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Work</td>
+											<td class="pl-2">{{selectedContact.work}}</td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Phone</td>
+											<td class="pl-2">{{selectedContact.mobile}}</td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Address</td>
+											<td class="pl-2">{{selectedContact.home}}</td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Note</td>
+											<td class="pl-2">{{selectedContact.notes}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						} @else {
+						<div class="mt-4 row">
+							<div class="col-md-2 text-center col-xl-1"><img class="rounded-circle mt-4 flex-shrink-0"
+									[src]='selectedContact.imagePath' height="100" width="100"></div>
+							<div class="col-md-8">
+								<table class="ms-4 table table-borderless align-middle">
+									<tbody>
+										<tr>
+											<td class="fw-bold detail-title">Name</td>
+											<td class="d-flex">
+												<input type="text" [(ngModel)]="selectedContact.firstName"
+													class="form-control">
+												<input type="text" [(ngModel)]="selectedContact.lastName"
+													class="form-control ms-2">
+											</td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Company</td>
+											<td><input type="text" [(ngModel)]="selectedContact.company"
+													class="form-control"></td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Work</td>
+											<td><input type="text" [(ngModel)]="selectedContact.work"
+													class="form-control"></td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Phone</td>
+											<td><input type="text" [(ngModel)]="selectedContact.mobile"
+													class="form-control" maxlength="10">
+											</td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Address</td>
+											<td><input type="text" [(ngModel)]="selectedContact.home"
+													class="form-control"></td>
+										</tr>
+										<tr>
+											<td class="fw-bold detail-title">Note</td>
+											<td><textarea [(ngModel)]="selectedContact.notes"
+													class="form-control"></textarea></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						}
+
+
+					</div>
+
+				</div>
+				}
+
+
+				<!-- End Contact detail -->
+			</div>
+		</div>
+	</div>
+	<!-- End Right Part -->
+</div>

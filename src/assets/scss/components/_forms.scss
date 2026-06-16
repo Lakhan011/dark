@@ -1,0 +1,70 @@
+  // Custom select
+  .form-select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+  }
+
+  .form-check-input {
+    z-index: 1;
+  }
+
+  label {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    color: var(--bs-heading-color);
+  }
+
+  //
+  // Row Separator page
+  //
+  .r-separator .form-group {
+    border-bottom: 1px solid var(--bs-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  //
+  // Striped Row page
+  //
+  .striped-rows .row:nth-child(odd) {
+    background-color: var(--bs-gray-100);
+  }
+
+  //
+  // Border form page
+  //
+  .b-form .row {
+    border-bottom: 1px solid var(--bs-border-color);
+    margin-bottom: 0;
+    padding: 15px 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  //
+  // Custom validation Classes
+  //
+  .error {
+    .form-control {
+      border-color: var(--bs-danger);
+    }
+
+    .help-block {
+      color: var(--bs-danger);
+    }
+  }
+
+  .validate {
+    .form-control {
+      border-color: var(--bs-success);
+    }
+
+    .help-block {
+      color: var(--bs-success);
+    }
+  }

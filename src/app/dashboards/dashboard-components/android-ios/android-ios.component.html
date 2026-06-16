@@ -1,0 +1,53 @@
+<div class="card">
+    <div class="row">
+        <div class="col-lg-6 col-md-4">
+            <div class="card-body">
+                <h4 class="card-title">Android Vs iOS</h4>
+                <p class="card-subtitle mb-0">
+                    check the difference of OS
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 border-end align-self-center">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8 p-0 align-self-center">
+                        <h3 class="mb-0">31568</h3>
+                        <h5 class="text-muted fw-normal mb-0">Growth</h5>
+                    </div>
+                    <div class="col-4">
+                        <div class="round rounded-circle text-white hstack justify-content-center text-bg-success">
+                            <i class="ti ti-microsoft fs-6"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 align-self-center">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8 p-0 align-self-center">
+                        <h3 class="mb-0">15478</h3>
+                        <h5 class="text-muted fw-normal mb-0">Loss</h5>
+                    </div>
+                    <div class="col-4">
+                        <div class="round rounded-circle text-white hstack justify-content-center text-bg-dark">
+                            <i class="ti ti-apple fs-6"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pt-5 border-top">
+        <apx-chart [series]="androidiosChartOptions.series" [chart]="androidiosChartOptions.chart"
+            [xaxis]="androidiosChartOptions.xaxis" [yaxis]="androidiosChartOptions.yaxis"
+            [grid]="androidiosChartOptions.grid" [stroke]="androidiosChartOptions.stroke"
+            [tooltip]="androidiosChartOptions.tooltip" [fill]="androidiosChartOptions.fill"
+            [dataLabels]="androidiosChartOptions.dataLabels" [legend]="androidiosChartOptions.legend"
+            [colors]="androidiosChartOptions.colors" [markers]="androidiosChartOptions.markers"
+            [plotOptions]="androidiosChartOptions.plotOptions" [states]="androidiosChartOptions.states"
+            [labels]="androidiosChartOptions.labels" [responsive]="androidiosChartOptions.responsive">
+        </apx-chart>
+    </div>
+</div>

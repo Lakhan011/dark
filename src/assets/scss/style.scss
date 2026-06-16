@@ -1,0 +1,105 @@
+// ------------------------------------
+//(Required file)
+// ------------------------------------
+@import "./variables/variables";
+@import "./variables/theme_variables";
+@import "./variables/variables-dark";
+
+// ------------------------------------
+// Themecolors (Required file)
+// -----------------------------------
+@import "./variables/variables-blue";
+@import "./variables/variables-aqua";
+@import "./variables/variables-purple";
+@import "./variables/variables-green";
+@import "./variables/variables-cyan";
+@import "./variables/variables-orange";
+
+// ------------------------------------
+// Import Bootstrap source files (Required file)
+// ------------------------------------
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// ------------------------------------
+// Header
+// ------------------------------------
+@import 'layouts/spinner';
+@import 'layouts/header';
+
+// ------------------------------------
+// sidebar
+// ------------------------------------
+@import 'layouts/sidebar';
+
+// ------------------------------------
+// customizer
+// ------------------------------------
+@import 'layouts/customizer';
+@import 'layouts/layout';
+
+// ------------------------------------
+// horizontal
+// ------------------------------------
+@import "layouts/horizontal";
+
+// ------------------------------------
+//This is for the components (Required file)
+// ------------------------------------
+@import "components/accordian";
+@import "components/alert";
+@import "components/breadcrumb";
+@import "components/buttons";
+@import "components/card";
+@import "components/dropdown";
+@import "components/datepicker";
+@import "components/forms";
+@import "components/scafholdings";
+@import "components/tables";
+
+// ------------------------------------
+// vendors
+// ------------------------------------
+@import "vendors/extra";
+@import "vendors/notifier";
+@import "vendors/wizard";
+@import "vendors/chartist";
+
+// ------------------------------------
+// dashboard
+// ------------------------------------
+@import "dashboard/dashboard";
+
+// ------------------------------------
+//This is for the pages (if you are not using some pages you can remove that style from pages folder)
+// ------------------------------------
+@import "pages/authentication";
+@import "pages/form-typeahead";
+@import "pages/gallery-card";
+@import "pages/timeline";
+
+// ------------------------------------
+//This is for the widgets (Required file)
+// ------------------------------------
+@import "widgets/topbar-mail";
+@import "widgets/comments";
+@import "widgets/chat-widgets";
+@import "widgets/steamline";
+@import "widgets/feeds";
+@import "widgets/task";
+@import "widgets/taskboard";
+@import "widgets/profile";
+
+
+// rtl
+@import 'layouts/rtl/rtl';
+
+//This is for the icons (Required file)
+@import "icons/font-awesome/css/fontawesome-all.css";
+@import "icons/simple-line-icons/css/simple-line-icons.css";
+@import "icons/material-design-iconic-font/css/materialdesignicons.min.css";
+@import "icons/weather-icons/css/weather-icons.min.css";
+@import "icons/themify-icons/themify-icons.css";
+@import "icons/flag-icon-css/flag-icon.min.css";
+
+@import '../../../node_modules/ngx-toastr/toastr-bs5-alert';
+@import "~@ng-select/ng-select/themes/default.theme.css";

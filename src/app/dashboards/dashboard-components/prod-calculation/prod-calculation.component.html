@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-body pb-0">
+        <div class="d-md-flex align-items-center mb-4">
+            <div>
+                <h4 class="card-title">Product Calculation</h4>
+            </div>
+            <div class="ms-auto">
+
+                <ul class="list-unstyled mb-0 hstack gap-3">
+                    <li>
+                        <h6 class="text-muted mb-0 hstack gap-2 fw-normal">
+                            <span class="text-bg-success round-10 rounded-circle"></span>2023
+                        </h6>
+                    </li>
+                    <li>
+                        <h6 class="text-muted mb-0 hstack gap-2 fw-normal">
+                            <span class="text-bg-info round-10 rounded-circle"></span>2024
+                        </h6>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mx-n2">
+            <apx-chart [series]="productcalcChartOptions.series" [chart]="productcalcChartOptions.chart"
+                [xaxis]="productcalcChartOptions.xaxis" [yaxis]="productcalcChartOptions.yaxis"
+                [grid]="productcalcChartOptions.grid" [stroke]="productcalcChartOptions.stroke"
+                [tooltip]="productcalcChartOptions.tooltip" [fill]="productcalcChartOptions.fill"
+                [dataLabels]="productcalcChartOptions.dataLabels" [legend]="productcalcChartOptions.legend"
+                [colors]="productcalcChartOptions.colors" [markers]="productcalcChartOptions.markers"
+                [plotOptions]="productcalcChartOptions.plotOptions" [states]="productcalcChartOptions.states">
+            </apx-chart>
+        </div>
+    </div>
+</div>

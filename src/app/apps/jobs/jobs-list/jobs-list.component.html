@@ -1,0 +1,221 @@
+<!-- Mobile toggle button -->
+<a [ngClass]="showSidebar ? 'mdi mdi-close' : 'mdi mdi-menu'" class="btn btn-success show-left-part d-block d-lg-none"
+  href="javascript:void(0)" (click)="mobileSidebar()"></a>
+
+<div class="main-part" style="height: calc(100vh - 175px)">
+  <!-- left part -->
+  <div class="left-part bg-white fixed-left-part border-end" [ngClass]="{ 'show-panel': showSidebar }">
+    <div class="position-relative" style="height: 100%">
+      <div class="ps-3 pe-4 py-3 d-flex align-items-center mt-1 border-bottom">
+        <div>
+          <img src="assets/images/users/user4.jpg" width="45" alt="user" class="rounded-circle" />
+        </div>
+        <div class="text-dark mb-0 ms-3 fs-5">
+          Markarn Doe
+          <p class="mb-0 fs-2">
+            <i class="fa fa-circle text-success font-10 me-2"></i>
+            <span>Online</span>
+          </p>
+        </div>
+      </div>
+      <div class="p-3">
+        <button type="button" class="btn btn-info d-block w-100" (click)="openModal(AddJobItem)">
+          Add Job
+        </button>
+        <div class="mb-3 mt-4">
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" />
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Location" [(ngModel)]="locationsearch" />
+        </div>
+      </div>
+
+      <!-- listing filter -->
+      <ul class="mailbox list-style-none">
+        <li>
+          <ng-scrollbar class="message-center" style="height: calc(100vh - 450px)">
+            <div class="px-3 pb-3">
+              <h6 class="fw-normal text-muted text-uppercase mb-0">Filter</h6>
+            </div>
+            @for(item of itemsList; track item.value) {
+            <div>
+              <a class="message-item border-0 d-flex align-items-center py-3">
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" [(ngModel)]="radioSelected" name="list_name"
+                    value="{{ item.value }}" (change)="onItemChange(item)" />
+                  <label class="form-check-label">{{ item.name }}</label>
+                </div>
+              </a>
+            </div>
+            }
+
+          </ng-scrollbar>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- right part -->
+  <div class="right-part bg-white">
+    <div class="position-relative" style="height: 100%">
+      <div class="d-md-flex align-items-center p-4 border-bottom mail-pagination">
+        <h4 class="card-title mb-0">Jobs</h4>
+        <div class="ms-auto mt-3 mt-md-0">
+          <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="filjobs.length">
+          </ngb-pagination>
+        </div>
+      </div>
+      <!-- listing of jobs -->
+      <ng-scrollbar class="position-relative" style="height: calc(100vh - 260px)">
+        @for(job of filjobs
+        | slice : (page - 1) * pageSize : (page - 1) * pageSize + pageSize; track job) {
+        <div>
+          <div class="card border-bottom">
+            <div class="card-body">
+              @if(job.featured) {
+              <div>
+                <button
+                  class="btn btn-circle rounded-circle btn-warning featured-btn d-flex align-items-center justify-content-center">
+                  <i class="mdi mdi-star fs-5"></i>
+                </button>
+              </div>
+              }
+
+              <div class="row">
+                <div class="col-md-2 col-xl-1 col-4 mb-3 mb-md-0 d-flex align-items-center justify-content-start">
+                  <img [src]="job.image" alt="pic" class="img-fluid rounded-1" />
+                </div>
+                <div class="col-md-10 col-xl-11">
+                  <a [routerLink]="['/apps/job-detail/', job.id]" class="card-title fs-4">
+                    {{ job.title }}
+                  </a>
+                  <p class="mb-0">{{ job.location }}</p>
+                  <p>
+                    @if(job.jobType === 'Full time') {
+                    <span class="badge bg-danger px-2"><i class="fas fa-circle font-10 me-1"></i>Full time</span>
+                    }
+
+                    @if(job.jobType === 'Part time') {
+                    <span class="badge bg-success px-2"><i class="fas fa-circle font-10 me-1"></i>Part time</span>
+                    }
+
+                    @if(job.jobType === 'Internship') {
+                    <span class="badge bg-primary px-2"><i class="fas fa-circle font-10 me-1"></i>Internship</span>
+                    }
+
+                  </p>
+
+                  {{ job.description }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+
+      </ng-scrollbar>
+    </div>
+  </div>
+</div>
+
+<ng-template #AddJobItem let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Add Jobs</h5>
+    
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="jobAdd" (ngSubmit)="onSubmit()">
+      <div class="form-group row mb-2">
+        <label for="name" class="col-sm-4 col-form-label">Job Image</label>
+        <div class="col-sm-8">
+          <input type="file" style="display: none" (change)="preview(filevar.files)" #filevar />
+          <img [src]="selectedImage" class="rounded-circle image cursor-pointer" alt="" height="100px" width="100px"
+            (click)="filevar.click()" />
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-sm-4 col-form-label">Job Title</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="Title" />
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-sm-4 col-form-label">Job Loction</label>
+        <div class="col-sm-8">
+          <select class="form-control" formControlName="Location">
+            <option value="" disabled>Choose location</option>
+            @for(loc of location; track loc) {
+            <option [ngValue]="loc">
+              {{ loc }}
+            </option>
+            }
+
+          </select>
+
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-sm-4 col-form-label">Description</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" formControlName="Description" />
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-sm-4 col-form-label">Qualification</label>
+        <div class="col-sm-8">
+          <textarea class="form-control" formControlName="Qualification" rows="4" cols="50">
+          </textarea>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-sm-4 col-form-label">Job Type</label>
+        <div class="col-sm-8">
+          <select class="form-control" formControlName="JobType">
+            <option value="" disabled>Choose type of job</option>
+            @for(jt of jobtype; track jt) {
+            <option [ngValue]="jt">{{ jt }}</option>
+            }
+
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-sm-4 col-form-label">Job In</label>
+        <div class="col-sm-8">
+          <select class="form-control" formControlName="Nature">
+            <option value="" disabled>Choose job in</option>
+            @for(ji of jobin; track ji) {
+            <option [ngValue]="ji">{{ ji }}</option>
+            }
+
+          </select>
+
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-sm-4 col-form-label">Job Icon</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="Icon" />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeBtnClick()">
+          Close
+        </button>
+
+        <button type="submit" class="btn btn-primary" [disabled]="jobAdd.invalid">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

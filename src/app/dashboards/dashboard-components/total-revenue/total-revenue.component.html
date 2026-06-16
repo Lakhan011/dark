@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-md-flex align-items-center">
+            <h4 class="card-title">Total Revenue</h4>
+            <div class="ms-auto">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <h6 class="text-muted fw-normal">
+                            <i class="fa fa-circle me-1" style="color: #51bdff"></i>2022
+                        </h6>
+                    </li>
+                    <li class="list-inline-item">
+                        <h6 class="text-muted fw-normal">
+                            <i class="fa fa-circle me-1" style="color: #11a0f8"></i>2023
+                        </h6>
+                    </li>
+                    <li class="list-inline-item">
+                        <h6 class="text-muted fw-normal">
+                            <i class="fa fa-circle me-1 text-info"></i>2024
+                        </h6>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mx-n2">
+            <apx-chart [series]="totalrevenueChartOptions.series" [chart]="totalrevenueChartOptions.chart"
+                [xaxis]="totalrevenueChartOptions.xaxis" [yaxis]="totalrevenueChartOptions.yaxis"
+                [grid]="totalrevenueChartOptions.grid" [stroke]="totalrevenueChartOptions.stroke"
+                [tooltip]="totalrevenueChartOptions.tooltip" [fill]="totalrevenueChartOptions.fill"
+                [dataLabels]="totalrevenueChartOptions.dataLabels" [legend]="totalrevenueChartOptions.legend"
+                [colors]="totalrevenueChartOptions.colors" [markers]="totalrevenueChartOptions.markers"
+                [plotOptions]="totalrevenueChartOptions.plotOptions" [states]="totalrevenueChartOptions.states">
+            </apx-chart>
+        </div>
+    </div>
+</div>

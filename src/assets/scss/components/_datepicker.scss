@@ -1,0 +1,36 @@
+.ngb-dp-weekday {
+    color: var(--bs-body-color) !important;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal !important;
+}
+
+.ngb-dp-header,
+.ngb-dp-weekdays,
+.ngb-dp-month-name {
+    background-color: transparent !important;
+}
+
+ngb-datepicker-navigation-select>.form-select:first-child {
+    margin-right: 7px;
+}
+
+.btn-link.ngb-dp-arrow-btn {
+    color: var(--bs-muted);
+
+    &:hover {
+        color: var(--bs-primary);
+    }
+}
+
+.ngb-dp-month-name {
+    margin-top: 7px;
+}
+
+.ngb-dp-day .btn-light {
+    color: var(--bs-body-color);
+
+    &:hover {
+        background-color: var(--bs-light-primary-rgb);
+    }
+}

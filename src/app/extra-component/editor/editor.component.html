@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Basic Editor</h4>
+        <h6 class="card-subtitle">
+            A simple rich text editor for angular applications built with ProseMirror. It is a drop in and easy-to-use editor and can be easily extended using prosemirror plugins to build any additional or missing features
+          <a
+            href="https://github.com/sibiraj-s/ngx-editor"
+            target="_blank"
+            >Official website</a
+          >
+        </h6>
+
+        <div class="NgxEditor__Wrapper">
+          <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+          <ngx-editor
+            [editor]="editor"
+            [ngModel]="html"
+            [disabled]="false"
+            [placeholder]="'Type here...'"
+          ></ngx-editor>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

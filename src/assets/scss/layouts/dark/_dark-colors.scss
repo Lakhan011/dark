@@ -1,0 +1,62 @@
+//
+// Font Colors
+//
+.text-dark {
+  color: var(--bs-gray-200) !important;
+}
+
+//
+// Button and Background colors
+//
+
+.bg-white {
+  background-color: $theme-dark-card-bg !important;
+}
+
+.bg-dark {
+  background-color: var(--bs-gray-600) !important;
+}
+
+.round.round-danger {
+  background: rgba($color: var(--bs-danger), $alpha: 0.5);
+}
+
+.table-danger,
+.table-danger>th,
+.table-danger>td {
+  background-color: rgba($color: var(--bs-danger), $alpha: 0.2) !important;
+}
+
+.table-success,
+.table-success>th,
+.table-success>td {
+  background-color: rgba($color: var(--bs-success), $alpha: 0.2) !important;
+}
+
+.table-primary,
+.table-primary>th,
+.table-primary>td {
+  background-color: rgba($color: var(--bs-primary), $alpha: 0.2) !important;
+}
+
+.table-info,
+.table-info>th,
+.table-info>td {
+  background-color: rgba($color: var(--bs-info), $alpha: 0.2) !important;
+}
+
+.table-warning,
+.table-warning>th,
+.table-warning>td {
+  background-color: rgba($color: var(--bs-warning), $alpha: 0.2) !important;
+}
+
+.bg-light {
+  background-color: $theme-dark-bg-light !important;
+}
+
+.btn-light {
+  background-color: var(--bs-gray-800);
+  border-color: var(--bs-gray-800);
+  color: $theme-dark-text-color;
+}

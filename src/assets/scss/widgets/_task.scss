@@ -1,0 +1,26 @@
+// To do widgets
+
+.todo-list {
+    li {
+        .assignedto {
+            li {
+                margin-right: 2px;
+
+                img {
+                    width: 30px;
+                }
+            }
+        }
+    }
+}
+
+.app-sidebar {
+    right: 0;
+    position: fixed;
+    width: 0;
+    top: 64px;
+    height: 100%;
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    transition: 0.2s ease-in;
+    z-index: 99;
+}

@@ -1,0 +1,240 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <!-- Column -->
+          <div class="col-md-6 col-lg-3 col-xlg-3">
+            <div class="card card-hover">
+              <div class="box bg-info cursor-pointer text-center" (click)="filterByStatus('All')">
+                <h1 class="fw-light text-white">{{ ticketsList.length }}</h1>
+                <h6 class="text-white">Total Tickets</h6>
+              </div>
+            </div>
+          </div>
+          <!-- Column -->
+          <div class="col-md-6 col-lg-3 col-xlg-3">
+            <div class="card card-hover">
+              <div class="box bg-warning cursor-pointer text-center" (click)="filterByStatus('Pending')">
+                <h1 class="fw-light text-white">{{ pending }}</h1>
+                <h6 class="text-white">Pending</h6>
+              </div>
+            </div>
+          </div>
+          <!-- Column -->
+          <div class="col-md-6 col-lg-3 col-xlg-3">
+            <div class="card card-hover">
+              <div class="box bg-success cursor-pointer text-center" (click)="filterByStatus('Open')">
+                <h1 class="fw-light text-white">{{ open }}</h1>
+                <h6 class="text-white">Open</h6>
+              </div>
+            </div>
+          </div>
+          <!-- Column -->
+          <div class="col-md-6 col-lg-3 col-xlg-3">
+            <div class="card card-hover">
+              <div class="box bg-danger cursor-pointer text-center" (click)="filterByStatus('Closed')">
+                <h1 class="fw-light text-white">{{ closed }}</h1>
+                <h6 class="text-white">Closed</h6>
+              </div>
+            </div>
+          </div>
+          <!-- Column -->
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-6 col-lg-3 col-xl-2">
+            <input type="text" class="form-control" type="text" name="search" [(ngModel)]="searchTerm"
+              autocomplete="off" placeholder="Search here..." />
+          </div>
+          <div class="col-md-6 col-lg-9 col-xl-10 text-md-end mt-4 mt-md-0">
+            <button class="btn btn-primary text-white" (click)="openModal(editTicketModal, null)">
+              <i class="fa fa-plus-square me-2"></i>Add Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table mb-0 text-nowrap align-middle">
+          <tbody>
+            @for(ticket of filterTickets
+            | slice
+            : (page - 1) * pageSize
+            : (page - 1) * pageSize + pageSize; track ticket) {
+            <tr>
+              <td width="50" class="text-center">{{ ticket.Id }}</td>
+              <td class="text-center" width="150">
+                <span class="badge bg-{{ ticket.Label }}">{{
+                  ticket.Status
+                  }}</span>
+              </td>
+              <td class="ticket-desc">
+                <p class="mb-1">
+                  <ngb-highlight [result]="ticket.ticketTitle" [term]="searchTerm"></ngb-highlight>
+                </p>
+                <small class="text-truncate fw-normal text-muted">
+                  <ngb-highlight [result]="ticket.ticketDescription" [term]="searchTerm"></ngb-highlight>
+                </small>
+              </td>
+              <td>
+                <small class="fw-normal text-muted">Assign to:</small><br />
+                <strong>{{ ticket.AgentName }}</strong>
+              </td>
+              <td class="fw-normal">{{ ticket.Date | date }}</td>
+              <td>
+                <a href="javascript: void(0);" (click)="openModal(editTicketModal, ticket)" class="link me-2"
+                  placement="top" ngbTooltip="Edit">
+                  <!-- <i class="mdi mdi-pencil"></i> -->
+                  <i-feather name="edit" class="feather-sm"></i-feather>
+                </a>
+                <a href="javascript: void(0);" class="link" (click)="deleteTicket(ticket.Id)" placement="top"
+                  ngbTooltip="Delete">
+                  <i-feather name="trash-2" class="feather-sm text-danger"></i-feather>
+                  <!-- <i class="mdi mdi-delete"></i> -->
+                </a>
+              </td>
+            </tr>
+            }
+
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalLengthOfCollection">
+        </ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #editTicketModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="editUserLabel">Edit Ticket</h5>
+
+    <button type="button" class="btn-close" (click)="closeBtnClick()" aria-label="Close"></button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="editTicket" (ngSubmit)="onSubmit()">
+      <div class="mb-3 row">
+        <label for="title" class="col-sm-4 col-form-label">Title</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="ticketTitle" id="title"
+            [ngClass]="{ 'is-invalid': submitted && f['ticketTitle'].errors }" />
+          @if(submitted && f['ticketTitle'].errors) {
+          <div class="invalid-feedback">
+            @if(f['ticketTitle'].errors['required']) {
+            <div>
+              Title is required
+            </div>
+            }
+
+          </div>
+          }
+
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="description" class="col-sm-4 col-form-label">Ticket Description</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="ticketDescription" id="description" [ngClass]="{
+              'is-invalid': submitted && f['ticketDescription'].errors
+            }" />
+
+          @if(submitted && f['ticketDescription'].errors) {
+          <div class="invalid-feedback">
+            @if(f['ticketDescription'].errors['required']) {
+            <div>
+              Description is required
+            </div>
+            }
+          </div>
+          }
+
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="date" class="col-sm-4 col-form-label">Date</label>
+        <div class="col-sm-8">
+          <input type="date" class="form-control" formControlName="Date" id="date" [(ngModel)]="ticketDate"
+            [ngClass]="{ 'is-invalid': submitted && f['Date'].errors }" />
+
+          @if(submitted && f['Date'].errors) {
+          <div class="invalid-feedback">
+            @if(f['Date'].errors['required']) {
+            <div>
+              Date is required
+            </div>
+            }
+
+          </div>
+          }
+
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="status" class="col-sm-4 col-form-label">Status</label>
+        <div class="col-sm-8">
+          <select class="form-select" formControlName="Status"
+            [ngClass]="{ 'is-invalid': submitted && f['Status'].errors }">
+            <option selected>Closed</option>
+            <option>Open</option>
+            <option>In Process</option>
+          </select>
+
+          @if(submitted && f['Status'].errors) {
+          <div class="invalid-feedback">
+            @if(f['Status'].errors['required']) {
+            <div>
+              Fullname is required
+            </div>
+            }
+          </div>
+          }
+
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="agent" class="col-sm-4 col-form-label">Assign To</label>
+        <div class="col-sm-8">
+          <select class="form-select" formControlName="AgentName"
+            [ngClass]="{ 'is-invalid': submitted && f['AgentName'].errors }">
+            <option>Steve</option>
+            <option>Jack</option>
+            <option>John</option>
+            <option>Liam</option>
+          </select>
+
+          @if(submitted && f['AgentName'].errors) {
+          <div class="invalid-feedback">
+            @if(f['AgentName'].errors['required']) {
+            <div>
+              Agent Name is required
+            </div>
+            }
+
+          </div>
+          }
+
+        </div>
+      </div>
+      <div class="mb-3 row mt-4">
+        <span class="col-sm-4 col-form-label"></span>
+        <div class="col-sm-8">
+          <button type="button" class="btn btn-secondary me-2" (click)="closeBtnClick()">
+            Close
+          </button>
+
+          <button type="submit" class="btn btn-primary" [disabled]="editTicket.invalid">
+            Save
+          </button>
+        </div>
+      </div>
+      <div class="text-center">
+        <small>New ticket will be shown on second page.</small>
+      </div>
+    </form>
+  </div>
+</ng-template>

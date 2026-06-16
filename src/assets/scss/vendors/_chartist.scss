@@ -1,0 +1,68 @@
+//
+// Apexchart
+//
+.apexcharts-text {
+  fill: var(--bs-muted);
+}
+
+.apexcharts-gridline,
+.apexcharts-xaxis-tick,
+.apexcharts-xaxis line {
+  stroke: rgba(0, 0, 0, 0.1);
+}
+
+//
+// Chartist Chart
+//
+
+html {
+
+  .ct-area,
+  .ct-line {
+    pointer-events: none;
+  }
+
+  .ct-series-a .ct-area {
+    fill: var(--bs-info);
+  }
+
+  .ct-series-b .ct-area {
+    fill: var(--bs-primary);
+  }
+
+  .ct-series-c .ct-area {
+    fill: var(--bs-indigo);
+  }
+
+  .ct-series-c .ct-area {
+    fill: var(--bs-success);
+  }
+
+  .ct-series-a .ct-point,
+  .ct-series-a .ct-line,
+  .ct-series-a .ct-bar,
+  .ct-series-a .ct-slice-donut {
+    stroke: var(--bs-info);
+  }
+
+  .ct-series-b .ct-point,
+  .ct-series-b .ct-line,
+  .ct-series-b .ct-bar,
+  .ct-series-b .ct-slice-donut {
+    stroke: var(--bs-primary);
+  }
+
+  .ct-series-c .ct-point,
+  .ct-series-c .ct-line,
+  .ct-series-c .ct-bar,
+  .ct-series-c .ct-slice-donut {
+    stroke: var(--bs-indigo);
+  }
+
+  .ct-series-d .ct-point,
+  .ct-series-d .ct-line,
+  .ct-series-d .ct-bar,
+  .ct-series-d .ct-slice-donut {
+    stroke: var(--bs-success);
+  }
+}

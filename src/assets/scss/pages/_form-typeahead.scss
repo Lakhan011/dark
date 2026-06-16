@@ -1,0 +1,18 @@
+.ngb-highlight {
+  background: var(--bs-warning);
+}
+
+// Form Editor 
+//
+
+.NgxEditor__Wrapper {
+  border: 1px solid var(--bs-border-color) !important;
+}
+
+.NgxEditor__Wrapper .NgxEditor__MenuBar {
+  border-bottom: 1px solid var(--bs-border-color) !important;
+}
+
+.NgxEditor__Seperator {
+  border-left: 1px solid var(--bs-border-color) !important;
+}

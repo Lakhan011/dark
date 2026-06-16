@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Simple Typeahead</h4>
+        <h6 class="card-subtitle">
+          A typeahead example that gets values from a static string
+        </h6>
+        <label for="typeahead-basic" class="me-1">Search for a USA state:</label>
+        <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
+        <hr />
+        <div class="mt-2">Model: {{ model | json }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Formatted results</h4>
+        <h6 class="card-subtitle">
+          A typeahead example that uses a formatter function for string results
+        </h6>
+        <label for="typeahead-format" class="me-1">Search for a state:</label>
+        <input id="typeahead-format" type="text" class="form-control" [(ngModel)]="model2" [ngbTypeahead]="search2"
+          [resultFormatter]="formatter" />
+        <hr />
+        <div>Model: {{ model2 | json }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Template for results</h4>
+        <h6 class="card-subtitle">
+          A typeahead example that uses custom template for results display and
+          uses object as a model
+        </h6>
+        <ng-template #rt let-r="result" let-t="term">
+          <img [src]="
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/' +
+              r['flag']
+            " class="me-1" style="width: 16px" />
+          <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+        </ng-template>
+
+        <div class="mb-3 row">
+          <label for="typeahead-template" class="col-xs-3 col-sm-auto col-form-label">Search for a state:</label>
+          <div class="col">
+            <input id="typeahead-template" type="text" class="form-control col" [(ngModel)]="model3"
+              [ngbTypeahead]="search3" [resultTemplate]="rt" [inputFormatter]="formatter3" />
+          </div>
+        </div>
+        <hr />
+        <div>Model: {{ model3 | json }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Open on Focus</h4>
+        <h6 class="card-subtitle">
+          It is possible to get the focus events with the current input value
+        </h6>
+        <label for="typeahead-focus" class="me-1">Search for a state:</label>
+        <input id="typeahead-focus" type="text" class="form-control" [(ngModel)]="model4" [ngbTypeahead]="search4"
+          (focus)="focus$.next($any($event).target.value)" (click)="click$.next($any($event).target.value)"
+          #instance="ngbTypeahead" />
+        <hr />
+        <div>Model: {{ model4 | json }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Wikipedia search</h4>
+        <h6 class="card-subtitle">
+          It is possible to get the focus events with the current input value
+        </h6>
+        <div class="form-group">
+          <label for="typeahead-http" class="me-1">Search for a wiki page:</label>
+          <input id="typeahead-http" type="text" class="form-control" [class.is-invalid]="searchFailed"
+            [(ngModel)]="model5" [ngbTypeahead]="search5" placeholder="Wikipedia search" />
+          @if(searching) {
+          <span>searching...</span>
+          }
+          @if(searchFailed) {
+          <div class="invalid-feedback">
+            Sorry, suggestions could not be loaded.
+          </div>
+          }
+
+        </div>
+
+        <hr />
+        <div>Model: {{ model5 | json }}</div>
+      </div>
+    </div>
+  </div>
+</div>

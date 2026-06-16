@@ -1,0 +1,49 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-md-flex align-items-center">
+            <h4 class="card-title mb-0">Sales of the Month</h4>
+            <div class="ms-auto">
+                <select class="form-select">
+                    <option selected>January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                </select>
+            </div>
+        </div>
+        <!-- Row -->
+        <div class="row mt-4 mb-3 align-items-center">
+            <div class="col-md-7">
+                <div class="m-auto">
+                    <apx-chart [series]="salesofthemonthChartOptions.series" [chart]="salesofthemonthChartOptions.chart"
+                        [xaxis]="salesofthemonthChartOptions.xaxis" [yaxis]="salesofthemonthChartOptions.yaxis"
+                        [grid]="salesofthemonthChartOptions.grid" [stroke]="salesofthemonthChartOptions.stroke"
+                        [tooltip]="salesofthemonthChartOptions.tooltip" [fill]="salesofthemonthChartOptions.fill"
+                        [dataLabels]="salesofthemonthChartOptions.dataLabels" [legend]="salesofthemonthChartOptions.legend"
+                        [colors]="salesofthemonthChartOptions.colors" [markers]="salesofthemonthChartOptions.markers"
+                        [plotOptions]="salesofthemonthChartOptions.plotOptions" [states]="salesofthemonthChartOptions.states"
+                        [labels]="salesofthemonthChartOptions.labels" [responsive]="salesofthemonthChartOptions.responsive">
+                    </apx-chart>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h1 class="mb-0">65<small>%</small></h1>
+                <h6 class="text-muted">160 Sales January</h6>
+                <ul class="list-icons mt-4 list-style-none">
+                    <li class="my-1 py-1 hstack gap-2">
+                        <i class="fa fa-circle text-secondary"></i> Organic
+                        Sales
+                    </li>
+                    <li class="my-1 py-1 hstack gap-2">
+                        <i class="fa fa-circle text-success"></i> Search
+                        Engine
+                    </li>
+                    <li class="my-1 py-1 hstack gap-2">
+                        <i class="fa fa-circle text-primary"></i> Marketing
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Row -->
+    </div>
+</div>

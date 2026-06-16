@@ -1,0 +1,85 @@
+// Form
+.form-check-input {
+  background-color: $theme-dark-bg-layout;
+  border: 1px solid $theme-dark-border-color;
+
+  &:checked {
+    background-color: var(--bs-info);
+    border-color: var(--bs-info);
+  }
+}
+
+// pagination
+.page-item.active .page-link {
+  background-color: var(--bs-info) !important;
+  border-color: var(--bs-info) !important;
+}
+
+// Table
+
+// tables
+.table-primary,
+.table-success,
+.table-info,
+.table-warning,
+.table-danger {
+  --bs-table-bg: unset;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>*,
+.table-hover>tbody>tr:hover>* {
+  --bs-table-accent-bg: #313642;
+  color: $theme-dark-text-color;
+}
+
+.table-danger,
+.table-danger>th,
+.table-danger>td {
+  background-color: rgba($color: var(--bs-danger), $alpha: 0.2) !important;
+}
+
+.table-success,
+.table-success>th,
+.table-success>td {
+  background-color: rgba($color: var(--bs-success), $alpha: 0.2) !important;
+}
+
+.table-primary,
+.table-primary>th,
+.table-primary>td {
+  background-color: rgba($color: var(--bs-primary), $alpha: 0.2) !important;
+}
+
+.table-info,
+.table-info>th,
+.table-info>td {
+  background-color: rgba($color: var(--bs-info), $alpha: 0.2) !important;
+}
+
+.table-warning,
+.table-warning>th,
+.table-warning>td {
+  background-color: rgba($color: var(--bs-warning), $alpha: 0.2) !important;
+}
+
+// Form color borders
+
+.form-control.border.border-warning {
+  border-color: var(--bs-warning) !important;
+}
+
+.form-control.border.border-info {
+  border-color: var(--bs-info) !important;
+}
+
+.form-control.border.border-danger {
+  border-color: var(--bs-danger) !important;
+}
+
+.form-control.border.border-primary {
+  border-color: var(--bs-primary) !important;
+}
+
+.form-control.border.border-success {
+  border-color: var(--bs-success) !important;
+}

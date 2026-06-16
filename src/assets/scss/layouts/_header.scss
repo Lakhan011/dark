@@ -1,0 +1,232 @@
+// header part
+@import "notify";
+@import "icon-hover";
+
+/*******************
+ General Topbar
+*******************/
+
+.topbar {
+  position: relative;
+  z-index: 98;
+  left: $sidebar-width-full;
+  transition: $transitions;
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.05);
+  background: var(--bs-primary);
+  background: linear-gradient(to right,
+      var(--bs-primary) 0%,
+      var(--bs-secondary) 100%);
+
+  .navbar {
+    min-height: $topbar-height;
+  }
+
+  .navbar-collapse {
+    padding: 0px 10px 0 10px;
+    min-height: $topbar-height;
+  }
+
+  .top-navbar {
+    min-height: $topbar-height;
+    padding: 0px;
+
+    .dropdown-toggle::after {
+      display: none;
+    }
+
+    .navbar-header {
+      line-height: $topbar-navlink-height;
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        margin: 0px;
+        height: $topbar-height;
+        padding: $topbar-navbrand-padding;
+
+        .dark-logo {
+          display: none;
+        }
+
+        .logo-icon {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .navbar-nav {
+      gap: 8px;
+    }
+
+    .navbar-nav>.nav-item .nav-link {
+      padding: $topbar-navlink-padding;
+      font-size: $topbar-navlink-font-size;
+      line-height: $topbar-navlink-height;
+      color: rgba($white, 0.8);
+
+      &:hover {
+        color: rgba($white, 1);
+      }
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      padding-top: 0;
+    }
+
+    .navbar-nav>.nav-item {
+      transition: 0.2s ease-in;
+
+      &.dropdown {
+        .dropdown-menu-end {
+          right: 0;
+          left: auto;
+          top: 100%;
+        }
+
+        &:hover {
+          .nav-link {
+            color: var(--bs-white);
+          }
+
+          .dropdown-menu {
+            display: block;
+          }
+        }
+      }
+    }
+
+
+
+    .app-search {
+      position: relative;
+      display: inline-block;
+      background-color: var(--bs-white);
+
+      input {
+        width: 200px;
+        font-size: 14px;
+        transition: 0.5s ease-in;
+
+        &:focus {
+          width: 240px;
+        }
+      }
+
+      .srh-btn {
+        position: absolute;
+        top: 8px;
+        cursor: pointer;
+        right: 12px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .user-dd,
+  .mailbox {
+    min-width: 360px;
+  }
+
+  .nav-toggler,
+  .topbartoggler {
+    color: var(--bs-white);
+    padding: 0 15px;
+  }
+}
+
+
+/*******************
+Megamenu
+******************/
+.topbar {
+  .mega-dropdown {
+    position: static;
+  }
+}
+
+/*******************
+Designed dropdown
+******************/
+.topbar {
+  .dropdown-menu {
+    padding-top: 0px;
+    border: 0px;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/*******************
+Topbar Responsive
+******************/
+
+@media (max-width: 1023px) {
+  .topbar .top-navbar {
+
+    .navbar-collapse.show,
+    .navbar-collapse.collapsing {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 0px 12px 0 10px;
+      border-top: 1px solid (rgba($white, 0.2));
+      background: var(--bs-primary);
+      background: linear-gradient(to right,
+          var(--bs-primary) 0%,
+          var(--bs-secondary) 100%);
+    }
+
+    .navbar-nav {
+      flex-direction: row;
+    }
+
+    .navbar-nav>.nav-item>.nav-link {
+      padding: 0 10px;
+    }
+
+    .navbar-header {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 0 10px;
+      justify-content: space-between;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar .top-navbar {
+    .navbar-nav {
+      .dropdown {
+        position: static;
+        transition: none;
+      }
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      width: 100%;
+      left: 0 !important;
+
+    }
+
+    .dropdown-menu-animate-up {
+      animation: none;
+    }
+  }
+}
+
+.dropdown-menu-nav {
+  min-width: 860px !important;
+  width: 100%;
+}
+
+.dropdown-menu {
+  @include media-breakpoint-up(md) {
+    &.content-dd {
+      width: $dropdown-width;
+    }
+  }
+}

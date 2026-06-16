@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-body">
+        <!-- Row -->
+        <div class="row align-items-center">
+            <div class="col-6">
+                <h2 class="fw-light fs-9">248</h2>
+                <h6 class="text-muted mb-0">All Projects</h6>
+            </div>
+            <div class="col-6 text-end align-self-center">
+                <apx-chart [series]="allprojectsChartOptions.series" [chart]="allprojectsChartOptions.chart"
+                    [plotOptions]="allprojectsChartOptions.plotOptions" [labels]="allprojectsChartOptions.labels"
+                    [fill]="allprojectsChartOptions.fill" [stroke]="allprojectsChartOptions.stroke"
+                    [dataLabels]="allprojectsChartOptions.dataLabels" [colors]="allprojectsChartOptions.colors"
+                    [tooltip]="allprojectsChartOptions.tooltip" [legend]="allprojectsChartOptions.legend" [grid]="allprojectsChartOptions.grid">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+</div>

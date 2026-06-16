@@ -1,0 +1,42 @@
+/*******************
+ Breadcrumb and page title
+*******************/
+
+.page-breadcrumb {
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .page-title {
+        margin-bottom: 0px;
+    }
+
+    .breadcrumb {
+        padding: 0px;
+        margin: 0px;
+        background: transparent;
+        font-size: 12px;
+
+        .breadcrumb-item+.breadcrumb-item::before {
+            content: "\e649";
+            font-family: themify;
+            color: var(--bs-gray-400);
+            font-size: 11px;
+        }
+    }
+}
+
+// breadcrumb
+.breadcrumb-item {
+    list-style: none;
+    padding-right: 10px;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    margin-right: 10px;
+    content: "\e649";
+    font-family: themify;
+    color: var(--bs-gray-600);
+    font-size: 11px;
+    margin-top: 4px;
+}

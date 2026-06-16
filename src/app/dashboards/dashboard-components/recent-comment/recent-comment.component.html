@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-body pb-0">
+        <h4 class="card-title mb-7">Recent Comments</h4>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Comment widgets -->
+    <!-- ============================================================== -->
+    <ng-scrollbar class="comment-widgets scrollable position-relative mb-2" style="height: 519px;">
+        <!-- Comment Row -->
+        @for(recentcomment of recentcomments; track recentcomment) {
+        <div class="d-flex gap-9 comment-row mb-5 px-4">
+            <div class="flex-shrink-0">
+                <img src="{{recentcomment.image}}" class="rounded-circle" alt="user" width="56">
+            </div>
+            <div class="comment-text">
+                <div class="hstack justify-content-between gap-6 mb-6">
+                    <div class="hstack gap-6">
+                        <h5 class="mb-0">{{recentcomment.name}}</h5>
+                        <p class="mb-0 fs-3 text-muted">{{recentcomment.date}}</p>
+                    </div>
+                    <span class="badge {{recentcomment.labelcolor}}">{{recentcomment.status}}</span>
+                </div>
+                <p class="comment-details mb-6">{{recentcomment.comment}}</p>
+                <ul class="list-unstyled mb-0 hstack gap-3 lh-1">
+                    <li>
+                      <a class="fs-6 text-muted link-primary" href="javascript:void(0)">
+                        <i class="ti-pencil-alt fs-4"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="fs-6 text-muted link-primary" href="javascript:void(0)">
+                        <i class="ti-check fs-4"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="fs-6 text-muted link-danger" href="javascript:void(0)">
+                        <i class="ti-heart fs-4"></i>
+                      </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        }
+
+    </ng-scrollbar>
+</div>

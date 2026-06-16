@@ -1,0 +1,31 @@
+<div class="card earning-widget">
+    <div class="card-body pb-8">
+        <div class="d-md-flex align-items-center mb-4">
+            <div>
+                <h2 class="mb-0 fs-8 fw-normal d-flex align-items-start gap-1">
+                    <span class="text-muted fs-5 lh-base">$</span>586,00
+                </h2>
+                <p class="mb-0 fs-3">Total earnings by users</p>
+            </div>
+            <div class="ms-auto">
+                <select class="form-select">
+                    <option selected="">November</option>
+                    <option value="1">February</option>
+                    <option value="2">May</option>
+                    <option value="3">April</option>
+                  </select>
+            </div>
+        </div>
+        @for(totalearning of totalearnings; track totalearning) {
+
+        <div class="hstack justify-content-between mb-9">
+            <div class="hstack gap-6">
+                <img src="{{totalearning.image}}" width="56" class="img-fluid rounded-circle flex-shrink-0" alt="logo">
+                <h5 class="mb-0 fw-medium">{{totalearning.name}}</h5>
+            </div>
+            <span class="badge {{totalearning.labelcolor}}">{{totalearning.amount}}</span>
+        </div>
+
+        }
+    </div>
+</div>

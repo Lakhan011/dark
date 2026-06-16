@@ -1,0 +1,44 @@
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+@if(pageInfo?.['title']) {
+<div class="page-breadcrumb pb-0 d-md-flex align-items-center justify-content-between mb-7">
+  <div class="mb-4 mb-md-0">
+    <h4 class="page-title fs-6">{{pageInfo?.['title']}}</h4>
+    <div class="d-flex align-items-center">
+      <nav style="--bs-breadcrumb-divider: '>'" class="d-flex align-items-center" aria-label="breadcrumb">
+        @for (url of pageInfo?.['urls']; track url.url;let index = $index,last
+        = $last ) {
+        @if(!last) {
+        <li class="breadcrumb-item" [routerLink]="url.url">
+          <a [routerLink]="url.url">{{ url.title }}</a>
+        </li>
+        }
+        @else {
+        <li class="breadcrumb-item active">{{ url.title }}</li>
+        }
+        }
+      </nav>
+    </div>
+  </div>
+
+
+  <div class="d-flex align-items-center justify-content-between gap-6">
+    <select class="form-select border fs-3" aria-label="Default select example">
+      <option selected>November 2024</option>
+      <option value="1">February 2024</option>
+      <option value="2">March 2024</option>
+      <option value="3">April 2024</option>
+    </select>
+    <button class="btn btn-success d-flex align-items-center gap-1 fs-3 py-2 px-9">
+      <i class="ti ti-plus fs-4"></i>
+      Create
+    </button>
+  </div>
+
+
+</div>
+}
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->

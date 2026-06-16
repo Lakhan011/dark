@@ -1,0 +1,275 @@
+<div class="app-sidebar card" id="rightMenu">
+    <!-- Details View of Contact -->
+    @if(selectedContact!=null && !editable) {
+    <div>
+        <img src="assets/images/background/profile-bg.jpg" class="card-img" />
+        <div class="card-img-overlay">
+            <div class="d-flex justify-content-end">
+                <a href="javascript:void(0)" class="btn bg-white text-info py-1 px-2 link" placement="bottom"
+                    ngbTooltip="Edit Contact" (click)='editContact()'>
+                    <i-feather name="edit-2" class="feather-sm"></i-feather>
+                </a>
+                <a href="javascript:void(0)" class="btn bg-white text-danger py-1 px-2 link ms-3"
+                    (click)="closeRightMenu()">
+                    <i-feather name="x" class="feather-sm"></i-feather>
+                </a>
+            </div>
+        </div>
+        <div class="text-center">
+            <img [src]='selectedContact.Imagepath' class="rounded-circle mt-n5 shadow" alt="Cinque Terre" height="100px"
+                width="100px">
+            <h4 class="text-dark mt-2 mb-0">{{selectedContact?.Name}}</h4>
+            <span class="badge bg-info px-2">{{selectedContact?.Tags}}</span>
+        </div>
+        <ng-scrollbar class="position-relative" style="height: 350px;">
+            @if(selectedContact.Jobtitle !=undefined && selectedContact.Company!=undefined) {
+            <div class="d-flex align-items-center py-2 px-3 border-bottom">
+                <button
+                    class="btn btn-success btn-circle rounded-circle me-2 d-flex align-items-center btn-sm justify-content-center">
+                    <i-feather name="Briefcase" class="feather-sm"></i-feather>
+                </button>
+                <div class="text-dark font-medium">{{selectedContact?.Jobtitle}} , {{selectedContact?.Company}}</div>
+            </div>
+            }
+
+            @if(selectedContact.Email !=undefined) {
+            <div class="d-flex align-items-center py-2 px-3 border-bottom">
+                <button
+                    class="btn btn-danger btn-circle rounded-circle me-2 d-flex align-items-center btn-sm justify-content-center">
+                    <i-feather name="Mail" class="feather-sm"></i-feather>
+                </button>
+                <div class="text-dark font-medium">{{selectedContact?.Email}}</div>
+            </div>
+            }
+
+
+            @if(selectedContact.Phonenumber !=undefined) {
+            <div class="d-flex align-items-center py-2 px-3 border-bottom">
+                <button
+                    class="btn btn-warning btn-circle rounded-circle me-2 d-flex align-items-center btn-sm justify-content-center">
+                    <i-feather name="Phone" class="feather-sm"></i-feather>
+                </button>
+                <div class="text-dark font-medium">{{selectedContact?.Phonenumber}}</div>
+            </div>
+            }
+
+            @if(selectedContact.Address !=undefined) {
+            <div class="d-flex align-items-center py-2 px-3 border-bottom">
+                <button
+                    class="btn btn-primary btn-circle rounded-circle me-2 d-flex align-items-center btn-sm justify-content-center">
+                    <i-feather name="Map" class="feather-sm"></i-feather>
+                </button>
+                <div class="text-dark font-medium">{{selectedContact?.Address}}</div>
+            </div>
+            }
+
+            @if(selectedContact.DOB !=undefined) {
+            <div class="d-flex align-items-center py-2 px-3 border-bottom">
+                <button
+                    class="btn btn-dark btn-circle rounded-circle me-2 d-flex align-items-center btn-sm justify-content-center">
+                    <i-feather name="Gift" class="feather-sm"></i-feather>
+                </button>
+                <div class="text-dark font-medium">{{selectedContact?.DOB | date}}</div>
+            </div>
+            }
+
+            @if(selectedContact.Description !=undefined) {
+            <div class="d-flex align-items-start py-2 px-3 border-bottom">
+                <button
+                    class="btn btn-info btn-circle rounded-circle me-2 d-flex align-items-center btn-sm justify-content-center">
+                    <i-feather name="file-text" class="feather-sm"></i-feather>
+                </button>
+                <div class="text-dark font-medium">{{selectedContact?.Description}}</div>
+            </div>
+            }
+
+
+
+        </ng-scrollbar>
+    </div>
+    }
+
+    <!-- Edit View of Contact -->
+    @if(selectedContact!=null && editable) {
+    <div>
+        <img src="assets/images/background/profile-bg.jpg" class="card-img" />
+        <div class="card-img-overlay" style="height: 95px;">
+            <div class="d-flex justify-content-end">
+
+                <a href="javascript:void(0)" class="btn bg-white text-success py-1 px-2 link" placement="bottom"
+                    ngbTooltip="Save Contact" (click)='saveClick(selectedContact.Id)'>
+                    <i-feather name="save" class="feather-sm"></i-feather>
+                </a>
+                <a href="javascript:void(0)" class="btn bg-white text-danger py-1 px-2 link ms-3" placement="bottom"
+                    ngbTooltip="Delete Contact" (click)='deleteClick(selectedContact.Id)'>
+                    <i-feather name="trash-2" class="feather-sm"></i-feather>
+                </a>
+                <a href="javascript:void(0)" class="btn bg-white text-danger py-1 px-2 link ms-3"
+                    (click)='cancelClick()'>
+                    <i-feather name="x" class="feather-sm"></i-feather>
+                </a>
+            </div>
+        </div>
+        <!-- Editable Form here -->
+        <div>
+            <form>
+                <div class="mb-3 mt-n5 text-center">
+                    <input type="file" style="display: none;" (change)='preview(filevar.files)' #filevar>
+                    <img [src]='selectedContactCopy.Imagepath' class="rounded-circle image" alt="" height="100px"
+                        width="100px" (click)='filevar.click()'>
+                    <div class="text-center">
+                        <span class="fw-normal">Change Image</span>
+                    </div>
+                </div>
+                <ng-scrollbar class="position-relative" style="height: 350px;">
+                    <div class="row p-3">
+                        <div class="col-12 mb-3">
+                            <label class="mb-0 text-dark">Name</label>
+                            <input type="text" name="name" [(ngModel)]="selectedContactCopy.Name" class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="mb-0 text-dark">Job Title</label>
+                            <input type="text" name="Jobtitle" [(ngModel)]="selectedContactCopy.Jobtitle"
+                                class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="mb-0 text-dark">Company name</label>
+                            <input type="text" name="company" [(ngModel)]="selectedContactCopy.Company"
+                                class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="mb-0 text-dark">Email</label>
+                            <input type="text" name="email" [(ngModel)]="selectedContactCopy.Email"
+                                class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="mb-0 text-dark">Phone Number</label>
+                            <input type="text" name="phone" [(ngModel)]="selectedContactCopy.Phonenumber"
+                                class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="mb-0 text-dark">Location</label>
+                            <input name="address" type="text" [(ngModel)]="selectedContactCopy.Address"
+                                class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="mb-0 text-dark">Birthdate</label>
+                            <input name="dob" type="date" [(ngModel)]="selectedContactCopy.DOB" class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="mb-0 text-dark">Description</label>
+                            <textarea name="description" type="text" [(ngModel)]="selectedContactCopy.Description"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                </ng-scrollbar>
+            </form>
+        </div>
+
+        <!-- end editable form here -->
+    </div>
+    }
+
+
+</div>
+
+<!-- -------------------------------------------------------------------- -->
+<!-- Contact Listing -->
+<!-- -------------------------------------------------------------------- -->
+<div class="d-md-flex align-items-center bg-body p-3">
+    <h3 class="mb-0">Contact List</h3>
+    <div class="ms-auto mt-3 mt-md-0">
+        <!-- Add Contact -->
+        <button type="button" class="btn btn-primary py-2" (click)='addContact()'><i
+                class="fas fa-plus  fs-3 me-1 text-white"></i>
+            <span class="ms-1 text-white fw-bold">Add Contact</span>
+        </button>
+    </div>
+</div>
+<div class="d-md-flex align-items-center border-top bg-body p-3">
+    <div>
+        <input type="text" placeholder="Search by Name" class="form-control rounded-pill" [(ngModel)]='searchTerm'>
+    </div>
+
+    <div class="ms-auto mt-3 mt-md-0">
+        <!-- No. of  Contacts-->
+        <a href="javascript:void(0)" class="d-flex align-items-center p-2 rounded-pill bg-light">
+
+            <h5 class="mb-0 me-1 text-dark fw-bold fs-3"> Total Contacts
+            </h5>
+            @if(contactFilter) {
+            <span class="badge bg-danger badge-pill px-3 fw-bold fs-3">{{contactFilter.length}}</span>
+            }
+
+        </a>
+    </div>
+</div>
+
+
+<div class="table-responsive">
+    <table class="table bg-body table-hover align-middle mb-0 text-nowrap">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Job title & company</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(co of contactFilter|slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; track co.Name) {
+            <tr>
+                <td>
+
+                    <img [src]='co.Imagepath' class="rounded-circle me-3" alt="" height="45" width="45">
+                    <span class="text-dark font-medium fs-4">{{ co.Name }}</span>
+                </td>
+                <td class="align-middle">
+                    <span>
+                        <span class="text-dark rounded-pill fs-4 me-1">
+                            <i-feather name="Mail" class="feather-sm"></i-feather>
+                        </span>
+                        {{ co.Email }}
+                    </span>
+                </td>
+                <td class="align-middle">
+                    <span>
+                        <span class="text-dark rounded-pill fs-4 me-1">
+                            <i-feather name="phone" class="feather-sm"></i-feather>
+                        </span>
+                        {{ co.Phonenumber }}
+                    </span>
+                </td>
+                <td class="align-middle position-relative">
+                    <span>
+                        <span class="text-dark rounded-pill fs-4 me-1">
+                            <i-feather name="Briefcase" class="feather-sm"></i-feather>
+                        </span>
+                        {{ co.Jobtitle}} , {{co.Company}}
+                    </span>
+                </td>
+                <td class="align-middle">
+                    <a href="javascript:void(0)" class="link fs-4 me-2 font-medium" (click)='tableRowClicked(co)'>
+                        <i-feather name="edit-3" class="feather-sm"></i-feather>
+                    </a>
+                    <a href="javascript:void(0)" class="link fs-4 me-2 fw-bold" (click)='viewClicked(co)'>
+                        <i-feather name="eye" class="feather-sm"></i-feather>
+                    </a>
+                    <a href="javascript:void(0)" class="link fs-4 fw-bold" (click)='deleteClick(co.Id)'>
+                        <i-feather name="trash-2" class="feather-sm"></i-feather>
+                    </a>
+
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+<div class="d-flex justify-content-center p-2 pt-3 bg-body border-top">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+    </ngb-pagination>
+</div>

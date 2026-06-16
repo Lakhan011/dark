@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-body pb-1">
+        <h4 class="card-title mb-4">Browser Stats</h4>
+        @for(browserstats of browserstats; track browserstats) {
+
+        <div class="hstack justify-content-between mb-7">
+            <div class="hstack gap-6">
+                <img src="{{browserstats.image}}" width="30" height="30" class="img-fluid rounded-circle flex-shrink-0" alt="logo">
+                <h5 class="mb-0 fw-medium">{{browserstats.name}}</h5>
+            </div>
+            <span class="badge {{browserstats.labelcolor}}">{{browserstats.amount}}</span>
+        </div>
+
+        }
+    </div>
+</div>

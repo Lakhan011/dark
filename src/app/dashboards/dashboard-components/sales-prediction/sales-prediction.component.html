@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-6 col-lg-6 col-xl-7">
+                <h4 class="card-title mb-7">Sales Prediction</h4>
+                <div>
+                    <h2 class="fs-9 fw-light">$3,528</h2>
+                    <h6 class="text-muted fw-normal mb-0">(150-165 Sales)</h6>
+                </div>
+            </div>
+            <div class="col-6 col-lg-6 col-xl-5">
+                <apx-chart [series]="SalespredictionChartOptions.series" [chart]="SalespredictionChartOptions.chart"
+                    [plotOptions]="SalespredictionChartOptions.plotOptions"
+                    [labels]="SalespredictionChartOptions.labels" [fill]="SalespredictionChartOptions.fill"
+                    [stroke]="SalespredictionChartOptions.stroke" [dataLabels]="SalespredictionChartOptions.dataLabels"
+                    [colors]="SalespredictionChartOptions.colors" [tooltip]="SalespredictionChartOptions.tooltip"
+                    [legend]="SalespredictionChartOptions.legend">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+</div>

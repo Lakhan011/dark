@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Customer Support</h4>
+        <p class="card-subtitle">24 new support ticket request generate</p>
+        <div class="mt-4 mx-auto">
+            <apx-chart [series]="SalesmonthChartOptions.series" [chart]="SalesmonthChartOptions.chart"
+                [dataLabels]="SalesmonthChartOptions.dataLabels" [legend]="SalesmonthChartOptions.legends"
+                [colors]="SalesmonthChartOptions.colors" [stroke]="SalesmonthChartOptions.stroke"
+                [labels]="SalesmonthChartOptions.labels" [tooltip]="SalesmonthChartOptions.tooltip"
+                [plotOptions]="SalesmonthChartOptions.plotOptions"></apx-chart>
+        </div>
+        <ul class="list-unstyled mb-0 hstack justify-content-center gap-3 pt-4">
+            <li>
+                <h6 class="text-muted mb-0 hstack gap-2 fw-normal">
+                    <span class="text-bg-info round-10 rounded-circle"></span>Item A
+                </h6>
+            </li>
+            <li>
+                <h6 class="text-muted mb-0 hstack gap-2 fw-normal">
+                    <span class="text-bg-danger round-10 rounded-circle"></span>Item B
+                </h6>
+            </li>
+            <li>
+                <h6 class="text-muted mb-0 hstack gap-2 fw-normal">
+                    <span class="text-bg-warning round-10 rounded-circle"></span>Item C
+                </h6>
+            </li>
+        </ul>
+    </div>
+</div>

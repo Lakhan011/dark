@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-md-flex align-items-center">
+            <h4 class="card-title mb-0">Income of the Year</h4>
+            <div class="ms-auto">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h6 class="text-muted mb-0 fw-normal">
+                            <i class="fa fa-circle me-1 text-success"></i>Net
+                        </h6>
+                    </li>
+                    <li class="list-inline-item">
+                        <h6 class="text-muted mb-0 fw-normal">
+                            <i class="fa fa-circle me-1 text-info"></i>Growth
+                        </h6>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mx-n2">
+            <apx-chart [series]="incomeoftheyearChartOptions.series" [chart]="incomeoftheyearChartOptions.chart"
+                [xaxis]="incomeoftheyearChartOptions.xaxis" [yaxis]="incomeoftheyearChartOptions.yaxis"
+                [grid]="incomeoftheyearChartOptions.grid" [stroke]="incomeoftheyearChartOptions.stroke"
+                [tooltip]="incomeoftheyearChartOptions.tooltip" [fill]="incomeoftheyearChartOptions.fill"
+                [dataLabels]="incomeoftheyearChartOptions.dataLabels" [legend]="incomeoftheyearChartOptions.legend"
+                [colors]="incomeoftheyearChartOptions.colors" [markers]="incomeoftheyearChartOptions.markers"
+                [plotOptions]="incomeoftheyearChartOptions.plotOptions" [states]="incomeoftheyearChartOptions.states"
+                [labels]="incomeoftheyearChartOptions.labels" [responsive]="incomeoftheyearChartOptions.responsive">
+            </apx-chart>
+        </div>
+    </div>
+</div>

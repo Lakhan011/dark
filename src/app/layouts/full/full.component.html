@@ -1,0 +1,134 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper" [ngClass]="{ 'show-sidebar': showMobileMenu }" [dir]="themeOptions.dir"
+  [attr.data-bs-theme]="themeOptions.theme" [attr.data-layout]="themeOptions.layout"
+  [attr.data-sidebartype]="themeOptions.sidebartype" [attr.data-boxed-layout]="themeOptions.boxed"
+  [attr.data-colorTheme]="themeOptions.colorTheme" [attr.data-cardType]="themeOptions.cardType">
+
+  <!-- ============================================================== -->
+  <!-- Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <aside class="left-sidebar" (mouseover)="Logo()" (mouseout)="Logo()">
+    <!-- Sidebar scroll-->
+    @if(themeOptions.layout === 'horizontal') {
+    <div>
+      <app-horizontal-sidebar></app-horizontal-sidebar>
+    </div>
+    } @else {
+    <!-- Horizontal Header -->
+
+    <ng-scrollbar class="scroll-sidebar">
+      <app-vertical-sidebar [showClass]="showMobileMenu" (notify)="handleClick($event)">
+      </app-vertical-sidebar>
+    </ng-scrollbar>
+
+    <!-- End Sidebar scroll-->
+    }
+  </aside>
+  <!-- ============================================================== -->
+  <!-- Topbar header - style you can find in topbar.scss -->
+  <!-- ============================================================== -->
+  <header class="topbar">
+    <nav class="top-navbar navbar-expand-lg" [ngClass]="themeOptions.theme == 'light' ? 'navbar-light' : 'navbar-dark'">
+      <div class="navbar-header" [ngClass]="expandLogo ? 'expand-logo' : ''">
+        <!-- This is for the sidebar toggle which is visible on mobile only -->
+        <a (click)="showMobileMenu = !showMobileMenu"
+          class="nav-toggler nav-icon-hover-bg dark rounded-circle d-flex d-lg-none" href="javascript:void(0)">
+          <i [ngClass]="showMobileMenu ? 'ti-close' : 'ti-menu'"></i>
+        </a>
+
+        <div class="brand-logo d-flex d-lg-none align-items-center">
+          <a class="navbar-brand" [routerLink]="['/']">
+            <img src="assets/images/logos/light-logo.svg" alt="homepage" />
+          </a>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- Toggle which is visible on mobile only -->
+        <!-- ============================================================== -->
+        <a class="topbartoggler nav-icon-hover-bg dark rounded-circle d-flex d-lg-none " href="javascript:void(0)"
+          (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent">
+          <i class="ti-more"></i>
+        </a>
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Logo -->
+      <!-- ============================================================== -->
+      <div class="navbar-collapse collapse" id="navbarSupportedContent" [ngbCollapse]="!isCollapsed">
+        <!-- Horizontal Header -->
+        @if(themeOptions.layout === 'horizontal') {
+        <div class="w-100">
+          <app-horizontal-navigation class="w-100 d-flex align-items-center justify-content-between">
+          </app-horizontal-navigation>
+        </div>
+        } @else {
+        <!-- Vertical Header -->
+        <div class="w-100 d-flex">
+          <app-vertical-navigation (toggleSidebar)="toggleSidebarType()" class="w-100">
+          </app-vertical-navigation>
+        </div>
+        }
+      </div>
+    </nav>
+  </header>
+  <!-- ============================================================== -->
+  <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+
+
+
+      <app-breadcrumb></app-breadcrumb>
+      <!-- ============================================================== -->
+      <!-- Start Page Content -->
+      <!-- ============================================================== -->
+      <router-outlet></router-outlet>
+      <!-- ============================================================== -->
+      <!-- End Start Page Content -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center">
+      All Rights Reserved by Monster Admin Angular. Designed and Developed by
+      <a href="https://www.wrappixel.com/">wrappixel.com</a>
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Page wrapper  -->
+  <!-- ============================================================== -->
+
+  <ng-template #content let-offcanvas>
+    <div class="offcanvas-header border-bottom">
+      <h4 class="offcanvas-title" id="offcanvas-basic-title">Settings</h4>
+      <button type="button" class="btn-close shadow-none" aria-label="Close"
+        (click)="offcanvas.dismiss('Cross click')"></button>
+    </div>
+    <div class="offcanvas-body customizer p-0">
+      <app-customizer></app-customizer>
+    </div>
+  </ng-template>
+  <button
+    class="btn-primary btn btn-circle rounded-circle btn-lg service-panel-toggle p-0 d-flex align-items-center justify-content-center"
+    (click)="openEnd(content)">
+    <i-feather class="feather-sm d-flex align-items-center" name="settings"></i-feather>
+  </button>
+
+</div>

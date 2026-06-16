@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-md-flex align-items-center">
+            <div>
+                <h4 class="card-title">Download Count</h4>
+                <p class="card-subtitle">you can check the count</p>
+            </div>
+            <div class="ms-auto">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <h6 class="text-muted fw-normal">
+                            <i class="fa fa-circle me-1 text-success"></i>Free
+                        </h6>
+                    </li>
+                    <li class="list-inline-item">
+                        <h6 class="text-muted fw-normal">
+                            <i class="fa fa-circle me-1 text-primary"></i>Premium
+                        </h6>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mx-n2">
+            <apx-chart [series]="downloadcountChartOptions.series" [chart]="downloadcountChartOptions.chart"
+                [xaxis]="downloadcountChartOptions.xaxis" [yaxis]="downloadcountChartOptions.yaxis"
+                [grid]="downloadcountChartOptions.grid" [stroke]="downloadcountChartOptions.stroke"
+                [tooltip]="downloadcountChartOptions.tooltip" [fill]="downloadcountChartOptions.fill"
+                [dataLabels]="downloadcountChartOptions.dataLabels" [legend]="downloadcountChartOptions.legend"
+                [colors]="downloadcountChartOptions.colors" [markers]="downloadcountChartOptions.markers"
+                [plotOptions]="downloadcountChartOptions.plotOptions" [states]="downloadcountChartOptions.states"
+                [labels]="downloadcountChartOptions.labels">
+            </apx-chart>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+<div class="card">
+    <div class="card-body pb-0">
+        <div class="d-flex align-items-center mb-7">
+            <h4 class="card-title mb-0">To Do list</h4>
+            <div class="ms-auto">
+                <button class="btn btn-success hstack gap-2" (click)="open(content)">
+                    <i class="ti ti-plus"></i>Add Task
+                </button>
+            </div>
+        </div>
+        <!-- .modal for add task -->
+        <ng-template #content let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Add Task</h4>
+                <button type="button" class="btn-close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Your Name" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email address</label>
+                        <input type="email" class="form-control" placeholder="Enter email" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-danger-subtle text-danger" (click)="modal.close('Save click')">Close</button>
+                <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Submit</button>
+            </div>
+        </ng-template>
+        <!-- /.modal -->
+        
+    </div>
+    <!-- ============================================================== -->
+        <!-- To do list widgets -->
+        <!-- ============================================================== -->
+        <ng-scrollbar class="to-do-widget scrollable" style="height: 519px;">
+            <ul class="list-task todo-list mb-0 list-unstyled" data-role="tasklist">
+                <li class="border-0 px-4 mb-4" data-role="task">
+                    <div class="form-check border-start border-2 d-flex align-items-center border-info ps-9">
+                        <input type="checkbox" class="form-check-input ms-0" id="inputSchedule"
+                            name="inputCheckboxesSchedule" />
+                        <label for="inputSchedule" class="form-check-label ps-3 gap-3 hstack">
+                            <h5 class="mb-0 fw-medium">Schedule meeting with</h5>
+                        </label>
+                    </div>
+                    <ul class="assignedto list-inline m-0 ps-5 ms-2 mt-1">
+                        <li class="list-inline-item">
+                            <img class="rounded-circle" src="assets/images/users/user3.jpg" alt="user"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                data-original-title="Steave" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img class="rounded-circle" src="assets/images/users/user4.jpg" alt="user"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                data-original-title="Jessica" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img class="rounded-circle" src="assets/images/users/user6.jpg" alt="user"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                data-original-title="Priyanka" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img class="rounded-circle" src="assets/images/users/user2.jpg" alt="user"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                data-original-title="Selina" />
+                        </li>
+                    </ul>
+                </li>
+                <li class="border-0 px-4 mb-4" data-role="task">
+                    <div class="form-check border-start border-2 d-flex align-items-center border-danger ps-9 d-flex">
+                        <input type="checkbox" class="form-check-input ms-0" id="inputCall"
+                            name="inputCheckboxesCall" />
+                        <label for="inputCall" class="form-check-label ps-3 gap-3 hstack">
+                            <h5 class="mb-0 fw-medium opacity-50 text-decoration-line-through">
+                                Give Purchase report to
+                            </h5>
+                            <span class="badge bg-danger-subtle text-danger rounded-pill">Today</span>
+                        </label>
+                    </div>
+                    <ul class="assignedto list-inline m-0 ps-5 ms-2 mt-1 opacity-50">
+                        <li class="list-inline-item">
+                            <img class="rounded-circle" src="assets/images/users/user8.jpg" alt="user"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                data-original-title="Priyanka" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img class="rounded-circle" src="assets/images/users/user7.jpg" alt="user"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                data-original-title="Selina" />
+                        </li>
+                    </ul>
+                </li>
+                <li class="border-0 px-4 mb-4" data-role="task">
+                    <div class="form-check border-start border-2 d-flex align-items-center border-secondary ps-9">
+                        <input type="checkbox" class="form-check-input ms-0" id="inputBook"
+                            name="inputCheckboxesBook" />
+                        <label for="inputBook" class="form-check-label ps-3 gap-3 hstack">
+                            <h5 class="mb-0 fw-medium opacity-50 text-decoration-line-through">
+                                Book flight for holiday
+                            </h5>
+                        </label>
+                    </div>
+                    <div class="item-date fs-2 ps-5 ms-2 mt-1 opacity-50 text-muted d-inline-block">
+                        26 jun 2024
+                    </div>
+                </li>
+                <li class="border-0 px-4 mb-4" data-role="task">
+                    <div class="form-check border-start border-2 d-flex align-items-center border-warning ps-9">
+                        <input type="checkbox" class="form-check-input ms-0" id="inputForward"
+                            name="inputCheckboxesForward" />
+                        <label for="inputForward" class="form-check-label ps-3 gap-3 hstack">
+                            <h5 class="mb-0 fw-medium">Forward all tasks</h5>
+                            <span class="badge bg-warning-subtle text-warning rounded-pill">2
+                                weeks</span>
+                        </label>
+                    </div>
+                    <div class="item-date fs-2 ps-5 ms-2 mt-1 text-muted d-inline-block">
+                        26 jun 2024
+                    </div>
+                </li>
+                <li class="border-0 px-4 mb-4" data-role="task">
+                    <div class="form-check border-start border-2 d-flex align-items-center border-secondary ps-9">
+                        <input type="checkbox" class="form-check-input ms-0" id="inputRecieve"
+                            name="inputCheckboxesRecieve" />
+                        <label for="inputRecieve" class="form-check-label ps-3 gap-3 hstack">
+                            <h5 class="mb-0 fw-medium">Recieve shipment</h5>
+                        </label>
+                    </div>
+                    <div class="item-date fs-2 ps-5 ms-2 mt-1 text-muted d-inline-block">
+                        26 jun 2024
+                    </div>
+                </li>
+                <li class="border-0 px-4 mb-4" data-role="task">
+                    <div class="form-check border-start border-2 d-flex align-items-center border-success ps-9">
+                        <input type="checkbox" class="form-check-input ms-0" id="inputForward2"
+                            name="inputCheckboxesd" />
+                        <label for="inputForward2" class="form-check-label ps-3 gap-3 hstack">
+                            <h5 class="mb-0 fw-medium">Send payment today</h5>
+                            <span class="badge bg-success-subtle text-success rounded-pill">3
+                                weeks</span>
+                        </label>
+                    </div>
+                    <ul class="assignedto list-inline m-0 ps-5 ms-2 mt-1">
+                        <li class="list-inline-item">
+                            <img class="rounded-circle" src="assets/images/users/user3.jpg" alt="user"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                data-original-title="Assign to Steave" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img class="rounded-circle" src="assets/images/users/user6.jpg" alt="user"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                data-original-title="Assign to Jessica" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img class="rounded-circle" src="assets/images/users/user7.jpg" alt="user"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                data-original-title="Assign to Selina" />
+                        </li>
+                    </ul>
+                </li>
+                <li class="border-0 px-4 mb-4" data-role="task">
+                    <div class="form-check border-start border-2 d-flex align-items-center border-primary ps-9">
+                        <input type="checkbox" class="form-check-input ms-0" id="inputRecieve2"
+                            name="inputCheckboxesRecieve" />
+                        <label for="inputRecieve2" class="form-check-label ps-3 gap-3 hstack">
+                            <h5 class="mb-0 fw-medium">Recieve shipment</h5>
+                        </label>
+                    </div>
+                    <div class="item-date fs-2 ps-5 ms-2 mt-1 text-muted d-inline-block">
+                        26 jun 2024
+                    </div>
+                </li>
+            </ul>
+        </ng-scrollbar>
+</div>

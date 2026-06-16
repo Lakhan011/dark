@@ -1,0 +1,59 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center flex-wrap">
+                    <div>
+                        <h4 class="card-title">Revenue Statistics</h4>
+                        <p class="card-subtitle">January 2024</p>
+                    </div>
+                    <div class="ms-auto">
+
+                        <ul class="list-unstyled mb-0 hstack gap-3">
+                            <li>
+                                <h6 class="text-muted mb-0 hstack gap-2 fw-normal">
+                                    <span class="text-bg-success round-10 rounded-circle"></span>Product
+                                    A
+                                </h6>
+                            </li>
+                            <li>
+                                <h6 class="text-muted mb-0 hstack gap-2 fw-normal">
+                                    <span class="text-bg-info round-10 rounded-circle"></span>Product
+                                    B
+                                </h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div style="height:370px;" class="d-flex flex-column">
+                    <apx-chart [series]="RevenueStatChartOptions.series" [chart]="RevenueStatChartOptions.chart"
+                        [xaxis]="RevenueStatChartOptions.xaxis" [yaxis]="RevenueStatChartOptions.yaxis"
+                        [grid]="RevenueStatChartOptions.grid" [stroke]="RevenueStatChartOptions.stroke"
+                        [tooltip]="RevenueStatChartOptions.tooltip" [fill]="RevenueStatChartOptions.fill"
+                        [dataLabels]="RevenueStatChartOptions.dataLabels" [legend]="RevenueStatChartOptions.legend"
+                        [colors]="RevenueStatChartOptions.colors" [markers]="RevenueStatChartOptions.markers"
+                        [plotOptions]="RevenueStatChartOptions.plotOptions" [states]="RevenueStatChartOptions.states">
+                    </apx-chart>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mt-3 text-center">
+                <h2 class="fw-medium">$54,578</h2>
+                <p class="text-muted mb-0 fs-3">Total Revenue</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mt-3 text-center">
+                <h2 class="fw-medium">$43,451</h2>
+                <p class="text-muted mb-0 fs-3">Online Revenue</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mt-3 text-center">
+                <h2 class="fw-medium">$44,578</h2>
+                <p class="text-muted mb-0 fs-3">Product A</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mt-3 text-center">
+                <h2 class="fw-medium">$12,578</h2>
+                <p class="text-muted mb-0 fs-3">Product B</p>
+            </div>
+        </div>
+    </div>
+</div>

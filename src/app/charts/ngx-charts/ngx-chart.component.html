@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Vertical Bar Chart</h4>
+        <div class="chart-container">
+          <ngx-charts-bar-vertical
+            [barPadding]="40"
+            [scheme]="colorScheme"
+            [results]="single"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)"
+          >
+          </ngx-charts-bar-vertical>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Horizontal bar chart</h4>
+        <ngx-charts-bar-horizontal
+          [scheme]="colorScheme"
+          [results]="single"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          (select)="onSelect2($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)"
+        >
+        </ngx-charts-bar-horizontal>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Group Vertical bar chart</h4>
+        <ngx-charts-bar-vertical-2d
+          [scheme]="colorScheme3"
+          [results]="multi"
+          [gradient]="gradient3"
+          [xAxis]="showXAxis3"
+          [yAxis]="showYAxis3"
+          [legend]="showLegend3"
+          [showXAxisLabel]="showXAxisLabel3"
+          [showYAxisLabel]="showYAxisLabel3"
+          [xAxisLabel]="xAxisLabel3"
+          [yAxisLabel]="yAxisLabel3"
+          [legendTitle]="legendTitle3"
+          (select)="onSelect3($event)"
+          (activate)="onActivate3($event)"
+          (deactivate)="onDeactivate3($event)"
+        >
+        </ngx-charts-bar-vertical-2d>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Group horizontal bar chart</h4>
+        <ngx-charts-bar-horizontal-2d
+          [scheme]="colorScheme4"
+          [schemeType]="schemeType4"
+          [results]="multi"
+          [gradient]="gradient4"
+          [xAxis]="showXAxis4"
+          [yAxis]="showYAxis4"
+          [legend]="showLegend4"
+          [legendPosition]="legendPosition4"
+          [showXAxisLabel]="showXAxisLabel4"
+          [showYAxisLabel]="showYAxisLabel4"
+          [xAxisLabel]="xAxisLabel4"
+          [yAxisLabel]="yAxisLabel4"
+          (select)="onSelect4($event)"
+          (activate)="onActivate4($event)"
+          (deactivate)="onDeactivate4($event)"
+        >
+        </ngx-charts-bar-horizontal-2d>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Pie chart</h4>
+        <ngx-charts-pie-chart
+          [scheme]="colorScheme5"
+          [results]="single"
+          [gradient]="gradient5"
+          [legend]="showLegend5"
+          [legendPosition]="legendPosition5"
+          [labels]="showLabels5"
+          [doughnut]="isDoughnut5"
+          (select)="onSelect5($event)"
+          (activate)="onActivate5($event)"
+          (deactivate)="onDeactivate5($event)"
+        >
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Advanced pie chart</h4>
+        <ngx-charts-advanced-pie-chart
+          [scheme]="colorScheme6"
+          [results]="single"
+          [gradient]="gradient6"
+          (select)="onSelect6($event)"
+          (activate)="onActivate6($event)"
+          (deactivate)="onDeactivate6($event)"
+        >
+        </ngx-charts-advanced-pie-chart>
+      </div>
+    </div>
+  </div>
+</div>

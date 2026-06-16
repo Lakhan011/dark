@@ -1,0 +1,40 @@
+<div class="card card-body">
+  <div class="modal-header mb-2">
+    <a routerLink="/apps/jobs/" class="btn btn-primary"> Back to Jobs </a>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="applyDetail" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <h4 class="card-title">Personal Detail</h4>
+      </div>
+
+      <div class="mb-3">
+        <label class="col-sm-4 col-form-label">Full Name</label>
+        <input type="text" class="form-control" formControlName="fullName" />
+      </div>
+      <div class="mb-3">
+        <label class="col-sm-4 col-form-label">Email</label>
+        <input type="text" class="form-control" formControlName="email" />
+      </div>
+      <div class="mb-3">
+        <label class="col-sm-4 col-form-label">Phone Number</label>
+        <input type="text" class="form-control" formControlName="phone" />
+      </div>
+      <div class="mb-3">
+        <label class="col-sm-4 col-form-label">Address</label>
+        <input type="text" class="form-control" formControlName="address" />
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="applyDetail.invalid"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

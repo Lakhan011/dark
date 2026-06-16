@@ -1,0 +1,261 @@
+@if(ms.selectedMail){
+<div class="d-flex align-items-center px-3 py-2 border-bottom bg-light">
+    <div class="d-flex align-items-center">
+        <button class="me-3 d-block d-lg-none btn btn-info btn-sm">
+            <i class="fas fa-arrow-left" (click)="removeClass()"></i>
+        </button>
+        <span> <i class="fas fa-bookmark"
+                [ngStyle]="{'color':ms.selectedMail.filter.indexOf('Important') != -1 ? '#ffbc34' : '' }"
+                (click)='iconsClick("Important")'></i></span>
+
+        <span class="ms-3"> <i class="fas fa-star"
+                [ngStyle]="{'color':ms.selectedMail.filter.indexOf('Star') != -1 ? '#ffbc34' : '' }"
+                (click)='iconsClick("Star")'></i></span>
+
+
+    </div>
+    <div class="ms-auto">
+        <div ngbDropdown class="d-inline-block">
+
+            <button class="btn btn-secondary btn-sm" id="dropdownBasic1" ngbDropdownToggle><i class="mdi mdi-tag"></i><i
+                    class="fas fa-caret-down ms-1"></i></button>
+
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <label ngbDropdownItem>
+                    @if(ms.selectedMail.label.indexOf('Personal') != -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck1"
+                                (click)="labelClick('Personal')" checked>
+                            <label class="form-check-label" for="customCheck1">Personal</label>
+                        </div>
+                    </span>
+                    }
+
+                    @if(ms.selectedMail.label.indexOf('Personal') === -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck1"
+                                (click)="labelClick('Personal')">
+                            <label class="form-check-label" for="customCheck1">Personal</label>
+                        </div>
+                    </span>
+                    }
+
+                </label>
+                <label ngbDropdownItem>
+
+                    @if(ms.selectedMail.label.indexOf('Work') != -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck2"
+                                (click)="labelClick('Work')" checked>
+                            <label class="form-check-label" for="customCheck2">Work</label>
+                        </div>
+                    </span>
+                    }
+
+                    @if(ms.selectedMail.label.indexOf('Work') === -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck2"
+                                (click)="labelClick('Work')">
+                            <label class="form-check-label" for="customCheck2">Work</label>
+                        </div>
+                    </span>
+                    }
+
+                </label>
+                <label ngbDropdownItem>
+                    @if(ms.selectedMail.label.indexOf('Payment') != -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck3"
+                                (click)="labelClick('Payment')" checked>
+                            <label class="form-check-label" for="customCheck3">Payment</label>
+                        </div>
+                    </span>
+                    }
+
+                    @if(ms.selectedMail.label.indexOf('Payment') === -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck3"
+                                (click)="labelClick('Payment')">
+                            <label class="form-check-label" for="customCheck3">Payment</label>
+                        </div>
+                    </span>
+                    }
+
+                </label>
+                <label ngbDropdownItem>
+
+                    @if(ms.selectedMail.label.indexOf('Invoice') != -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck4"
+                                (click)="labelClick('Invoice')" checked>
+                            <label class="form-check-label" for="customCheck4">Invoice</label>
+                        </div>
+                    </span>
+                    }
+
+                    @if(ms.selectedMail.label.indexOf('Invoice') == -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck4"
+                                (click)="labelClick('Invoice')">
+                            <label class="form-check-label" for="customCheck4">Invoice</label>
+                        </div>
+                    </span>
+                    }
+
+                </label>
+                <label ngbDropdownItem>
+                    @if(ms.selectedMail.label.indexOf('Account') != -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck5"
+                                (click)="labelClick('Account')" checked>
+                            <label class="form-check-label" for="customCheck5">Accounts</label>
+                        </div>
+                    </span>
+                    }
+
+                    @if(ms.selectedMail.label.indexOf('Account') == -1) {
+                    <span>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck5"
+                                (click)="labelClick('Account')">
+                            <label class="form-check-label" for="customCheck5">Accounts</label>
+                        </div>
+                    </span>
+                    }
+
+                </label>
+            </div>
+        </div>
+
+
+
+        <div ngbDropdown class="d-inline-block ms-1">
+            <button class="btn btn-sm" id="dropdownBasic1" ngbDropdownToggle>
+                <i class="fa fa-ellipsis-v"></i>
+            </button>
+
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+                <button ngbDropdownItem (click)="ddlRemoveClick('Read')">
+                    <i class="far fa-envelope me-1 text-info fs-3"></i>
+                    @if(ms.selectedMail.seen) {
+                    <span>Mark as unread</span>
+                    }
+                    @if(!ms.selectedMail.seen) {
+                    <span>Mark as read</span>
+                    }
+                </button>
+                <button ngbDropdownItem (click)="ddlRemoveClick('Spam')"><i
+                        class="fas fa-history text-primary me-1 fs-3"></i>
+                    Spam</button>
+                <button ngbDropdownItem (click)="ddlRemoveClick('Trash')"><i
+                        class="ti-trash fas text-danger me-1 fs-3"></i>Trash</button>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@if(ms.selectedMail){
+<span>
+    <div class="d-flex align-items-center p-3 border-bottom">
+        <h4 class="mb-0">{{ms.selectedMail?.Subject}}
+            @for(l of ms.selectedMail.label; track l) {
+            <span class="ms-2">
+                @if(l==="Personal") {
+                <span class="badge badge-pill bg-danger ms-1 fs-2 font-medium"> PERSONAL
+                </span>
+                }
+
+                @if(l==="Work") {
+                <span class="badge badge-pill bg-info ms-1 fs-2 font-medium"> WORK </span>
+                }
+
+                @if(l==="Payment") {
+                <span class="badge badge-pill bg-primary ms-1 fs-2 font-medium"> PAYMENTS
+                </span>
+                }
+
+                @if(l==="Invoice") {
+                <span class="badge badge-pill bg-warning text-white ms-1 fs-2 font-medium">
+                    INVOICES
+                </span>
+                }
+
+                @if(l==="Account") {
+                <span class="badge badge-pill badge-cyan  text-white ms-1 fs-2 font-medium">
+                    ACCOUNTS
+                </span>
+                }
+
+            </span>
+            }
+
+        </h4>
+    </div>
+    <div class="p-3">
+        <div class="mb-3 d-flex align-items-center">
+            <img [src]="ms.selectedUser?.imagePath" class="rounded-circle" alt="userimg" width="35" height="35">
+            <div class="ms-2">
+                <h5 class="mb-0">{{ms.selectedUser?.name}}</h5>
+                <span class="text-muted">To me,</span>
+            </div>
+
+        </div>
+        <div class="mb-4">
+            {{ms.selectedMail?.Message}}
+        </div>
+        <div class="mb-3">
+            @if(ms.replyShow) {
+            <div>
+                <textarea id="w3mission" rows="4" class="form-control mb-3" placeholder="Type your reply here"> </textarea>
+                <div class="d-flex align-items-center justify-content-between py-2 px-3 bg-light">
+                    <div>
+                        <a href="javascript:void(0)" class="link"><i class="icon-link fs-4"></i></a>
+                        <a href="javascript:void(0)" class="link"><i class="fas fa-smile fs-4 ms-3"></i></a>
+                        <a href="javascript:void(0)" class="link"><i class="fas fa-camera fs-4 ms-3"></i></a>
+                    </div>
+
+                    <div>
+                        <button type="button" class="btn btn-info" (click)='sendButtonClick()'><i
+                                class="fas fa-arrow-left"></i></button>
+                        <button type="button" class="btn btn-danger ms-2"><i class="fas fa-trash me-1"></i></button>
+                        <button type="button" class="btn btn-secondary ms-2"><i
+                                class=" fas fa-share me-1"></i>Send</button>
+                    </div>
+                </div>
+            </div>
+            }
+
+
+            @if(!ms.replyShow) {
+            <div>
+                <button type="button" class="btn btn-outline-info btn-sm" (click)='reply()'>
+                    <i class="fas fa-reply"></i> Reply
+                </button>
+                <button type="button" class="btn btn-outline-info ms-1 btn-sm" (click)='reply()'>
+                    <i class="fas fa-reply-all"></i> Reply All
+                </button>
+                <button type="button" class="btn btn-outline-info ms-1 btn-sm" (click)='reply()'>
+                    <i class="fas fa-share"></i> Forward
+                </button>
+            </div>
+            }
+
+
+
+
+
+
+        </div>
+    </div>
+</span>}

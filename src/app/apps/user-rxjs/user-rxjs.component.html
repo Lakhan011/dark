@@ -1,0 +1,234 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card card-body">
+      <h4 class="card-title">Employee Table</h4>
+      <h5 class="card-subtitle">Here is the employee list you can add, edit or delet the emplyee</h5>
+      <div class="d-flex mb-3 mt-3">
+        <input type="text" class="form-control w-25" placeholder="Search by Name or Email" [(ngModel)]='searchTerm'>
+        <button class="btn btn-primary ms-auto" (click)="openModal(editUserModal, null)">Add User</button>
+      </div>
+      <div class="table-responsive table-bordered">
+        <table class="table table-striped mb-0 no-wrap align-middle">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Date of Joining</th>
+              <th scope="col">Salary</th>
+              <th scope="col">Projects</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(user of filterArray | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; track user) {
+            <tr>
+
+              <td class="text-center">
+                {{user.id}}
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle" [src]='user.imagePath' height=" 50px" width="50px">
+                  <div class="ms-3">
+                    <p class="font-medium mb-0">{{ user.Name }}</p>
+                    <small>{{user.Position}}</small>
+                  </div>
+                </div>
+              </td>
+              <td>{{ user.Email }}</td>
+
+              <td>{{ user.Mobile }}</td>
+              <td>{{ user.DateOfJoining |date :'fullDate' }}</td>
+
+              <td>{{ user.Salary }}</td>
+              <td>{{ user.Projects }}</td>
+              <td>
+                <a href="javascript: void(0);" (click)="openModal(editUserModal, user)" class="link me-2"
+                  placement="top" ngbTooltip="Edit">
+                  <!-- <i class="far fa-edit"></i> -->
+                  <i-feather name="edit-2" class="feather-sm"></i-feather>
+                </a>
+                <a href="javascript: void(0);" class="link" (click)="deleteUser(user.id)" placement="top"
+                  ngbTooltip="Delete">
+                  <i-feather name="trash-2" class="feather-sm"></i-feather>
+                </a>
+              </td>
+            </tr>
+            }
+
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="filterArray.length"></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #editUserModal let-modal>
+
+  <div class="modal-header">
+
+    <h5 class="modal-title" id="editUserLabel">Edit User</h5>
+
+    <button type="button" class="btn-close" (click)="closeBtnClick()" aria-label="Close">
+    </button>
+
+  </div>
+
+  <div class="modal-body">
+
+    <form [formGroup]="editUser" (ngSubmit)="onSubmit()">
+      <div class="mb-3 row">
+        <label for="name" class="col-sm-4 col-form-label">Name</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="Name" id="name"
+            [ngClass]="{ 'is-invalid': submitted && f['Name'].errors }" />
+          @if(submitted && f['Name'].errors) {
+          <div class="invalid-feedback">
+            @if(f['Name'].errors['required']) {
+            <div>Name is required</div>
+            }
+
+          </div>
+          }
+
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="position" class="col-sm-4 col-form-label">Position</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="Position" id="position"
+            [ngClass]="{ 'is-invalid': submitted && f['Position'].errors }" />
+          @if(submitted && f['Position'].errors) {
+          <div class="invalid-feedback">
+            @if(f['Position'].errors['required']) {
+            <div>
+              Position is required
+            </div>
+            }
+
+          </div>
+          }
+
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="email" class="col-sm-4 col-form-label">Email</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" formControlName="Email" id="email"
+            [ngClass]="{ 'is-invalid': submitted && f['Email'].errors }" />
+          @if(submitted && f['Email'].errors) {
+          <div class="invalid-feedback">
+            @if(f['Email'].errors['required']) {
+            <div>Email is required</div>
+            }
+            @if(f['Email'].errors['Email']) {
+            <div>Email is invalid</div>
+            }
+
+          </div>
+          }
+
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="mobile" class="col-sm-4 col-form-label">Mobile</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="Mobile" id="mobile"
+            [ngClass]="{ 'is-invalid': submitted && f['Mobile'].errors }" />
+          @if(submitted && f['Mobile'].errors) {
+          <div class="invalid-feedback">
+            @if(f['Mobile'].errors['required']) {
+            <div>Mobile is required</div>
+            }
+            @if(f['Mobile'].errors['Mobile']) {
+            <div>Mobile is invalid</div>
+            }
+
+          </div>
+          }
+
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="doj" class="col-sm-4 col-form-label">Date Of Joining</label>
+        <div class="col-sm-8">
+          <input type="date" class="form-control" formControlName="DateOfJoining" [(ngModel)]="joiningDate" id="doj"
+            [ngClass]="{ 'is-invalid': submitted && f['DateOfJoining'].errors }" />
+
+          @if(submitted && f['DateOfJoining'].errors) {
+          <div class="invalid-feedback">
+            @if(f['DateOfJoining'].errors['required']) {
+            <div>
+              Date Of Joining is required
+            </div>
+            }
+
+          </div>
+          }
+
+
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="salary" class="col-sm-4 col-form-label">Salary</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="Salary" id="salary"
+            [ngClass]="{ 'is-invalid': submitted && f['Salary'].errors }" />
+
+          @if(submitted && f['Salary'].errors) {
+          <div class="invalid-feedback">
+            @if(f['Salary'].errors['required']) {
+            <div>
+              Salary is required
+            </div>
+            }
+
+          </div>
+          }
+
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="projects" class="col-sm-4 col-form-label">Projects</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="Projects" id="projects"
+            [ngClass]="{ 'is-invalid': submitted && f['Projects'].errors }" />
+
+          @if(submitted && f['Projects'].errors) {
+          <div class="invalid-feedback">
+            @if(f['Projects'].errors['required']) {
+            <div>
+              Projects is required
+            </div>
+            }
+
+          </div>
+          }
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeBtnClick()">
+          Close
+        </button>
+
+        <button type="submit" class="btn btn-primary" [disabled]="editUser.invalid">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

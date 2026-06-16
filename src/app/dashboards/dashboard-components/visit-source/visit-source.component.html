@@ -1,0 +1,45 @@
+<div class="card w-100">
+    <div class="card-body">
+        <div class="d-md-flex mb-5 pb-2">
+            <h4 class="card-title">Visit source</h4>
+            <div class="ms-auto">
+                <select class="form-select">
+                    <option selected="">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                </select>
+            </div>
+        </div>
+        <apx-chart [series]="visitsourceChartOptions.series" [chart]="visitsourceChartOptions.chart"
+            [dataLabels]="visitsourceChartOptions.dataLabels" [legend]="visitsourceChartOptions.legends"
+            [colors]="visitsourceChartOptions.colors" [stroke]="visitsourceChartOptions.stroke"
+            [labels]="visitsourceChartOptions.labels" [tooltip]="visitsourceChartOptions.tooltip"
+            [plotOptions]="visitsourceChartOptions.plotOptions" [responsive]="visitsourceChartOptions.responsive"
+            [legend]="visitsourceChartOptions.legend"></apx-chart>
+        <div class="text-center mt-5">
+            <ul class="list-inline mb-8">
+                <li class="list-inline-item">
+                    <h6 class="text-muted fw-medium">
+                        <i class="fa fa-circle me-1 text-primary"></i>Desktop
+                    </h6>
+                </li>
+                <li class="list-inline-item">
+                    <h6 class="text-muted fw-medium">
+                        <i class="fa fa-circle me-1 text-danger"></i>Tablet
+                    </h6>
+                </li>
+                <li class="list-inline-item">
+                    <h6 class="text-muted fw-medium">
+                        <i class="fa fa-circle me-1 text-megna"></i>Mobile
+                    </h6>
+                </li>
+                <li class="list-inline-item">
+                    <h6 class="text-muted fw-medium">
+                        <i class="fa fa-circle me-1 text-muted"></i>Other
+                    </h6>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
