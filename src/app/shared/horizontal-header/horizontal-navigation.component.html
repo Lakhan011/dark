@@ -346,10 +346,10 @@
           <div class="d-flex align-items-center py-9 mx-7 border-bottom">
             <img src="assets/images/users/user1.jpg" class="rounded-circle" width="80" height="80" alt="" />
             <div class="ms-3">
-              <h5 class="mb-1 fs-4">{{ currentUser.name }}</h5>
-              <span class="mb-1 d-block text-capitalize">{{ currentUser.role | lowercase }}</span>
+              <h5 class="mb-1 fs-4">{{ $any(currentUser).name }}</h5>
+              <span class="mb-1 d-block text-capitalize">{{ $any(currentUser).role | lowercase }}</span>
               <p class="mb-0 d-flex align-items-center gap-2">
-                <i-feather name="mail" class="feather-xs d-flex"></i-feather> {{ currentUser.email }}
+                <i-feather name="mail" class="feather-xs d-flex"></i-feather> {{ $any(currentUser).email }}
               </p>
             </div>
           </div>
@@ -404,8 +404,8 @@
     <div class="d-flex align-items-center mb-4 border-bottom pb-4">
       <img src="assets/images/users/user1.jpg" class="rounded-circle shadow-sm" width="100" height="100" alt="" />
       <div class="ms-4">
-        <h3 class="mb-1 fw-bold">{{ currentUser.name }}</h3>
-        <span class="badge bg-primary text-capitalize px-3 py-2 fs-4">{{ currentUser.role | lowercase }}</span>
+        <h3 class="mb-1 fw-bold">{{ $any(currentUser).name }}</h3>
+        <span class="badge bg-primary text-capitalize px-3 py-2 fs-4">{{ $any(currentUser).role | lowercase }}</span>
       </div>
     </div>
     
@@ -414,28 +414,28 @@
         <label class="text-muted fw-bold d-block mb-1">Email</label>
         <p class="fs-5 d-flex align-items-center gap-2">
           <i-feather name="mail" class="feather-sm text-info"></i-feather> 
-          {{ currentUser.email }}
-          <span *ngIf="currentUser.isEmailVerified" class="badge bg-success-subtle text-success ms-2">Verified</span>
-          <span *ngIf="!currentUser.isEmailVerified" class="badge bg-warning-subtle text-warning ms-2">Unverified</span>
+          {{ $any(currentUser).email }}
+          <span *ngIf="$any(currentUser).isEmailVerified" class="badge bg-success-subtle text-success ms-2">Verified</span>
+          <span *ngIf="!$any(currentUser).isEmailVerified" class="badge bg-warning-subtle text-warning ms-2">Unverified</span>
         </p>
       </div>
       
       <div class="col-6">
         <label class="text-muted fw-bold d-block mb-1">Account Status</label>
-        <p class="fs-5 text-capitalize">{{ currentUser.status || 'Active' }}</p>
+        <p class="fs-5 text-capitalize">{{ $any(currentUser).status || 'Active' }}</p>
       </div>
 
       <div class="col-6">
         <label class="text-muted fw-bold d-block mb-1">Joined</label>
-        <p class="fs-5">{{ currentUser.createdAt | date:'mediumDate' }}</p>
+        <p class="fs-5">{{ $any(currentUser).createdAt | date:'mediumDate' }}</p>
       </div>
       
-      <div class="col-12" *ngIf="currentUser.subscription?.planName">
+      <div class="col-12" *ngIf="$any(currentUser).subscription?.planName">
         <div class="bg-light-warning rounded p-3 mt-2">
           <label class="text-warning fw-bold d-block mb-1">Active Subscription</label>
           <div class="d-flex justify-content-between align-items-center">
-            <h5 class="mb-0 fw-bold">{{ currentUser.subscription.planName }} Plan</h5>
-            <span class="badge bg-warning">Valid till {{ currentUser.subscription.endDate | date:'mediumDate' }}</span>
+            <h5 class="mb-0 fw-bold">{{ $any(currentUser).subscription.planName }} Plan</h5>
+            <span class="badge bg-warning">Valid till {{ $any(currentUser).subscription.endDate | date:'mediumDate' }}</span>
           </div>
         </div>
       </div>

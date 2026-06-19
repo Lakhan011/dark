@@ -1,0 +1,143 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card card-body">
+      <h4 class="card-title">Subcategories</h4>
+      <h5 class="card-subtitle">Manage product subcategories</h5>
+      
+      <div class="d-flex mb-3 mt-3 gap-2">
+        <input type="text" class="form-control w-25" placeholder="Search subcategories..." [(ngModel)]="searchTerm" />
+        
+        <select class="form-select w-25" [(ngModel)]="selectedCategoryId">
+          <option value="">All Parent Categories</option>
+          <option *ngFor="let cat of categories" [value]="cat._id">{{ cat.name }}</option>
+        </select>
+        
+        <button *appHasPermission="['ADMIN']" class="btn btn-primary ms-auto" (click)="openModal(editSubcategoryModal, null)">
+          Add Subcategory
+        </button>
+      </div>
+
+      <div class="table-responsive table-bordered">
+        <table class="table table-striped mb-0 no-wrap align-middle">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Parent Category</th>
+              <th scope="col">Description</th>
+              <th scope="col">Status</th>
+              <th scope="col">Created At</th>
+              <th *appHasPermission="['ADMIN']" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="loading">
+              <td colspan="6" class="text-center py-4">Loading subcategories...</td>
+            </tr>
+            <tr *ngIf="!loading && filterArray.length === 0">
+              <td colspan="6" class="text-center py-4">No subcategories found.</td>
+            </tr>
+            @for(subcategory of filterArray | slice : (page - 1) * pageSize : (page - 1) * pageSize + pageSize; track subcategory._id) {
+              <tr>
+                <td class="fw-bold">{{ subcategory.name }}</td>
+                <td>{{ getParentCategoryName(subcategory) }}</td>
+                <td>{{ subcategory.description || '-' }}</td>
+                <td>
+                  <span class="badge" [ngClass]="subcategory.status === 'ACTIVE' ? 'bg-success' : 'bg-danger'">
+                    {{ subcategory.status }}
+                  </span>
+                </td>
+                <td>{{ subcategory.createdAt | date:'mediumDate' }}</td>
+                <td *appHasPermission="['ADMIN']">
+                  <a href="javascript:void(0);" (click)="openModal(editSubcategoryModal, subcategory)" class="link me-2" placement="top" ngbTooltip="Edit">
+                    <i-feather name="edit-2" class="feather-sm"></i-feather>
+                  </a>
+                  <a href="javascript:void(0);" (click)="confirmDelete(deleteConfirmModal, subcategory)" class="link" placement="top" ngbTooltip="Delete">
+                    <i-feather name="trash-2" class="feather-sm text-danger"></i-feather>
+                  </a>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex justify-content-center mt-5" *ngIf="filterArray.length > 0">
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="filterArray.length"></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add / Edit Modal -->
+<ng-template #editSubcategoryModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">{{ editingSubcategory ? 'Edit Subcategory' : 'Add Subcategory' }}</h5>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="subcategoryForm" (ngSubmit)="saveSubcategory()">
+      <div class="mb-3 row">
+        <label for="categoryId" class="col-sm-4 col-form-label">Parent Category</label>
+        <div class="col-sm-8">
+          <select class="form-select" formControlName="categoryId" id="categoryId" [ngClass]="{ 'is-invalid': submitted && f['categoryId'].errors }">
+            <option value="" disabled>Select a Category</option>
+            <option *ngFor="let cat of categories" [value]="cat._id">{{ cat.name }}</option>
+          </select>
+          <div *ngIf="submitted && f['categoryId'].errors" class="invalid-feedback">
+            <div *ngIf="f['categoryId'].errors['required']">Parent Category is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="name" class="col-sm-4 col-form-label">Subcategory Name</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="name" id="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">Name is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="description" class="col-sm-4 col-form-label">Description</label>
+        <div class="col-sm-8">
+          <textarea class="form-control" formControlName="description" id="description" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="status" class="col-sm-4 col-form-label">Status</label>
+        <div class="col-sm-8">
+          <select class="form-select" formControlName="status" id="status" [ngClass]="{ 'is-invalid': submitted && f['status'].errors }">
+            <option value="ACTIVE">Active</option>
+            <option value="INACTIVE">Inactive</option>
+          </select>
+          <div *ngIf="submitted && f['status'].errors" class="invalid-feedback">
+            <div *ngIf="f['status'].errors['required']">Status is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer pb-0 pe-0">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="subcategoryForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!-- Delete Confirmation Modal -->
+<ng-template #deleteConfirmModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title text-danger">Confirm Delete</h5>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete the subcategory <strong>{{ subcategoryToDelete?.name }}</strong>?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="deleteSubcategory()">Delete</button>
+  </div>
+</ng-template>

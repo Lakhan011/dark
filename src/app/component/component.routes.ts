@@ -18,6 +18,7 @@ import { CardsComponent } from './card/card.component';
 import { ToastComponent } from './toast/toast.component';
 import { NotifierComponent } from './notifier/notifier.component';
 import { CategoryComponent } from './category/category.component';
+import { SubcategoryListComponent } from './subcategory/subcategory-list.component';
 
 export const ComponentsRoutes: Routes = [
   {
@@ -229,13 +230,24 @@ export const ComponentsRoutes: Routes = [
         },
       },
       {
-        path: 'add/category',
+        path: 'categories',
         component: CategoryComponent,
         data: {
-          title: 'category',
+          title: 'Categories',
           urls: [
             { title: 'Home', url: '/' },
-            { title: 'category' }
+            { title: 'Categories' }
+          ],
+        },
+      },
+      {
+        path: 'subcategories',
+        component: SubcategoryListComponent,
+        data: {
+          title: 'Subcategories',
+          urls: [
+            { title: 'Home', url: '/' },
+            { title: 'Subcategories' }
           ],
         },
       },

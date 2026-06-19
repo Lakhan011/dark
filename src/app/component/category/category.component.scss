@@ -1,0 +1,28 @@
+.premium-dropdown {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.custom-dropdown-item {
+  transition: all 0.2s ease-in-out;
+  cursor: default;
+}
+
+.custom-dropdown-item:hover {
+  background-color: rgba(0, 123, 255, 0.05);
+  transform: translateX(3px);
+}
+
+.action-icon {
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.action-icon:hover {
+  opacity: 1;
+}
+
+/* Fix dropdown clipping without using container="body" */
+.table-responsive {
+  overflow: visible !important;
+}

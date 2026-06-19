@@ -733,6 +733,22 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
+        path: "/component/categories",
+        title: "Categories",
+        icon: "mdi mdi-format-list-bulleted",
+        class: "",
+        extralink: false,
+        submenu: [],
+      },
+      {
+        path: "/component/subcategories",
+        title: "Subcategories",
+        icon: "mdi mdi-format-list-bulleted-type",
+        class: "",
+        extralink: false,
+        submenu: [],
+      },
+      {
         path: "/ecom/products",
         title: "Products",
         icon: "mdi mdi-cards-variant",

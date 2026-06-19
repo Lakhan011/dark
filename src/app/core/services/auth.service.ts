@@ -10,7 +10,7 @@ import { BehaviorSubject, Observable, tap, throwError, catchError } from 'rxjs';
 export class AuthService {
   private apiUrl = environment.apiUrl;
   private currentUserSubject = new BehaviorSubject<any>(null);
-  public currentUser$ = this.currentUserSubject.asObservable();
+  public currentUser$: Observable<any> = this.currentUserSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -160,7 +160,7 @@ export class AuthService {
    * Checks if the currently logged-in user possesses any of the required permissions.
    */
   hasPermission(allowedPermissions: string | string[]): boolean {
-    const required = Array.isArray(allowedPermissions) ? allowedPermissions : [allowedPermissions];
+    const required = Array.isArray(allowedPermissions) ? allowedPermissions.map(p => p.toLowerCase()) : [allowedPermissions.toLowerCase()];
     if (required.length === 0) return true;
 
     const token = this.getAccessToken();
@@ -171,12 +171,13 @@ export class AuthService {
 
     // Check if the JWT payload contains the permissions array provided by the backend
     if (payload.permissions && Array.isArray(payload.permissions)) {
-      return required.some(perm => payload.permissions.includes(perm));
+      const userPerms = payload.permissions.map((p: string) => p.toLowerCase());
+      return required.some(perm => userPerms.includes(perm));
     }
 
     // Fallback: Use the role stored in the token if permissions array is missing
     if (payload.role) {
-      return required.includes(payload.role);
+      return required.includes(payload.role.toLowerCase());
     }
 
     return false;

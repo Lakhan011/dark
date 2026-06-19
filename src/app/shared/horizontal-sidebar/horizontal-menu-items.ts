@@ -1310,9 +1310,18 @@ export const ROUTES: RouteInfo[] = [
                 submenu: []
             },
             {
-                path: 'component/add/category',
-                title: 'Category',
-                icon: 'mdi mdi-emoticon',
+                path: '/component/categories',
+                title: 'Categories',
+                icon: 'mdi mdi-format-list-bulleted',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/subcategories',
+                title: 'Subcategories',
+                icon: 'mdi mdi-format-list-bulleted-type',
                 class: '',
                 ddclass: '',
                 extralink: false,
