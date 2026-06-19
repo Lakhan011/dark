@@ -7,7 +7,9 @@ import {
   HttpClient,
   provideHttpClient,
   withInterceptorsFromDi,
+  withInterceptors,
 } from '@angular/common/http';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { routes } from './app.routes';
 import {
   provideRouter,
@@ -63,7 +65,7 @@ export const appConfig: ApplicationConfig = {
       }),
       withComponentInputBinding()
     ),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptorsFromDi(), withInterceptors([authInterceptor])),
     provideClientHydration(),
     provideAnimationsAsync(),
     importProvidersFrom(

@@ -2,444 +2,17 @@ import { RouteInfo } from './horizontal-sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
     {
-        path: '',
-        title: 'Home',
-        icon: 'home',
+        path: '', // /ecom/just-arrived
+        title: 'just Arrived',
+        icon: 'book-open',
         class: 'has-arrow',
         ddclass: '',
         extralink: false,
         submenu: [
             {
-                path: "/dashboard/dashboard1",
-                title: "Modern",
-                icon: "mdi mdi-adjust",
-                class: "",
-                ddclass: '',
-                extralink: false,
-                submenu: [],
-            },
-            {
-                path: "/dashboard/dashboard2",
-                title: "Awesome",
-                icon: "mdi mdi-adjust",
-                class: "",
-                ddclass: '',
-                extralink: false,
-                submenu: [],
-            },
-            {
-                path: "/dashboard/dashboard3",
-                title: "Classy",
-                icon: "mdi mdi-adjust",
-                class: "",
-                ddclass: '',
-                extralink: false,
-                submenu: [],
-            },
-            {
-                path: "/dashboard/dashboard4",
-                title: "Analytical",
-                icon: "mdi mdi-adjust",
-                class: "",
-                ddclass: '',
-                extralink: false,
-                submenu: [],
-            },
-            {
-                path: "/dashboard/dashboard5",
-                title: "Minimal",
-                icon: "mdi mdi-adjust",
-                class: "",
-                ddclass: '',
-                extralink: false,
-                submenu: [],
-            },
-            {
-                path: "/dashboard/dashboard6",
-                title: "General",
-                icon: "mdi mdi-adjust",
-                class: "",
-                ddclass: '',
-                extralink: false,
-                submenu: [],
-            },
-        ]
-    },
-    {
-        path: '',
-        title: 'Apps',
-        icon: 'inbox',
-        class: 'has-arrow',
-        ddclass: 'two-column',
-        extralink: false,
-        submenu: [
-            {
-                path: '/apps/mail/inbox',
-                title: 'Mail',
-                icon: 'mdi mdi-inbox',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/jobs',
-                title: 'Jobs',
-                icon: 'mdi mdi-briefcase',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/chat',
-                title: 'Chat',
-                icon: 'mdi mdi-comment-processing-outline',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/todo',
-                title: 'Todo',
-                icon: 'mdi mdi-clipboard-text',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/notes',
-                title: 'Notes',
-                icon: 'mdi mdi-arrange-bring-forward',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/users',
-                title: 'Users',
-                icon: 'mdi mdi-account-multiple',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/usersrxjs',
-                title: 'Users-Rxjs',
-                icon: 'mdi mdi-account-multiple',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/fullcalendar',
-                title: 'Calendar',
-                icon: 'mdi mdi-calendar',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/taskboard',
-                title: 'Taskboard',
-                icon: 'mdi mdi-bulletin-board',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/contact',
-                title: 'Contact',
-                icon: 'mdi mdi-account-box',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/contactrxjs',
-                title: 'Contact-Rxjs',
-                icon: 'mdi mdi-account-box',
-                class: '',
-                extralink: false,
-                ddclass: '',
-                submenu: []
-            },
-            {
-                path: '/apps/contact-list',
-                title: 'Contact Lists',
-                icon: 'mdi mdi-phone-voip',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/contact-list-rxjs',
-                title: 'Contact Lists-Rxjs',
-                icon: 'mdi mdi-phone-voip',
-                class: '',
-                extralink: false,
-                ddclass: '',
-                submenu: []
-            },
-            {
-                path: '/apps/contact-grid',
-                title: 'Contact Grid',
-                icon: 'mdi mdi-phone',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/invoice',
-                title: 'Invoice',
-                icon: 'mdi mdi-file',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/ticket/ticketlist',
-                title: 'Ticket List',
-                icon: 'mdi mdi-book-multiple',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/ticket/ticketdetails',
-                title: 'Ticket Details',
-                icon: 'mdi mdi-book-plus',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/apps/tasks',
-                title: 'Tasks',
-                icon: 'mdi mdi-clipboard-text',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-
-
-        ]
-    },
-    {
-        path: '',
-        title: 'UI',
-        icon: 'grid',
-        class: 'has-arrow',
-        ddclass: 'mega-dropdown',
-        extralink: false,
-        submenu: [
-            {
-                path: '/component/accordion',
-                title: 'Accordion',
-                icon: 'mdi mdi-equal',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/alert',
-                title: 'Alert',
-                icon: 'mdi mdi-message-bulleted',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/carousel',
-                title: 'Carousel',
-                icon: 'mdi mdi-view-carousel',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/dropdown',
-                title: 'Dropdown',
-                icon: 'mdi mdi-arrange-bring-to-front',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/modal',
-                title: 'Modal',
-                icon: 'mdi mdi-tablet',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/pagination',
-                title: 'Pagination',
-                icon: 'mdi mdi-backburger',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/poptool',
-                title: 'Popover & Tooltip',
-                icon: 'mdi mdi-image-filter-vintage',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/progressbar',
-                title: 'Progressbar',
-                icon: 'mdi mdi-poll',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/toast',
-                title: 'Toast',
-                icon: 'mdi mdi-poll',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/rating',
-                title: 'Ratings',
-                icon: 'mdi mdi-bandcamp',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/nav',
-                title: 'Nav',
-                icon: 'mdi mdi-sort-variant',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/timepicker',
-                title: 'Timepicker',
-                icon: 'mdi mdi-calendar-clock',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/buttons',
-                title: 'Button',
-                icon: 'mdi mdi-toggle-switch',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/component/notifier',
-                title: 'Notifier',
-                icon: 'mdi mdi-bandcamp',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/cards/basiccards',
-                title: 'Basic Cards',
-                icon: 'mdi mdi-layers',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/cards/customcards',
-                title: 'Custom Cards',
-                icon: 'mdi mdi-credit-card-scan',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/cards/weathercards',
-                title: 'Weather Cards',
-                icon: 'mdi mdi-weather-fog',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/extra-component/toastr',
-                title: 'Toastr',
-                icon: 'mdi mdi-poll',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/extra-component/editor',
-                title: 'Editor',
-                icon: 'mdi mdi-dns',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/extra-component/dragndrop',
-                title: 'Drag n Drop',
-                icon: 'mdi mdi-arrow-expand-all',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/widgets/apps',
-                title: 'Widget Apps',
-                icon: 'mdi mdi-comment-processing-outline',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/widgets/data',
-                title: 'Widget Data',
-                icon: 'mdi mdi-calendar',
+                path: '/ecom/just-arrived',
+                title: 'Just Arrived',
+                icon: 'mdi mdi-cards-variant',
                 class: '',
                 ddclass: '',
                 extralink: false,
@@ -449,7 +22,816 @@ export const ROUTES: RouteInfo[] = [
     },
     {
         path: '',
-        title: 'Forms',
+        title: 'Summer Sale',
+        icon: 'book-open',
+        class: 'has-arrow',
+        ddclass: '',
+        extralink: false,
+        submenu: [
+            {
+                path: '/ecom/summer-sale',
+                title: 'Summer Sale',
+                icon: 'mdi mdi-cards-variant',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            }
+        ]
+    },
+    {
+        path: '',
+        title: 'Rakhi',
+        icon: 'bi-gift',
+        class: 'has-arrow',
+        ddclass: '',
+        extralink: false,
+        submenu: [
+            {
+                path: '/ecom/rakhi',
+                title: 'Rakhi',
+                icon: 'mdi mdi-cards-variant',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            }
+        ]
+    },
+    {
+        path: '',
+        title: 'Home & Living',
+        icon: 'home',
+        class: 'has-arrow',
+        ddclass: 'two-column',
+        extralink: false,
+        submenu: [
+            {
+                path: "/dashboard/dashboard1",
+                title: "Kitching & Dining",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard2",
+                title: "Kitchen Home & Appliances",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard3",
+                title: "Cookware",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard4",
+                title: "Bakeware",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard5",
+                title: "Storage & Organization",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Home Decor & Wall Art",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard4",
+                title: "Home Decor Items",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard5",
+                title: "Indoor Lighting",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Home furnishing",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Furniture",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Heating & Cooling Air Quality",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Cleaning & Housekeeping",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Household Supplies",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+        ]
+    },
+    {
+        path: '',
+        title: 'Tech Auto Tools',
+        icon: 'bi-cpu',
+        class: 'has-arrow',
+        ddclass: 'two-column',
+        extralink: false,
+        submenu: [
+            {
+                path: '/ecom/best-seller',
+                title: 'Personal Tech & Gadgets',
+                icon: 'bi-phone',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Car & Accessories',
+                icon: 'bi-car-front',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Automotive',
+                icon: 'bi-speedometer2',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Car Parts',
+                icon: 'bi-gear',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Car Motorbike Care',
+                icon: 'bi-droplet-half',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Motorbike Accessories & Parts',
+                icon: 'bi-bicycle',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Interior Accessories',
+                icon: 'bi-house-door',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Exterior Accessories',
+                icon: 'bi-box-seam',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Power & Hand Tools',
+                icon: 'bi-tools',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Power Tools',
+                icon: 'bi-wrench-adjustable',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Hardware',
+                icon: 'bi-hammer',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Electrical',
+                icon: 'bi-lightning-charge',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/best-seller',
+                title: 'Networking Electrical Accessories',
+                icon: 'bi-router',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            }
+        ]
+    },
+    {
+        path: '',
+        title: 'Office School & Crafts',
+        icon: 'book-open',
+        class: 'has-arrow',
+        ddclass: 'two-column',
+        extralink: false,
+        submenu: [
+            {
+                path: '/ecom/products',
+                title: 'Office Supplies',
+                icon: 'mdi mdi-cards-variant',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/cart',
+                title: 'Office Paper Products',
+                icon: 'mdi mdi-cart',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/edit',
+                title: 'Statinery & School Supplies',
+                icon: 'mdi mdi-cart-plus',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/details',
+                title: 'School Supplies',
+                icon: 'mdi mdi-camera-burst',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/orders',
+                title: 'Arts & Craft',
+                icon: 'mdi mdi-chart-pie',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/checkout',
+                title: 'Arts & Craft Supplies',
+                icon: 'mdi mdi-clipboard-check',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/maps/google',
+                title: 'Crafts Materials',
+                icon: 'mdi mdi-google-maps',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/checkout',
+                title: 'Desk Accessories & Storage',
+                icon: 'mdi mdi-account-key',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/checkout',
+                title: 'Packing Shipping & Supplies',
+                icon: 'mdi mdi-account-key',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/ecom/checkout',
+                title: 'Tape Adhesives & Fasterners',
+                icon: 'mdi mdi-account-plus',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            }            
+        ]
+    },
+    {
+        path: '',
+        title: 'Fashion Bag & Jwellary',
+        icon: 'home',
+        class: 'has-arrow',
+        ddclass: 'two-column',
+        extralink: false,
+        submenu: [
+            {
+                path: "/dashboard/dashboard1",
+                title: "Jwellary",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard2",
+                title: "Watches",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard3",
+                title: "Bag & BagPacks",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard4",
+                title: "Luggage",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard5",
+                title: "Wllate Card & Cashes Money Organiser",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Handbags Purses & Clutches",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard5",
+                title: "Bags, Footwear & Accesories",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Shoes & Handbags",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard5",
+                title: "Shoe Care & Accosseries",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Travel Kits & Orgainers",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard5",
+                title: "Sports, Fitness Outdoor",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            },
+            {
+                path: "/dashboard/dashboard6",
+                title: "Excersize & Fitness",
+                icon: "mdi mdi-adjust",
+                class: "",
+                ddclass: '',
+                extralink: false,
+                submenu: [],
+            }
+        ]
+    },
+    {
+        path: '',
+        title: 'Gifts & Custom',
+        icon: 'inbox',
+        class: 'has-arrow',
+        ddclass: 'two-column',
+        extralink: false,
+        submenu: [
+            {
+                path: '/apps/mail/inbox',
+                title: 'Corporate Gifting',
+                icon: 'mdi mdi-inbox',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/apps/jobs',
+                title: 'BirthDay Gift',
+                icon: 'mdi mdi-briefcase',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/apps/chat',
+                title: 'Womens Gift',
+                icon: 'mdi mdi-comment-processing-outline',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/apps/todo',
+                title: 'Mens Gift',
+                icon: 'mdi mdi-clipboard-text',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/apps/notes',
+                title: 'Kids Gift',
+                icon: 'mdi mdi-arrange-bring-forward',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/apps/users',
+                title: 'Custom Print Products',
+                icon: 'mdi mdi-account-multiple',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/apps/usersrxjs',
+                title: 'Custom Bottle',
+                icon: 'mdi mdi-account-multiple',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/apps/fullcalendar',
+                title: 'Custom Brecelet',
+                icon: 'mdi mdi-calendar',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/apps/taskboard',
+                title: 'Custom Lunch Box',
+                icon: 'mdi mdi-bulletin-board',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+        ]
+    },
+    {
+        path: '',
+        title: 'Garden & Outdoor',
+        icon: 'grid',
+        class: 'has-arrow',
+        ddclass: 'mega-dropdown',
+        extralink: false,
+        submenu: [
+            {
+                path: '/component/accordion',
+                title: 'Gardening',
+                icon: 'mdi mdi-equal',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/alert',
+                title: 'Gardening Tools',
+                icon: 'mdi mdi-message-bulleted',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/carousel',
+                title: 'Gardening & Landscaping',
+                icon: 'mdi mdi-view-carousel',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/dropdown',
+                title: 'Plant Containers',
+                icon: 'mdi mdi-arrange-bring-to-front',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/modal',
+                title: 'Watering Equipment',
+                icon: 'mdi mdi-tablet',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/pagination',
+                title: 'Soils, Mulches & Planting Media',
+                icon: 'mdi mdi-backburger',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/poptool',
+                title: 'Sprayers & Accessories',
+                icon: 'mdi mdi-image-filter-vintage',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/progressbar',
+                title: 'Outdoor GEar & Safety',
+                icon: 'mdi mdi-poll',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/toast',
+                title: 'Barbecue & Outdoor Dining',
+                icon: 'mdi mdi-poll',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/rating',
+                title: 'Pest & Insect Control',
+                icon: 'mdi mdi-bandcamp',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/nav',
+                title: 'Solar & Wind Power',
+                icon: 'mdi mdi-sort-variant',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/timepicker',
+                title: 'Pet Supplies',
+                icon: 'mdi mdi-calendar-clock',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
+                path: '/component/buttons',
+                title: 'Fish & Aquatics',
+                icon: 'mdi mdi-toggle-switch',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            // {
+            //     path: '/component/notifier',
+            //     title: 'Notifier',
+            //     icon: 'mdi mdi-bandcamp',
+            //     class: '',
+            //     ddclass: '',
+            //     extralink: false,
+            //     submenu: []
+            // },
+            // {
+            //     path: '/cards/basiccards',
+            //     title: 'Basic Cards',
+            //     icon: 'mdi mdi-layers',
+            //     class: '',
+            //     ddclass: '',
+            //     extralink: false,
+            //     submenu: []
+            // },
+            // {
+            //     path: '/cards/customcards',
+            //     title: 'Custom Cards',
+            //     icon: 'mdi mdi-credit-card-scan',
+            //     class: '',
+            //     ddclass: '',
+            //     extralink: false,
+            //     submenu: []
+            // },
+            // {
+            //     path: '/cards/weathercards',
+            //     title: 'Weather Cards',
+            //     icon: 'mdi mdi-weather-fog',
+            //     class: '',
+            //     ddclass: '',
+            //     extralink: false,
+            //     submenu: []
+            // },
+            // {
+            //     path: '/extra-component/toastr',
+            //     title: 'Toastr',
+            //     icon: 'mdi mdi-poll',
+            //     class: '',
+            //     ddclass: '',
+            //     extralink: false,
+            //     submenu: []
+            // },
+            // {
+            //     path: '/extra-component/editor',
+            //     title: 'Editor',
+            //     icon: 'mdi mdi-dns',
+            //     class: '',
+            //     ddclass: '',
+            //     extralink: false,
+            //     submenu: []
+            // },
+            // {
+            //     path: '/extra-component/dragndrop',
+            //     title: 'Drag n Drop',
+            //     icon: 'mdi mdi-arrow-expand-all',
+            //     class: '',
+            //     ddclass: '',
+            //     extralink: false,
+            //     submenu: []
+            // },
+            // {
+            //     path: '/widgets/apps',
+            //     title: 'Widget Apps',
+            //     icon: 'mdi mdi-comment-processing-outline',
+            //     class: '',
+            //     ddclass: '',
+            //     extralink: false,
+            //     submenu: []
+            // },
+            // {
+            //     path: '/widgets/data',
+            //     title: 'Widget Data',
+            //     icon: 'mdi mdi-calendar',
+            //     class: '',
+            //     ddclass: '',
+            //     extralink: false,
+            //     submenu: []
+            // }
+        ]
+    },
+    {
+        path: '',
+        title: 'Beauty Health & Care',
         icon: 'file-text',
         class: 'has-arrow',
         ddclass: 'two-column',
@@ -457,7 +839,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: [
             {
                 path: "/forms/forminputs",
-                title: "Form Inputs",
+                title: "Make & Beauty",
                 icon: "mdi mdi-priority-low",
                 class: "",
                 ddclass: "",
@@ -466,7 +848,7 @@ export const ROUTES: RouteInfo[] = [
             },
             {
                 path: "/forms/inputgroups",
-                title: "Input Groups",
+                title: "Skin Care",
                 icon: "mdi mdi-rounded-corner",
                 class: "",
                 ddclass: "",
@@ -475,7 +857,7 @@ export const ROUTES: RouteInfo[] = [
             },
             {
                 path: "/forms/inputgrid",
-                title: "Input Grid",
+                title: "Hair Care & Styling",
                 icon: "mdi mdi-select-all",
                 class: "",
                 ddclass: "",
@@ -484,7 +866,7 @@ export const ROUTES: RouteInfo[] = [
             },
             {
                 path: "/forms/checkboxandradio",
-                title: "Checkbox & Radio",
+                title: "Manicure & Padicure",
                 icon: "mdi mdi-shape-plus",
                 class: "",
                 ddclass: "",
@@ -666,43 +1048,43 @@ export const ROUTES: RouteInfo[] = [
             }
         ]
     },
-    {
-        path: '',
-        title: 'Charts',
-        icon: 'bar-chart-2',
-        class: 'has-arrow',
-        ddclass: '',
-        extralink: false,
-        submenu: [
-            {
-                path: '/charts/chartistjs',
-                title: 'Chartist Js',
-                icon: 'mdi mdi-blur',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: '/charts/ngxchart',
-                title: 'Ngx Charts',
-                icon: 'mdi mdi-blur',
-                class: '',
-                ddclass: '',
-                extralink: false,
-                submenu: []
-            },
-            {
-                path: "/charts/apexchart",
-                title: "Apex Charts",
-                icon: "mdi mdi-blur",
-                class: "",
-                ddclass: "",
-                extralink: false,
-                submenu: [],
-            }
-        ]
-    },
+    // {
+    //     path: '',
+    //     title: 'Charts',
+    //     icon: 'bar-chart-2',
+    //     class: 'has-arrow',
+    //     ddclass: '',
+    //     extralink: false,
+    //     submenu: [
+    //         {
+    //             path: '/charts/chartistjs',
+    //             title: 'Chartist Js',
+    //             icon: 'mdi mdi-blur',
+    //             class: '',
+    //             ddclass: '',
+    //             extralink: false,
+    //             submenu: []
+    //         },
+    //         {
+    //             path: '/charts/ngxchart',
+    //             title: 'Ngx Charts',
+    //             icon: 'mdi mdi-blur',
+    //             class: '',
+    //             ddclass: '',
+    //             extralink: false,
+    //             submenu: []
+    //         },
+    //         {
+    //             path: "/charts/apexchart",
+    //             title: "Apex Charts",
+    //             icon: "mdi mdi-blur",
+    //             class: "",
+    //             ddclass: "",
+    //             extralink: false,
+    //             submenu: [],
+    //         }
+    //     ]
+    // },
     {
         path: '',
         title: 'Pages',
@@ -926,54 +1308,63 @@ export const ROUTES: RouteInfo[] = [
                 ddclass: '',
                 extralink: false,
                 submenu: []
+            },
+            {
+                path: 'component/add/category',
+                title: 'Category',
+                icon: 'mdi mdi-emoticon',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
             }
         ]
     },
-    {
-        path: '',
-        title: 'DD',
-        icon: 'align-left',
-        class: 'has-arrow',
-        ddclass: '',
-        extralink: false,
-        submenu: [
-            {
-                path: '',
-                title: 'Second Level',
-                icon: 'mdi mdi-octagram',
-                class: '',
-                ddclass: '',
-                extralink: true,
-                submenu: []
-            },
-            {
-                path: '/second',
-                title: 'Second Child',
-                icon: 'mdi mdi-octagram',
-                class: 'has-arrow',
-                ddclass: '',
-                extralink: false,
-                submenu: [
-                    {
-                        path: '/thirdone',
-                        title: 'Third 1.1',
-                        icon: 'mdi mdi-playlist-plus',
-                        class: '',
-                        ddclass: '',
-                        extralink: false,
-                        submenu: []
-                    },
-                    {
-                        path: '/thirdtwo',
-                        title: 'Third 1.2',
-                        icon: 'mdi mdi-playlist-plus',
-                        class: '',
-                        ddclass: '',
-                        extralink: false,
-                        submenu: []
-                    }
-                ]
-            }
-        ]
-    }
+    // {
+    //     path: '',
+    //     title: 'DD',
+    //     icon: 'align-left',
+    //     class: 'has-arrow',
+    //     ddclass: '',
+    //     extralink: false,
+    //     submenu: [
+    //         {
+    //             path: '',
+    //             title: 'Second Level',
+    //             icon: 'mdi mdi-octagram',
+    //             class: '',
+    //             ddclass: '',
+    //             extralink: true,
+    //             submenu: []
+    //         },
+    //         {
+    //             path: '/second',
+    //             title: 'Second Child',
+    //             icon: 'mdi mdi-octagram',
+    //             class: 'has-arrow',
+    //             ddclass: '',
+    //             extralink: false,
+    //             submenu: [
+    //                 {
+    //                     path: '/thirdone',
+    //                     title: 'Third 1.1',
+    //                     icon: 'mdi mdi-playlist-plus',
+    //                     class: '',
+    //                     ddclass: '',
+    //                     extralink: false,
+    //                     submenu: []
+    //                 },
+    //                 {
+    //                     path: '/thirdtwo',
+    //                     title: 'Third 1.2',
+    //                     icon: 'mdi mdi-playlist-plus',
+    //                     class: '',
+    //                     ddclass: '',
+    //                     extralink: false,
+    //                     submenu: []
+    //                 }
+    //             ]
+    //         }
+    //     ]
+    // }
 ];

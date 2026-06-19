@@ -1,0 +1,239 @@
+<div class="container-fluid py-5 subscription-page">
+
+    <!-- Heading -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">
+            Start your ecommerce business
+            <span class="text-warning">Now</span>
+        </h2>
+
+        <h5 class="text-success">
+            <i class="mdi mdi-check"></i>
+            Free Online Store, Dropshipping & Bulk Buy
+        </h5>
+    </div>
+
+    <!-- Duration -->
+    <div class="row justify-content-center mb-5">
+
+        <div class="col-lg-10">
+
+            <div class="btn-group w-100">
+
+                <button
+                    class="btn"
+                    *ngFor="let item of durations"
+                    [class.btn-warning]="selectedDuration==item.value"
+                    [class.btn-light]="selectedDuration!=item.value"
+                    (click)="changeDuration(item.value)">
+
+                    {{item.label}}
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="row g-4">
+
+        <div
+            class="col-lg"
+            *ngFor="let plan of plans">
+
+            <div
+                class="card h-100 shadow-sm position-relative"
+                [class.border-warning]="plan.popular">
+
+                <!-- Most Popular -->
+
+                <div
+                    *ngIf="plan.popular"
+                    class="badge bg-dark text-warning position-absolute top-0 start-50 translate-middle px-4 py-2 rounded-pill">
+
+                    Most Popular
+
+                </div>
+
+                <div class="card-body text-center">
+
+                    <h2 class="fw-bold">
+
+                        {{plan.name}}
+
+                    </h2>
+
+                    <div
+                        *ngIf="plan.discount > 0"
+                        class="text-decoration-line-through text-muted">
+
+                        ₹ {{plan.oldPrice}}
+
+                    </div>
+
+                    <div *ngIf="plan.discount > 0" class="text-success fw-bold">
+
+                        {{plan.discount}}% OFF
+
+                    </div>
+
+                    <h2 class="fw-bold mt-2">
+
+                        ₹ {{plan.price}}
+
+                    </h2>
+
+                    <small class="text-warning">
+
+                        (Inc. GST)
+
+                    </small>
+
+                    <div class="mt-4">
+
+                        <button
+                            class="btn btn-warning px-4"
+                            (click)="openSubscribeModal(plan)">
+
+                            Subscribe
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Comparison -->
+
+    <div class="table-responsive mt-5">
+
+        <table
+            class="table table-bordered align-middle text-center">
+
+            <thead class="table-light">
+
+                <tr>
+
+                    <th
+                        class="text-start">
+
+                        Features
+
+                    </th>
+
+                    <th
+                        *ngFor="let plan of plans">
+
+                        {{plan.name}}
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr
+                    *ngFor="let feature of features">
+
+                    <td
+                        class="text-start fw-semibold">
+
+                        {{feature.title}}
+
+                    </td>
+
+                    <td
+                        *ngFor="let value of feature.values">
+
+                        <ng-container
+                            [ngSwitch]="value">
+
+                            <!-- True -->
+
+                            <i
+                                *ngSwitchCase="true"
+                                class="mdi mdi-check text-success fs-5">
+
+                            </i>
+
+                            <!-- False -->
+
+                            <i
+                                *ngSwitchCase="false"
+                                class="mdi mdi-close text-danger fs-5">
+
+                            </i>
+
+                            <!-- Number -->
+
+                            <span
+                                *ngSwitchDefault>
+
+                                {{value}}
+
+                            </span>
+
+                        </ng-container>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+            <tfoot class="table-light">
+
+                <tr>
+
+                    <td></td>
+
+                    <td *ngFor="let plan of plans">
+
+                        <button class="btn btn-warning px-4"
+                                (click)="openSubscribeModal(plan)">
+
+                            Subscribe
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tfoot>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- Subscribe Modal -->
+<ng-template #subscribeModalTpl let-modal>
+  <div class="modal-header border-0 pb-0">
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body text-center" *ngIf="selectedPlan">
+    <h3 class="fw-bold mb-1" id="subscribeModalLabel">{{ selectedPlan.name }} Plan</h3>
+    <p class="text-muted mb-4">You are selecting the {{ selectedDuration === 'quarterly' ? 'Quarterly' : (selectedDuration === 'half' ? 'Half Yearly' : 'Yearly') }} duration.</p>
+    
+    <h2 class="text-success display-6 fw-bold mb-4">₹ {{ selectedPlan.price }} <span class="fs-5 text-muted fw-normal">/ {{ selectedDuration === 'quarterly' ? '3 Months' : (selectedDuration === 'half' ? '6 Months' : '1 Year') }}</span></h2>
+    
+    <p class="text-muted px-4">Are you sure you want to proceed and subscribe to this plan?</p>
+  </div>
+  <div class="modal-footer border-0 justify-content-center pb-4 pt-0">
+    <button type="button" class="btn btn-light px-4" (click)="modal.dismiss('Cancel click')">Cancel</button>
+    <button type="button" class="btn btn-warning px-5 fw-bold" (click)="confirmSubscription(); modal.close('Confirm click')">Confirm Subscribe</button>
+  </div>
+</ng-template>

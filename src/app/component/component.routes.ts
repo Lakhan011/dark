@@ -17,6 +17,7 @@ import { NgbdButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 import { ToastComponent } from './toast/toast.component';
 import { NotifierComponent } from './notifier/notifier.component';
+import { CategoryComponent } from './category/category.component';
 
 export const ComponentsRoutes: Routes = [
   {
@@ -224,6 +225,17 @@ export const ComponentsRoutes: Routes = [
             { title: 'Home', url: '/' },
             { title: 'ngComponent' },
             { title: 'Notifier' },
+          ],
+        },
+      },
+      {
+        path: 'add/category',
+        component: CategoryComponent,
+        data: {
+          title: 'category',
+          urls: [
+            { title: 'Home', url: '/' },
+            { title: 'category' }
           ],
         },
       },

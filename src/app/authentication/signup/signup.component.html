@@ -1,55 +1,180 @@
-<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/background/login-register.jpg) no-repeat center center;">
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center"
+    style="background:url(assets/images/background/login-register.jpg) no-repeat center center;">
+
     <div class="auth-box m-3 m-md-0">
-        <div>
-            <div class="text-center">
-                <span class="db"><img src="assets/images/logo-icon.png" alt="logo" /></span>
-                <h5 class="font-medium mb-4">Sign Up to Admin</h5>
-            </div>
-            <!-- Form -->
-            <div class="row">
-                <div class="col-12">
-                    <form class="form-horizontal mt-3" >
-                        <div class="mb-3 row ">
-                            <div class="col-12 ">
-                                <input class="form-control" type="text" required=" " placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-12 ">
-                                <input class="form-control" type="text" required=" " placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-12 ">
-                                <input class="form-control" type="password" required=" " placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-12 ">
-                                <input class="form-control" type="password" required=" " placeholder="Confirm Password">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-md-12 ">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="customCheck1">
-                                    <label class="form-check-label" for="customCheck1">I agree to all <a href="javascript:void(0)">Terms</a></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 text-center ">
-                            <div class="col-xs-12 mb-4">
-                                <a class="btn d-block w-100 btn-info" [routerLink]="['/']">SIGN UP</a>
-                            </div>
-                        </div>
-                        <div class="mb-3 mb-0 mt-2 ">
-                            <div class="col-sm-12 text-center ">
-                                Already have an account? <a [routerLink]="['/authentication/login']" class="text-info ms-1 "><b>Sign In</b></a>
-                            </div>
-                        </div>
-                    </form>
+
+        <div class="text-center mb-4">
+            <span class="db">
+                <img src="assets/images/logo-icon.png" alt="logo">
+            </span>
+
+            <h5 class="font-medium mt-3">
+                Sign Up to Admin
+            </h5>
+        </div>
+
+        <form
+            [formGroup]="signupForm"
+            (ngSubmit)="signUp()"
+            class="form-horizontal">
+
+            <!-- Name -->
+            <div class="mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Name"
+                    formControlName="name"
+                    [class.is-invalid]="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+
+                <div class="invalid-feedback">
+                    Name is required.
                 </div>
             </div>
-        </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email"
+                    formControlName="email"
+                    [class.is-invalid]="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+
+                <div class="invalid-feedback">
+                    Enter a valid email.
+                </div>
+            </div>
+
+            <!-- Role -->
+            <div class="mb-3">
+                <select
+                    class="form-select"
+                    formControlName="role"
+                    [class.is-invalid]="signupForm.get('role')?.invalid && signupForm.get('role')?.touched">
+
+                    <option value="">Select Role</option>
+
+                    <option
+                        *ngFor="let role of roles"
+                        [value]="role.value">
+                        {{ role.label }}
+                    </option>
+
+                </select>
+
+                <div class="invalid-feedback">
+                    Please select a role.
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+                <div class="input-group">
+
+                    <input
+                        class="form-control"
+                        [type]="showPassword ? 'text' : 'password'"
+                        placeholder="Password"
+                        formControlName="password"
+                        [class.is-invalid]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+
+                    <span
+                        class="input-group-text"
+                        style="cursor:pointer"
+                        (click)="togglePassword()">
+
+                        <i
+                            class="mdi"
+                            [ngClass]="showPassword ? 'mdi-eye-off' : 'mdi-eye'">
+                        </i>
+
+                    </span>
+
+                </div>
+
+                <div
+                    class="text-danger mt-1"
+                    *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+                    Password must be at least 6 characters.
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-3">
+                <div class="input-group">
+
+                    <input
+                        class="form-control"
+                        [type]="showConfirmPassword ? 'text' : 'password'"
+                        placeholder="Confirm Password"
+                        formControlName="confirmPassword">
+
+                    <span
+                        class="input-group-text"
+                        style="cursor:pointer"
+                        (click)="toggleConfirmPassword()">
+
+                        <i
+                            class="mdi"
+                            [ngClass]="showConfirmPassword ? 'mdi-eye-off' : 'mdi-eye'">
+                        </i>
+
+                    </span>
+
+                </div>
+            </div>
+
+            <!-- Terms -->
+            <div class="mb-3">
+
+                <div class="form-check">
+
+                    <input
+                        id="terms"
+                        type="checkbox"
+                        class="form-check-input"
+                        formControlName="terms">
+
+                    <label
+                        class="form-check-label"
+                        for="terms">
+                        I agree to all
+                        <a href="javascript:void(0)">Terms & Conditions</a>
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- Submit -->
+            <div class="mb-3">
+
+                <button
+                    type="submit"
+                    class="btn btn-info w-100">
+                    SIGN UP
+                </button>
+
+            </div>
+
+            <!-- Login -->
+            <div class="text-center">
+
+                Already have an account?
+
+                <a
+                    [routerLink]="['/authentication/login']"
+                    class="text-info ms-1">
+
+                    <b>Sign In</b>
+
+                </a>
+
+            </div>
+
+        </form>
+
     </div>
+
 </div>

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit, EventEmitter, Output, inject, TemplateRef } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import {
   NgbAccordionModule,
   NgbCarouselModule,
@@ -13,6 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { FeatherModule } from 'angular-feather';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { options } from 'src/app/config';
+import { AuthService } from '../../core/services/auth.service';
 
 declare var $: any;
 
@@ -44,7 +45,19 @@ export class HorizontalNavigationComponent implements AfterViewInit {
   }
 
   private offcanvasService = inject(NgbOffcanvas);
+  public authService = inject(AuthService);
 	closeResult = '';
+
+  openUserProfileModal(content: TemplateRef<any>) {
+    this.modalService.open(content, { centered: true });
+  }
+
+  private router = inject(Router);
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/authentication/login']);
+  }
 
   items = ['Apps'];
 

@@ -288,6 +288,8 @@
 <!-- Right side toggle and nav items -->
 <!-- ============================================================== -->
 <ul class="navbar-nav align-items-center gap-3">
+  <!-- /apps/users  , /dashboard/subscription-->
+  <a class="btn btn-primary" [routerLink]="['/dashboard/subscription']"> Subscription </a>
   <li class="nav-item d-md-flex d-none">
     <form class="app-search rounded-pill overflow-hidden">
       <input type="text" class="form-control border-0" placeholder="Search for..." />
@@ -340,18 +342,20 @@
         <div class="py-3 px-7 pb-0">
           <h5 class="mb-0 fs-5">User Profile</h5>
         </div>
-        <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-          <img src="assets/images/users/user1.jpg" class="rounded-circle" width="80" height="80" alt="" />
-          <div class="ms-3">
-            <h5 class="mb-1 fs-4">Markarn Doe</h5>
-            <span class="mb-1 d-block">Designer</span>
-            <p class="mb-0 d-flex align-items-center gap-2">
-              <i-feather name="mail" class="feather-xs d-flex"></i-feather> info&#64;monster.com
-            </p>
+        <ng-container *ngIf="authService.currentUser$ | async as currentUser">
+          <div class="d-flex align-items-center py-9 mx-7 border-bottom">
+            <img src="assets/images/users/user1.jpg" class="rounded-circle" width="80" height="80" alt="" />
+            <div class="ms-3">
+              <h5 class="mb-1 fs-4">{{ currentUser.name }}</h5>
+              <span class="mb-1 d-block text-capitalize">{{ currentUser.role | lowercase }}</span>
+              <p class="mb-0 d-flex align-items-center gap-2">
+                <i-feather name="mail" class="feather-xs d-flex"></i-feather> {{ currentUser.email }}
+              </p>
+            </div>
           </div>
-        </div>
+        </ng-container>
         <div class="message-body">
-          <a [routerLink]="['/apps/users']" class="py-8 px-7 mt-8 d-flex align-items-center">
+          <a href="javascript:void(0)" (click)="openUserProfileModal(userProfileModalTpl)" class="py-8 px-7 mt-8 d-flex align-items-center">
             <span class="d-flex align-items-center justify-content-center bg-info-subtle rounded p-6 fs-7 text-info">
               <i-feather name="user" class="feather-sm d-flex"></i-feather>
             </span>
@@ -380,7 +384,7 @@
           </a>
         </div>
         <div class="d-grid py-4 px-7 pt-8">
-          <a [routerLink]="['/authentication/login']" class="btn btn-info">Log Out</a>
+          <a href="javascript:void(0)" (click)="logout()" class="btn btn-info">Log Out</a>
         </div>
       </div>
     </div>
@@ -389,3 +393,55 @@
   <!-- User profile and search -->
   <!-- ============================================================== -->
 </ul>
+
+<!-- User Profile Modal -->
+<ng-template #userProfileModalTpl let-modal>
+  <div class="modal-header border-0 pb-0">
+    <h4 class="modal-title fw-bold" id="modal-basic-title">My Profile</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body" *ngIf="authService.currentUser$ | async as currentUser">
+    <div class="d-flex align-items-center mb-4 border-bottom pb-4">
+      <img src="assets/images/users/user1.jpg" class="rounded-circle shadow-sm" width="100" height="100" alt="" />
+      <div class="ms-4">
+        <h3 class="mb-1 fw-bold">{{ currentUser.name }}</h3>
+        <span class="badge bg-primary text-capitalize px-3 py-2 fs-4">{{ currentUser.role | lowercase }}</span>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-12">
+        <label class="text-muted fw-bold d-block mb-1">Email</label>
+        <p class="fs-5 d-flex align-items-center gap-2">
+          <i-feather name="mail" class="feather-sm text-info"></i-feather> 
+          {{ currentUser.email }}
+          <span *ngIf="currentUser.isEmailVerified" class="badge bg-success-subtle text-success ms-2">Verified</span>
+          <span *ngIf="!currentUser.isEmailVerified" class="badge bg-warning-subtle text-warning ms-2">Unverified</span>
+        </p>
+      </div>
+      
+      <div class="col-6">
+        <label class="text-muted fw-bold d-block mb-1">Account Status</label>
+        <p class="fs-5 text-capitalize">{{ currentUser.status || 'Active' }}</p>
+      </div>
+
+      <div class="col-6">
+        <label class="text-muted fw-bold d-block mb-1">Joined</label>
+        <p class="fs-5">{{ currentUser.createdAt | date:'mediumDate' }}</p>
+      </div>
+      
+      <div class="col-12" *ngIf="currentUser.subscription?.planName">
+        <div class="bg-light-warning rounded p-3 mt-2">
+          <label class="text-warning fw-bold d-block mb-1">Active Subscription</label>
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 fw-bold">{{ currentUser.subscription.planName }} Plan</h5>
+            <span class="badge bg-warning">Valid till {{ currentUser.subscription.endDate | date:'mediumDate' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer border-0">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>

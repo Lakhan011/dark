@@ -8,5 +8,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './signup2.component.html'
 })
 export class Signup2Component {
-  constructor() {}
+  constructor() {
+    console.log(" signup 2 ")
+  }
 }
