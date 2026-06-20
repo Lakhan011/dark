@@ -16,6 +16,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { RouterModule, Router } from '@angular/router';
 import { options } from 'src/app/config';
 import { AuthService } from '../../core/services/auth.service';
+import { CartService } from '../../core/services/cart.service';
 
 declare var $: any;
 
@@ -48,6 +49,7 @@ export class VerticalNavigationComponent implements AfterViewInit {
 
   private offcanvasService = inject(NgbOffcanvas);
   public authService = inject(AuthService);
+  public cartService = inject(CartService);
 	closeResult = '';
 
   public showSearch = false;

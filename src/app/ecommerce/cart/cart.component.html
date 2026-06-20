@@ -1,214 +1,135 @@
-<div class="row">
-  <!-- Column -->
-  <div class="col-md-9 col-lg-9">
-    <div class="card">
-      <div class="card-header bg-info">
-        <h5 class="mb-0 text-white">Your Cart (4 items)</h5>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table product-overview">
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Product info</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th style="text-align: center">Total</th>
-                <th style="text-align: center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td width="150">
-                  <img
-                    src="assets/images/gallery/chair.jpg"
-                    alt="iMac"
-                    width="80"
-                    class="rounded-1"
-                  />
-                </td>
-                <td width="550">
-                  <h5 class="font-500">Rounded Chair</h5>
-                  <p>
-                    Lorem Ipsum available, but the majority have suffered
-                    alteration in some form, by injected humour, or randomised
-                    words which don't look
-                  </p>
-                </td>
-                <td>$153</td>
-                <td width="70">
-                  <input type="text" class="form-control" placeholder="1" />
-                </td>
-                <td width="150" align="center" class="font-500">$153</td>
-                <td align="center">
-                  <a
-                    href="javascript:void(0)"
-                    class="text-inverse"
-                    title=""
-                    data-toggle="tooltip"
-                    data-original-title="Delete"
-                  >
-                    <i-feather
-                      name="trash-2"
-                      class="feather-sm text-danger"
-                    ></i-feather>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img
-                    src="assets/images/gallery/chair2.jpg"
-                    alt="iMac"
-                    width="80"
-                    class="rounded-1"
-                  />
-                </td>
-                <td>
-                  <h5 class="font-500">Rounded Chair</h5>
-                  <p>
-                    Lorem Ipsum available, but the majority have suffered
-                    alteration in some form, by injected humour, or randomised
-                    words which don't look
-                  </p>
-                </td>
-                <td>$153</td>
-                <td>
-                  <input type="text" class="form-control" placeholder="1" />
-                </td>
-                <td class="font-500" align="center">$153</td>
-                <td align="center">
-                  <a
-                    href="javascript:void(0)"
-                    class="text-inverse"
-                    title=""
-                    data-toggle="tooltip"
-                    data-original-title="Delete"
-                  >
-                    <i-feather
-                      name="trash-2"
-                      class="feather-sm text-danger"
-                    ></i-feather>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img
-                    src="assets/images/gallery/chair3.jpg"
-                    alt="iMac"
-                    width="80"
-                    class="rounded-1"
-                  />
-                </td>
-                <td>
-                  <h5 class="font-500">Rounded Chair</h5>
-                  <p>
-                    Lorem Ipsum available, but the majority have suffered
-                    alteration in some form, by injected humour, or randomised
-                    words which don't look
-                  </p>
-                </td>
-                <td>$153</td>
-                <td>
-                  <input type="text" class="form-control" placeholder="1" />
-                </td>
-                <td class="font-500" align="center">$153</td>
-                <td align="center">
-                  <a
-                    href="javascript:void(0)"
-                    class="text-inverse"
-                    title=""
-                    data-toggle="tooltip"
-                    data-original-title="Delete"
-                  >
-                    <i-feather
-                      name="trash-2"
-                      class="feather-sm text-danger"
-                    ></i-feather>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img
-                    src="assets/images/gallery/chair4.jpg"
-                    alt="iMac"
-                    width="80"
-                    class="rounded-1"
-                  />
-                </td>
-                <td>
-                  <h5 class="font-500">Rounded Chair</h5>
-                  <p>
-                    Lorem Ipsum available, but the majority have suffered
-                    alteration in some form, by injected humour, or randomised
-                    words which don't look
-                  </p>
-                </td>
-                <td>$153</td>
-                <td>
-                  <input type="text" class="form-control" placeholder="1" />
-                </td>
-                <td class="font-500" align="center">$153</td>
-                <td align="center">
-                  <a
-                    href="javascript:void(0)"
-                    class="text-inverse"
-                    title=""
-                    data-toggle="tooltip"
-                    data-original-title="Delete"
-                  >
-                    <i-feather
-                      name="trash-2"
-                      class="feather-sm text-danger"
-                    ></i-feather>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <hr />
-          <div class="d-flex no-block align-items-center">
-            <button class="btn btn-dark btn-outline">
-              <i class="fas fa-arrow-left"></i> Continue shopping
-            </button>
-            <div class="ms-auto">
-              <button class="btn btn-danger">
-                <i class="fa fa fa-shopping-cart"></i> Checkout
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container-fluid py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold mb-0">Your Shopping Cart</h2>
+      <button class="btn btn-outline-danger" *ngIf="cartSummary?.items?.length" (click)="clearCart()">
+          <i class="bi bi-trash"></i> Clear Cart
+      </button>
   </div>
-  <!-- Column -->
-  <div class="col-md-3 col-lg-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">CART SUMMARY</h5>
-        <hr />
-        <small>Total Price</small>
-        <h2>$612</h2>
-        <hr />
-        <div class="button-group">
-          <button class="btn btn-success">Checkout</button>
-          <button class="btn btn-secondary btn-outline">Cancel</button>
-        </div>
+
+  <div class="row" *ngIf="loading">
+      <div class="col-12 text-center py-5">
+          <div class="spinner-border text-primary" role="status"></div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">For Any Support</h5>
-        <hr />
-        <h4><i class="ti-mobile"></i> 9998979695 (Toll Free)</h4>
-        <small
-          >Please contact with us if you have any questions. We are avalible
-          24h.</small
-        >
+  </div>
+
+  <div class="row" *ngIf="!loading && (!cartSummary || cartSummary.items.length === 0)">
+      <div class="col-12 text-center py-5 bg-white rounded shadow-sm">
+          <i class="bi bi-cart-x display-1 text-muted mb-3"></i>
+          <h3 class="fw-bold">Your cart is empty</h3>
+          <p class="text-muted mb-4">Looks like you haven't added anything to your cart yet.</p>
+          <a [routerLink]="['/ecom/all-products']" class="btn btn-primary px-4 py-2">Start Shopping</a>
       </div>
-    </div>
+  </div>
+
+  <div class="row" *ngIf="!loading && cartSummary && cartSummary.items.length > 0">
+      <!-- Cart Items List -->
+      <div class="col-lg-8 mb-4">
+          <div class="card border-0 shadow-sm">
+              <div class="card-body p-0">
+                  <div class="table-responsive">
+                      <table class="table table-hover align-middle mb-0">
+                          <thead class="bg-light">
+                              <tr>
+                                  <th class="border-0 px-4 py-3">Product</th>
+                                  <th class="border-0 py-3 text-center">Price</th>
+                                  <th class="border-0 py-3 text-center">Quantity</th>
+                                  <th class="border-0 py-3 text-end px-4">Subtotal</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let item of cartSummary.items">
+                                  <td class="px-4 py-3">
+                                      <div class="d-flex align-items-center">
+                                          <img [src]="getImageUrl(item.thumbnail)" alt="Product" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                          <div>
+                                              <a [routerLink]="['/ecom/details', item.productId._id || item.productId]" class="text-dark fw-bold text-decoration-none">
+                                                  {{ item.productName }}
+                                              </a>
+                                              <div class="small text-muted mt-1" *ngIf="item.variantOption">Variant: {{ item.variantOption }}</div>
+                                              <button class="btn btn-link text-danger p-0 mt-1 small text-decoration-none" (click)="removeItem(item._id)" [disabled]="updatingId === item._id">
+                                                  <i class="bi bi-trash"></i> Remove
+                                              </button>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  <td class="py-3 text-center fw-semibold text-dark">
+                                      ${{ item.price }}
+                                  </td>
+                                  <td class="py-3 text-center">
+                                      <div class="input-group input-group-sm mx-auto" style="width: 100px;">
+                                          <button class="btn btn-outline-secondary" type="button" (click)="decreaseQuantity(item)" [disabled]="item.quantity <= 1 || updatingId === item._id">-</button>
+                                          <input type="text" class="form-control text-center px-0" [value]="item.quantity" readonly>
+                                          <button class="btn btn-outline-secondary" type="button" (click)="increaseQuantity(item)" [disabled]="updatingId === item._id">+</button>
+                                      </div>
+                                      <div class="small text-muted mt-1" *ngIf="updatingId === item._id">
+                                          <span class="spinner-border spinner-border-sm" role="status"></span> Updating...
+                                      </div>
+                                  </td>
+                                  <td class="py-3 text-end px-4 fw-bold text-primary">
+                                      ${{ item.price * item.quantity }}
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="col-lg-4">
+          <div class="card border-0 shadow-sm mb-4">
+              <div class="card-body p-4">
+                  <h4 class="fw-bold mb-4">Order Summary</h4>
+                  
+                  <div class="d-flex justify-content-between mb-3">
+                      <span class="text-muted">Subtotal ({{ cartSummary.items.length }} items)</span>
+                      <span class="fw-bold text-dark">${{ cartSummary.subtotal }}</span>
+                  </div>
+                  
+                  <div class="d-flex justify-content-between mb-3" *ngIf="cartSummary.discount > 0">
+                      <span class="text-success">Coupon Discount</span>
+                      <span class="fw-bold text-success">-${{ cartSummary.discount }}</span>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-3 pb-3 border-bottom">
+                      <span class="text-muted">Shipping</span>
+                      <span class="fw-bold text-dark">{{ cartSummary.shipping === 0 ? 'Free' : '$' + cartSummary.shipping }}</span>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-4">
+                      <span class="fs-5 fw-bold text-dark">Grand Total</span>
+                      <span class="fs-5 fw-bold text-primary">${{ cartSummary.total }}</span>
+                  </div>
+
+                  <button class="btn btn-primary w-100 py-3 fw-bold fs-5 mb-3" [routerLink]="['/ecom/checkout']">Proceed to Checkout</button>
+                  <a [routerLink]="['/ecom/all-products']" class="btn btn-light w-100 py-2">Continue Shopping</a>
+              </div>
+          </div>
+
+          <!-- Coupon Code -->
+          <div class="card border-0 shadow-sm">
+              <div class="card-body p-4">
+                  <h5 class="fw-bold mb-3"><i class="bi bi-tag"></i> Apply Coupon</h5>
+                  
+                  <div class="input-group mb-2" *ngIf="!cartSummary.couponApplied">
+                      <input type="text" class="form-control" placeholder="Enter coupon code" [(ngModel)]="couponCodeInput">
+                      <button class="btn btn-outline-primary" type="button" (click)="applyCoupon()" [disabled]="applyingCoupon || !couponCodeInput">
+                          <span *ngIf="applyingCoupon" class="spinner-border spinner-border-sm"></span> Apply
+                      </button>
+                  </div>
+
+                  <div *ngIf="cartSummary.couponApplied" class="alert alert-success d-flex justify-content-between align-items-center mb-0">
+                      <div>
+                          <strong>{{ cartSummary.couponCode }}</strong> applied!
+                      </div>
+                      <button class="btn-close" (click)="removeCoupon()"></button>
+                  </div>
+
+                  <div *ngIf="couponError" class="text-danger small mt-2">{{ couponError }}</div>
+                  <div *ngIf="couponSuccess" class="text-success small mt-2">{{ couponSuccess }}</div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>

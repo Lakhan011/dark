@@ -1094,6 +1094,15 @@ export const ROUTES: RouteInfo[] = [
         extralink: false,
         submenu: [
             {
+                path: '/ecom/all-products',
+                title: 'All Products',
+                icon: 'mdi mdi-view-grid',
+                class: '',
+                ddclass: '',
+                extralink: false,
+                submenu: []
+            },
+            {
                 path: '/ecom/products',
                 title: 'Products',
                 icon: 'mdi mdi-cards-variant',

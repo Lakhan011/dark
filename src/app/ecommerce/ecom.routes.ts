@@ -6,6 +6,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { OrderComponent } from './orders/orders.component';
 import { ProductComponent } from './product/product.component';
+import { AllProductsComponent } from './all-products/all-products.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -31,7 +32,7 @@ export const EcomRoutes: Routes = [
         }
       },
       {
-        path: 'details',
+        path: 'details/:id',
         component: DetailsComponent,
         data: {
           title: 'Product Details',
@@ -68,6 +69,17 @@ export const EcomRoutes: Routes = [
           urls: [
             { title: 'Home', url: '/' },
             { title: 'Products' }
+          ]
+        }
+      },
+      {
+        path: 'all-products',
+        component: AllProductsComponent,
+        data: {
+          title: 'All Products',
+          urls: [
+            { title: 'Home', url: '/' },
+            { title: 'All Products' }
           ]
         }
       }

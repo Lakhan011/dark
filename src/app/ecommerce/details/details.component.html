@@ -1,114 +1,211 @@
-<div class="row">
-    <!-- Column -->
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Rounded Chair</h3>
-                <h6 class="card-subtitle">globe type chair for rest</h6>
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="white-box text-center rounded-2 overflow-hidden">
-                            <img src="assets/images/gallery/chair.jpg" class="img-fluid"> </div>
-                    </div>
-                    <div class="col-lg-9 col-md-9 col-sm-6">
-                        <h4 class="p-2-title mt-4 pt-3">Product description</h4>
-                        <p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected
-                            humour,
-                            or randomised words which don't look even slightly believable. but the majority have
-                            suffered
-                            alteration in some form, by injected humour</p>
-                        <h2 class="mt-4 pt-3">$153
-                            <small class="text-success">(36% off)</small>
-                        </h2>
-                        <button class="btn btn-dark btn-rounded me-2" data-toggle="tooltip" title=""
-                            data-original-title="Add to cart">
-                            <i class="ti-shopping-cart"></i>
-                        </button>
-                        <button class="btn btn-primary btn-rounded"> Buy Now </button>
-                        <h3 class="p-2-title mt-4 pt-3">Key Highlights</h3>
-                        <ul class="list-unstyled">
-                            <li>
-                                <i class="fa fa-check text-success"></i> Sturdy structure</li>
-                            <li>
-                                <i class="fa fa-check text-success"></i> Designed to foster easy portability</li>
-                            <li>
-                                <i class="fa fa-check text-success"></i> Perfect furniture to flaunt your wonderful
-                                collectibles</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <h3 class="p-2-title mt-4 pt-3">General Info</h3>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td width="390">Brand</td>
-                                        <td> Stellar </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Delivery Condition</td>
-                                        <td> Knock Down </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Seat Lock Included</td>
-                                        <td> Yes </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Type</td>
-                                        <td> Office Chair </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Style</td>
-                                        <td> Contemporary &amp; Modern </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Wheels Included</td>
-                                        <td> Yes </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Upholstery Included</td>
-                                        <td> Yes </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Upholstery Type</td>
-                                        <td> Cushion </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Head Support</td>
-                                        <td> No </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Suitable For</td>
-                                        <td> Study &amp; Home Office </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Adjustable Height</td>
-                                        <td> Yes </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Model Number</td>
-                                        <td> F01020701-00HT744A06 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Armrest Included</td>
-                                        <td> Yes </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Care Instructions</td>
-                                        <td> Handle With Care, Keep In Dry Place, Do Not Apply Any Chemical For
-                                            Cleaning. </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Finish Type</td>
-                                        <td> Matte </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Column -->
+<div class="row" *ngIf="loading">
+  <div class="col-12 text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="!loading && !product">
+  <div class="col-12 text-center py-5">
+      <h4 class="text-danger">Failed to load product.</h4>
+      <p class="text-muted">Please check the console for details or ensure the backend server is running the latest code.</p>
+  </div>
+</div>
+
+<div class="row" *ngIf="!loading && product">
+  <!-- Left Side: Image Gallery -->
+  <div class="col-lg-5 col-md-6 mb-4">
+      <div class="card border-0 shadow-sm">
+          <div class="card-body p-0 text-center bg-light">
+              <img [src]="mainImageUrl" class="img-fluid rounded" alt="Product Image" style="max-height: 400px; object-fit: contain;">
+          </div>
+          
+          <div class="card-body border-top p-3" *ngIf="product.images && product.images.length > 0">
+              <div class="d-flex flex-row overflow-auto gap-2 thumbnail-container">
+                  <!-- Thumbnail Loop -->
+                  <img *ngFor="let img of product.images" 
+                       [src]="getImageUrl(img)" 
+                       class="img-thumbnail cursor-pointer" 
+                       [class.border-primary]="mainImageUrl === getImageUrl(img)"
+                       (click)="setMainImage(img)"
+                       alt="Thumbnail"
+                       style="width: 80px; height: 80px; object-fit: cover;">
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Right Side: Product Details -->
+  <div class="col-lg-7 col-md-6">
+      <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+              <h2 class="card-title fw-bold mb-1">{{ product.productName }}</h2>
+              <p class="text-muted mb-3">{{ product.brand || 'No Brand' }}</p>
+
+              <div class="mb-4 d-flex align-items-end">
+                  <h3 class="fw-bold text-dark mb-0 me-3">${{ product.discountPrice || product.price }}</h3>
+                  <h5 class="text-muted text-decoration-line-through mb-0" *ngIf="product.discountPrice">${{ product.price }}</h5>
+              </div>
+
+              <div class="mb-4">
+                  <span class="badge bg-success" *ngIf="product.stockQuantity && product.stockQuantity > 0">In Stock</span>
+                  <span class="badge bg-danger" *ngIf="product.stockQuantity === 0">Out of Stock</span>
+              </div>
+
+              <div class="d-flex align-items-center mb-4 pb-4 border-bottom">
+                  <div class="input-group input-group-sm" style="width: 120px; margin-right: 15px;">
+                      <button class="btn btn-outline-secondary" type="button" (click)="decreaseQuantity()" [disabled]="quantity <= 1">-</button>
+                      <input type="text" class="form-control text-center" [value]="quantity" readonly>
+                      <button class="btn btn-outline-secondary" type="button" (click)="increaseQuantity()" [disabled]="product.stockQuantity !== undefined && quantity >= product.stockQuantity">+</button>
+                  </div>
+                  
+                  <div class="d-flex gap-2">
+                      <button class="btn btn-primary px-4 py-2" (click)="addToCart()" [disabled]="addingToCart || product.stockQuantity === 0">
+                          <span *ngIf="addingToCart" class="spinner-border spinner-border-sm me-2"></span>
+                          <i class="bi bi-cart-plus me-2" *ngIf="!addingToCart"></i>
+                          {{ addingToCart ? 'Adding...' : 'Add to Cart' }}
+                      </button>
+
+                      <button class="btn btn-dark px-4 py-2" (click)="buyNow()" [disabled]="addingToCart || product.stockQuantity === 0">
+                          <i class="bi bi-lightning-charge me-1"></i> Buy Now
+                      </button>
+                  </div>
+              </div>
+              
+              <div *ngIf="addError" class="alert alert-danger py-2">{{ addError }}</div>
+              <div *ngIf="addSuccess" class="alert alert-success py-2">{{ addSuccess }}</div>
+
+              <!-- Tabs Header -->
+              <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs custom-tabs mb-4">
+                  <li [ngbNavItem]="1">
+                      <a ngbNavLink class="fw-bold">Product Details</a>
+                      <ng-template ngbNavContent>
+                          <!-- Tab 1 Content -->
+                          <div class="table-responsive">
+                              <table class="table table-borderless table-sm spec-table">
+                                  <tbody>
+                                      <tr>
+                                          <th class="text-dark w-25">SKU</th>
+                                          <td class="text-muted">{{ product._id | uppercase }}</td>
+                                      </tr>
+                                      <tr>
+                                          <th class="text-dark">GST Bracket</th>
+                                          <td class="text-muted">{{ product.taxPercentage || 18 | number:'1.2-2' }}%</td>
+                                      </tr>
+                                      <tr>
+                                          <th class="text-dark">Product Dimensions</th>
+                                          <td class="text-muted">{{ getDimensions() }}</td>
+                                      </tr>
+                                      <tr>
+                                          <th class="text-dark">Product Weight</th>
+                                          <td class="text-muted">{{ getWeight() }}</td>
+                                      </tr>
+                                      <tr>
+                                          <th class="text-dark">Volumetric Weight</th>
+                                          <td class="text-muted">{{ getVolumetricWeight() }}</td>
+                                      </tr>
+                                      <tr>
+                                          <th class="text-dark">Payment Type</th>
+                                          <td class="text-success fw-bold">Both (Prepaid & COD)</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </ng-template>
+                  </li>
+                  <li [ngbNavItem]="2">
+                      <a ngbNavLink class="fw-bold">Shipping</a>
+                      <ng-template ngbNavContent>
+                          <div class="p-2">
+                              <p *ngIf="product.shippingInfo?.isFreeShipping" class="text-success fw-bold"><i class="bi bi-truck me-2"></i>Free Shipping</p>
+                              <p *ngIf="!product.shippingInfo?.isFreeShipping && product.shippingInfo?.shippingCharge"><i class="bi bi-truck me-2"></i>Shipping Charge: ${{ product.shippingInfo.shippingCharge }}</p>
+                              <p *ngIf="product.shippingInfo?.estimatedDays"><i class="bi bi-clock me-2"></i>Estimated Delivery: {{ product.shippingInfo.estimatedDays }} days</p>
+                              <p *ngIf="!product.shippingInfo" class="text-muted">Standard shipping rates apply based on location.</p>
+                          </div>
+                      </ng-template>
+                  </li>
+                  <li [ngbNavItem]="3">
+                      <a ngbNavLink class="fw-bold">Return/Refund Policy</a>
+                      <ng-template ngbNavContent>
+                          <div class="p-2">
+                              <p>{{ product.returnPolicy || 'Items can be returned within 7 days of delivery. Refer to our main refund policy for exact conditions and requirements.' }}</p>
+                          </div>
+                      </ng-template>
+                  </li>
+                  <li [ngbNavItem]="4">
+                      <a ngbNavLink class="fw-bold">Reviews ({{ reviews.length }})</a>
+                      <ng-template ngbNavContent>
+                          <div class="p-3">
+                              <!-- Add Review Form -->
+                              <div class="card bg-light border-0 mb-4 p-3 shadow-sm">
+                                  <h5 class="fw-bold mb-3">Write a Review</h5>
+                                  <div class="mb-2">
+                                      <label class="form-label mb-1">Your Rating:</label>
+                                      <div>
+                                          <ngb-rating [(rate)]="newReview.rating" [max]="5" class="fs-4 text-warning" style="outline: none;"></ngb-rating>
+                                      </div>
+                                  </div>
+                                  <div class="mb-3">
+                                      <label class="form-label">Review Title:</label>
+                                      <input type="text" class="form-control" [(ngModel)]="newReview.title" placeholder="Summarize your experience">
+                                  </div>
+                                  <div class="mb-3">
+                                      <label class="form-label">Review Details:</label>
+                                      <textarea class="form-control" rows="3" [(ngModel)]="newReview.comment" placeholder="What did you like or dislike?"></textarea>
+                                  </div>
+                                  
+                                  <div *ngIf="reviewError" class="alert alert-danger py-2">{{ reviewError }}</div>
+                                  <div *ngIf="reviewSuccess" class="alert alert-success py-2">{{ reviewSuccess }}</div>
+
+                                  <button class="btn btn-primary px-4" (click)="onSubmitReview()" [disabled]="submittingReview">
+                                      <span *ngIf="submittingReview" class="spinner-border spinner-border-sm me-2"></span>
+                                      Submit Review
+                                  </button>
+                              </div>
+
+                              <!-- Reviews List -->
+                              <h5 class="fw-bold mb-3">Customer Reviews</h5>
+                              <p *ngIf="reviews.length === 0" class="text-muted">No reviews yet. Be the first to review this product!</p>
+
+                              <div *ngFor="let review of reviews" class="review-item mb-4 border-bottom pb-3">
+                                  <div class="d-flex justify-content-between align-items-center mb-1">
+                                      <div>
+                                          <ngb-rating [rate]="review.rating" [max]="5" [readonly]="true" class="text-warning fs-5"></ngb-rating>
+                                          <strong class="ms-2 fs-5">{{ review.title }}</strong>
+                                      </div>
+                                      <span class="text-muted small">{{ review.createdAt | date:'mediumDate' }}</span>
+                                  </div>
+                                  <p class="text-muted mb-1">{{ review.comment }}</p>
+                                  <small class="text-secondary fw-bold">By {{ review.userId?.name || 'Anonymous' }}</small>
+                              </div>
+                          </div>
+                      </ng-template>
+                  </li>
+              </ul>
+
+              <div [ngbNavOutlet]="nav"></div>
+
+              <hr class="my-4">
+
+              <!-- Description -->
+              <h5 class="fw-bold text-dark mb-3">Description</h5>
+              <div class="text-muted description-text mb-4">
+                  <p>{{ product.longDescription || product.shortDescription || 'No detailed description available for this product.' }}</p>
+              </div>
+
+              <!-- Features -->
+              <h5 class="fw-bold text-dark mb-3">Features</h5>
+              <ul class="text-muted features-list">
+                  <li *ngIf="product.warranty"><strong>Warranty:</strong> {{ product.warranty }}</li>
+                  <li *ngIf="product.colors && product.colors.length > 0"><strong>Available Colors:</strong> <span *ngFor="let color of product.colors; let last=last">{{ color.name }}<span *ngIf="!last">, </span></span></li>
+                  <li *ngIf="product.sizes && product.sizes.length > 0"><strong>Available Sizes:</strong> <span *ngFor="let size of product.sizes; let last=last">{{ size }}<span *ngIf="!last">, </span></span></li>
+                  <li *ngIf="product.categoryId">Belongs to category {{ product.categoryId.name }}</li>
+                  <li *ngIf="product.subcategoryId">Part of {{ product.subcategoryId.name }} subcategory</li>
+                  <li>Original Price: ${{ product.price }}</li>
+                  <li *ngIf="product.discountPrice">Discounted Price: ${{ product.discountPrice }}</li>
+              </ul>
+          </div>
+      </div>
+  </div>
 </div>

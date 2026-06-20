@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body border-bottom">
+              <h4 class="card-title mb-0">All Products</h4>
+          </div>
+          <div class="card-body bg-light">
+              <div class="row">
+                  <div class="col-md-3 mb-2">
+                      <input type="text" class="form-control" placeholder="Search products..." (keyup)="onSearch($event)" [value]="filters.productName">
+                  </div>
+                  <div class="col-md-3 mb-2">
+                      <select class="form-select" [(ngModel)]="filters.categoryId" (change)="onCategoryChange()">
+                          <option value="">All Categories</option>
+                          <option *ngFor="let cat of categories" [value]="cat._id">{{ cat.name }}</option>
+                      </select>
+                  </div>
+                  <div class="col-md-3 mb-2">
+                      <select class="form-select" [(ngModel)]="filters.subcategoryId" (change)="loadProducts(true)">
+                          <option value="">All Subcategories</option>
+                          <option *ngFor="let sub of subcategories" [value]="sub._id">{{ sub.name }}</option>
+                      </select>
+                  </div>
+                  <div class="col-md-3 mb-2 text-end">
+                      <button class="btn btn-outline-secondary" (click)="resetFilters()">Reset</button>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="card-body p-4">
+              <div class="row">
+                  <div class="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex align-items-stretch" *ngFor="let prod of products">
+                      <div class="card w-100 shadow-sm overflow-hidden h-100 product-card">
+                          <div class="position-relative" style="cursor: pointer;" [routerLink]="['/ecom/details', prod._id]">
+                              <img [src]="getImageUrl(prod.thumbnail)" class="card-img-top" alt="Product Image" style="height: 200px; object-fit: cover;">
+                              <span *ngIf="prod.discountPrice" class="badge bg-danger position-absolute top-0 end-0 m-2">Sale</span>
+                              <span *ngIf="prod.status !== 'ACTIVE'" class="badge bg-secondary position-absolute top-0 start-0 m-2">{{prod.status}}</span>
+                          </div>
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title text-truncate" [title]="prod.productName" style="cursor: pointer;" [routerLink]="['/ecom/details', prod._id]">{{ prod.productName }}</h5>
+                              <p class="text-muted small mb-1">{{ prod.brand || 'No Brand' }}</p>
+                              
+                              <div class="d-flex align-items-center mb-2">
+                                  <ngb-rating [rate]="prod.ratings?.average || 0" [max]="5" [readonly]="true" class="text-warning small" style="outline: none;"></ngb-rating>
+                                  <span class="small text-muted ms-2">({{ prod.ratings?.count || 0 }})</span>
+                              </div>
+
+                              <div class="mb-3 small text-muted">
+                                  <span class="text-success fw-bold me-2" *ngIf="prod.shippingInfo?.isFreeShipping"><i class="bi bi-truck"></i> Free Shipping</span>
+                                  <span *ngIf="!prod.isExpanded">{{ (prod.shortDescription || prod.longDescription || '') | slice:0:60 }}<span *ngIf="(prod.shortDescription || prod.longDescription || '').length > 60">...</span></span>
+                                  <span *ngIf="prod.isExpanded">{{ prod.shortDescription || prod.longDescription }}</span>
+                                  <a href="javascript:void(0)" class="ms-1 fw-bold text-primary" style="text-decoration: none;" 
+                                     *ngIf="(prod.shortDescription || prod.longDescription || '').length > 60"
+                                     (click)="prod.isExpanded = !prod.isExpanded">
+                                     {{ prod.isExpanded ? 'Show less' : 'Show more' }}
+                                  </a>
+                              </div>
+                              
+                              <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
+                                  <div>
+                                      <span class="fs-5 fw-bold text-dark">${{ prod.discountPrice || prod.price }}</span>
+                                      <small class="text-muted text-decoration-line-through ms-2" *ngIf="prod.discountPrice">${{ prod.price }}</small>
+                                  </div>
+                                  <button class="btn btn-outline-primary btn-sm d-flex align-items-center" (click)="addToCart(prod)" [disabled]="addingToCartId === prod._id">
+                                      <span *ngIf="addingToCartId === prod._id" class="spinner-border spinner-border-sm me-1"></span>
+                                      <i-feather *ngIf="addingToCartId !== prod._id" name="shopping-cart" class="feather-sm me-1"></i-feather>
+                                      Add
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Empty State -->
+              <div class="text-center py-5" *ngIf="!loading && products.length === 0">
+                  <i-feather name="box" class="text-muted mb-3" style="width: 48px; height: 48px;"></i-feather>
+                  <h4 class="text-muted">No products found</h4>
+                  <p>Try adjusting your filters or search terms.</p>
+              </div>
+
+              <!-- Loading Indicator -->
+              <div class="text-center py-4" *ngIf="loading">
+                  <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <p class="text-muted mt-2">Loading products...</p>
+              </div>
+
+              <!-- End of List -->
+              <div class="text-center py-4" *ngIf="!loading && !hasMore && products.length > 0">
+                  <p class="text-muted mb-0">You've reached the end of the list.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

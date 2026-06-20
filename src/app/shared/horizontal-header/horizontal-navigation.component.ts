@@ -14,6 +14,7 @@ import { FeatherModule } from 'angular-feather';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { options } from 'src/app/config';
 import { AuthService } from '../../core/services/auth.service';
+import { CartService } from '../../core/services/cart.service';
 
 declare var $: any;
 
@@ -46,6 +47,7 @@ export class HorizontalNavigationComponent implements AfterViewInit {
 
   private offcanvasService = inject(NgbOffcanvas);
   public authService = inject(AuthService);
+  public cartService = inject(CartService);
 	closeResult = '';
 
   openUserProfileModal(content: TemplateRef<any>) {

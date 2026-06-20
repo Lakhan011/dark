@@ -17,8 +17,13 @@ export interface Product {
   longDescription?: string;
   colors?: { name: string; hexCode: string }[];
   sizes?: string[];
+  stockQuantity?: number;
   warranty?: string;
   returnPolicy?: string;
+  ratings?: {
+    average: number;
+    count: number;
+  };
   shippingInfo?: {
     isFreeShipping: boolean;
     shippingCharge: number;
@@ -31,6 +36,7 @@ export interface Product {
   images?: string[];
   createdAt?: string;
   updatedAt?: string;
+  isExpanded?: boolean;
   [key: string]: any;
 }
 
@@ -58,6 +64,18 @@ export class ProductService {
 
   getProductBySlug(slug: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${slug}`);
+  }
+
+  getProductById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/id/${id}`);
+  }
+
+  getProductReviews(productId: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/reviews/product/${productId}`);
+  }
+
+  addReview(productId: string, data: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/reviews/product/${productId}`, data);
   }
 
   createProduct(data: FormData): Observable<any> {

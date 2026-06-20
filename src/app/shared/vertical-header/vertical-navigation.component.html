@@ -8,6 +8,8 @@
         <i-feather class="feather-sm" name="menu"></i-feather>
       </a>
     </li>
+    
+
     <!-- ============================================================== -->
     <!-- Comment -->
     <!-- ============================================================== -->
@@ -269,6 +271,15 @@
           <i-feather class="feather-sm" name="search"></i-feather>
         </a>
       </form>
+    </li>
+    <!-- Cart Icon -->
+    <li class="nav-item nav-icon-hover-bg dark rounded-circle d-flex">
+      <a class="nav-link position-relative" [routerLink]="['/ecom/cart']">
+        <i-feather class="feather-sm" name="shopping-cart"></i-feather>
+        <span class="badge bg-primary rounded-pill position-absolute" style="top: 18px; right: 6px; font-size: 0.65rem; padding: 0.25em 0.4em;">
+          {{ (cartService.cartCount$ | async) || 0 }}
+        </span>
+      </a>
     </li>
     <li class="nav-item nav-icon-hover-bg dark rounded-circle">
       @if(themeOptions.theme === 'dark') {
